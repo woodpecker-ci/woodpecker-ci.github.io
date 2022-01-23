@@ -1,0 +1,47 @@
+apiVersion: v1
+entries:
+  woodpecker-agent:
+  - apiVersion: v2
+    appVersion: 0.15.0-rc1
+    created: "2022-01-23T22:04:23.678956585Z"
+    description: A Helm chart for the Woodpecker agent
+    digest: 6afee53db56c64ee716fd90d7fefd3adc6170dfa63c9569bbdb44432b78c9e0f
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-agent
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-agent-0.15.0-rc1/woodpecker-agent-0.15.0-rc1.tgz
+    version: 0.15.0-rc1
+  woodpecker-server:
+  - apiVersion: v2
+    appVersion: 0.15.0-rc1
+    created: "2022-01-23T22:04:23.844381215Z"
+    description: A Helm chart for the Woodpecker server
+    digest: 3604ddec8d0b64c3831f00d4e02036d788e0f776ead41a0a0c7a45e6bfeb5c79
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-server
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-server-0.15.0-rc1/woodpecker-server-0.15.0-rc1.tgz
+    version: 0.15.0-rc1
+generated: "2022-01-23T22:04:23.844385385Z"
