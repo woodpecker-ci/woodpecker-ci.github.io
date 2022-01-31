@@ -2,6 +2,27 @@ apiVersion: v1
 entries:
   woodpecker-agent:
   - apiVersion: v2
+    appVersion: 0.15.0-rc2
+    created: "2022-01-31T19:05:05.803039659Z"
+    description: A Helm chart for the Woodpecker agent
+    digest: 5ae665a0533d637e994b4c9d6caacda8a1605f43b2e51f2e7f3ca3c5d251a7a6
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-agent
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-agent-0.15.0-rc2/woodpecker-agent-0.15.0-rc2.tgz
+    version: 0.15.0-rc2
+  - apiVersion: v2
     appVersion: 0.15.0-rc1
     created: "2022-01-23T22:04:23.678956585Z"
     description: A Helm chart for the Woodpecker agent
@@ -24,6 +45,27 @@ entries:
     version: 0.15.0-rc1
   woodpecker-server:
   - apiVersion: v2
+    appVersion: 0.15.0-rc2
+    created: "2022-01-31T19:05:06.287323488Z"
+    description: A Helm chart for the Woodpecker server
+    digest: af9f6a976175a4ff910929a8df03cbecec44ac23a8190afc1eae3203e138b4f1
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-server
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-server-0.15.0-rc2/woodpecker-server-0.15.0-rc2.tgz
+    version: 0.15.0-rc2
+  - apiVersion: v2
     appVersion: 0.15.0-rc1
     created: "2022-01-23T22:04:23.844381215Z"
     description: A Helm chart for the Woodpecker server
@@ -44,4 +86,4 @@ entries:
     urls:
     - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-server-0.15.0-rc1/woodpecker-server-0.15.0-rc1.tgz
     version: 0.15.0-rc1
-generated: "2022-01-23T22:04:23.844385385Z"
+generated: "2022-01-31T19:05:06.287334468Z"
