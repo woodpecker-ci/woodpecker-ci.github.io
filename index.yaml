@@ -2,6 +2,27 @@ apiVersion: v1
 entries:
   woodpecker-agent:
   - apiVersion: v2
+    appVersion: 0.15.0
+    created: "2022-02-24T17:27:38.976755193Z"
+    description: A Helm chart for the Woodpecker agent
+    digest: 8717f8c0155d79ec271ba98fe82d9a0b8f5526015fa88804e2b5c7ec025900f2
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-agent
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-agent-0.15.0/woodpecker-agent-0.15.0.tgz
+    version: 0.15.0
+  - apiVersion: v2
     appVersion: 0.15.0-rc2
     created: "2022-01-31T19:05:05.803039659Z"
     description: A Helm chart for the Woodpecker agent
@@ -45,6 +66,27 @@ entries:
     version: 0.15.0-rc1
   woodpecker-server:
   - apiVersion: v2
+    appVersion: 0.15.0
+    created: "2022-02-24T17:27:39.163430826Z"
+    description: A Helm chart for the Woodpecker server
+    digest: 52329745a018b8539af3bf613a90d02b581e8f5d3f10e24f525995e454f3e7a7
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    maintainers:
+    - email: laszlo@laszlo.cloud
+      name: Laszlo Fogas
+    name: woodpecker-server
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-server-0.15.0/woodpecker-server-0.15.0.tgz
+    version: 0.15.0
+  - apiVersion: v2
     appVersion: 0.15.0-rc2
     created: "2022-01-31T19:05:06.287323488Z"
     description: A Helm chart for the Woodpecker server
@@ -86,4 +128,4 @@ entries:
     urls:
     - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-server-0.15.0-rc1/woodpecker-server-0.15.0-rc1.tgz
     version: 0.15.0-rc1
-generated: "2022-01-31T19:05:06.287334468Z"
+generated: "2022-02-24T17:27:39.163448066Z"
