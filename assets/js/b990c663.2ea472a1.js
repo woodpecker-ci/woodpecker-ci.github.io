@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwoodpecker=self.webpackChunkwoodpecker||[]).push([[6643],{6493:function(e){e.exports=JSON.parse('{"plugin":{"name":"woodpecker-plugins","id":"default"}}')}}]);
