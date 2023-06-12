@@ -174,7 +174,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Task'
-  /badges/{owner}/{name}/cc.xml:
+  /badges/{repo_id}/cc.xml:
     get:
       description: >-
         CCMenu displays the pipeline status of projects on a CI server as an
@@ -203,7 +203,7 @@ paths:
       responses:
         '200':
           description: OK
-  /badges/{owner}/{name}/status.svg:
+  /badges/{repo_id}/status.svg:
     get:
       produces:
         - image/svg+xml
@@ -211,14 +211,9 @@ paths:
         - Badges
       summary: Get status badge, SVG format
       parameters:
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
@@ -542,7 +537,7 @@ paths:
                 properties:
                   log-level:
                     type: string
-  /logs/{owner}/{name}/{pipeline}/{stepID}:
+  /logs/{repo_id}/{pipeline}/{stepID}:
     get:
       produces:
         - text/plain
@@ -550,14 +545,9 @@ paths:
         - Pipeline logs
       summary: Log stream
       parameters:
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -849,7 +839,31 @@ paths:
       responses:
         '200':
           description: OK
-  /repos/{owner}/{name}:
+  /repos/lookup/{repo_full_name}:
+    get:
+      produces:
+        - application/json
+      tags:
+        - Repositories
+      summary: Get repository by full-name
+      parameters:
+        - type: string
+          default: Bearer <personal access token>
+          description: Insert your personal access token
+          name: Authorization
+          in: header
+          required: true
+        - type: string
+          description: the repository full-name / slug
+          name: repo_full_name
+          in: path
+          required: true
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+  /repos/{repo_id}:
     get:
       produces:
         - application/json
@@ -863,14 +877,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
@@ -891,14 +900,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
@@ -919,14 +923,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
@@ -947,14 +946,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - description: the repository's information
@@ -968,7 +962,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-  /repos/{owner}/{name}/branches:
+  /repos/{repo_id}/branches:
     get:
       produces:
         - application/json
@@ -982,14 +976,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1009,7 +998,7 @@ paths:
             type: array
             items:
               type: string
-  /repos/{owner}/{name}/chown:
+  /repos/{repo_id}/chown:
     post:
       produces:
         - application/json
@@ -1023,14 +1012,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
@@ -1038,7 +1022,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-  /repos/{owner}/{name}/cron:
+  /repos/{repo_id}/cron:
     get:
       produces:
         - application/json
@@ -1052,14 +1036,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1092,14 +1071,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - description: the new cron job
@@ -1113,7 +1087,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Cron'
-  /repos/{owner}/{name}/cron/{cron}:
+  /repos/{repo_id}/cron/{cron}:
     get:
       produces:
         - application/json
@@ -1127,14 +1101,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1160,14 +1129,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1193,14 +1157,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1224,14 +1183,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1250,7 +1204,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Cron'
-  /repos/{owner}/{name}/logs/{number}:
+  /repos/{repo_id}/logs/{number}:
     post:
       produces:
         - text/plain
@@ -1264,14 +1218,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1282,7 +1231,7 @@ paths:
       responses:
         '200':
           description: OK
-  /repos/{owner}/{name}/logs/{number}/{stepID}:
+  /repos/{repo_id}/logs/{number}/{stepID}:
     get:
       produces:
         - application/json
@@ -1296,14 +1245,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1323,7 +1267,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/LogEntry'
-  /repos/{owner}/{name}/move:
+  /repos/{repo_id}/move:
     post:
       produces:
         - text/plain
@@ -1337,14 +1281,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1355,7 +1294,7 @@ paths:
       responses:
         '200':
           description: OK
-  /repos/{owner}/{name}/permissions:
+  /repos/{repo_id}/permissions:
     get:
       description: The repository permission, according to the used access token.
       produces:
@@ -1385,7 +1324,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Perm'
-  /repos/{owner}/{name}/pipelines:
+  /repos/{repo_id}/pipelines:
     get:
       produces:
         - application/json
@@ -1399,14 +1338,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1439,14 +1373,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - description: the options for the pipeline to run
@@ -1460,7 +1389,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-  /repos/{owner}/{name}/pipelines/{number}:
+  /repos/{repo_id}/pipelines/{number}:
     get:
       produces:
         - application/json
@@ -1474,14 +1403,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1536,7 +1460,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-  /repos/{owner}/{name}/pipelines/{number}/approve:
+  /repos/{repo_id}/pipelines/{number}/approve:
     post:
       produces:
         - application/json
@@ -1550,14 +1474,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1570,7 +1489,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-  /repos/{owner}/{name}/pipelines/{number}/cancel:
+  /repos/{repo_id}/pipelines/{number}/cancel:
     post:
       produces:
         - text/plain
@@ -1584,14 +1503,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1602,7 +1516,7 @@ paths:
       responses:
         '200':
           description: OK
-  /repos/{owner}/{name}/pipelines/{number}/config:
+  /repos/{repo_id}/pipelines/{number}/config:
     get:
       produces:
         - application/json
@@ -1616,14 +1530,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1638,7 +1547,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/Config'
-  /repos/{owner}/{name}/pipelines/{number}/decline:
+  /repos/{repo_id}/pipelines/{number}/decline:
     post:
       produces:
         - application/json
@@ -1652,14 +1561,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1672,7 +1576,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-  /repos/{owner}/{name}/pull_requests:
+  /repos/{repo_id}/pull_requests:
     get:
       produces:
         - application/json
@@ -1686,14 +1590,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1713,7 +1612,7 @@ paths:
             type: array
             items:
               $ref: '#/definitions/PullRequest'
-  /repos/{owner}/{name}/registry:
+  /repos/{repo_id}/registry:
     get:
       produces:
         - application/json
@@ -1727,14 +1626,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1767,14 +1661,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - description: the new registry data
@@ -1788,7 +1677,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Registry'
-  /repos/{owner}/{name}/registry/{registry}:
+  /repos/{repo_id}/registry/{registry}:
     get:
       produces:
         - application/json
@@ -1802,14 +1691,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1835,14 +1719,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1866,14 +1745,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -1892,7 +1766,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Registry'
-  /repos/{owner}/{name}/repair:
+  /repos/{repo_id}/repair:
     post:
       produces:
         - text/plain
@@ -1906,20 +1780,15 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
       responses:
         '200':
           description: OK
-  /repos/{owner}/{name}/secrets:
+  /repos/{repo_id}/secrets:
     get:
       produces:
         - application/json
@@ -1933,14 +1802,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: integer
@@ -1973,14 +1837,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - description: the new secret
@@ -1994,7 +1853,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-  /repos/{owner}/{name}/secrets/{secretName}:
+  /repos/{repo_id}/secrets/{secretName}:
     get:
       produces:
         - application/json
@@ -2008,14 +1867,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -2041,14 +1895,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -2072,14 +1921,9 @@ paths:
           name: Authorization
           in: header
           required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
+        - type: integer
+          description: the repository id
+          name: repo_id
           in: path
           required: true
         - type: string
@@ -2581,24 +2425,20 @@ definitions:
         type: string
       finished_at:
         type: integer
-      full_name:
-        type: string
       id:
         type: integer
       message:
         type: string
-      name:
-        type: string
       number:
         type: integer
-      owner:
-        type: string
       ref:
         type: string
       refspec:
         type: string
       remote:
         type: string
+      repo_id:
+        type: integer
       started_at:
         type: integer
       status:
@@ -2767,6 +2607,11 @@ definitions:
       config_file:
         type: string
       default_branch:
+        type: string
+      forge_remote_id:
+        description: >-
+          ForgeRemoteID is the unique identifier for the repository on the
+          forge.
         type: string
       full_name:
         type: string
