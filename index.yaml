@@ -36,4 +36,4 @@ entries:
       urls:
         - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-0.1.5/woodpecker-0.1.5.tgz
       version: 0.1.5
-  generated: "2023-05-12T16:31:13.074600928Z"
+generated: "2023-05-12T16:31:13.074600928Z"
