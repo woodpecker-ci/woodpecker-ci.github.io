@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>Woodpecker CI Blog</title>
+        <link>https://woodpecker-ci.org/blog</link>
+        <description>Woodpecker CI Blog</description>
+        <lastBuildDate>Sun, 11 Jun 2023 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[Welcome Woodpecker's blog]]></title>
+            <link>https://woodpecker-ci.org/blog/hello-blog</link>
+            <guid>https://woodpecker-ci.org/blog/hello-blog</guid>
+            <pubDate>Sun, 11 Jun 2023 00:00:00 GMT</pubDate>
+            <description><![CDATA[This our first post on Woodpecker.]]></description>
+            <content:encoded><![CDATA[<p>Welcome to this blog. This is our first post on this blog ...</p><p>In the future we will  post about our releases and other things like tutorials.</p><p>We are currently working on the <code>1.0.0</code> release of Woodpecker. This release will include a lot of new features and improvements which most of you probably already tested using the <code>next</code> tag.</p><p>If you have any suggestions or ideas for posts, feel free to open an issue in the <a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>]]></content:encoded>
+            <category>hello</category>
+            <category>woodpecker</category>
+        </item>
+    </channel>
+</rss>
