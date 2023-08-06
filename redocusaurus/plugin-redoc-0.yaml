@@ -728,8 +728,8 @@ paths:
           in: path
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
     patch:
       produces:
         - application/json
@@ -1958,8 +1958,8 @@ paths:
           in: path
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
     patch:
       produces:
         - application/json
@@ -2092,8 +2092,8 @@ paths:
           in: path
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
     patch:
       produces:
         - application/json
