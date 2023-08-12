@@ -2669,6 +2669,8 @@ definitions:
           $ref: '#/definitions/WebhookEvent'
       clone_url:
         type: string
+      clone_url_ssh:
+        type: string
       config_file:
         type: string
       default_branch:
