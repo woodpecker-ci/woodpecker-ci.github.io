@@ -2889,6 +2889,9 @@ definitions:
 
           required: true
         type: string
+      org_id:
+        description: OrgID is the of the user as model.Org.
+        type: integer
   WebhookEvent:
     type: string
     enum:
