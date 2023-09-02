@@ -2574,7 +2574,21 @@ definitions:
       time:
         type: integer
       type:
-        $ref: '#/definitions/model.LogEntryType'
+        $ref: '#/definitions/LogEntryType'
+  LogEntryType:
+    type: integer
+    enum:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+    x-enum-varnames:
+      - LogEntryStdout
+      - LogEntryStderr
+      - LogEntryExitCode
+      - LogEntryMetadata
+      - LogEntryProgress
   Org:
     type: object
     properties:
@@ -2965,20 +2979,6 @@ definitions:
       - EventDeploy
       - EventCron
       - EventManual
-  model.LogEntryType:
-    type: integer
-    enum:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-    x-enum-varnames:
-      - LogEntryStdout
-      - LogEntryStderr
-      - LogEntryExitCode
-      - LogEntryMetadata
-      - LogEntryProgress
   model.Workflow:
     type: object
     properties:
