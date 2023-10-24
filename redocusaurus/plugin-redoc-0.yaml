@@ -2881,20 +2881,18 @@ definitions:
   Secret:
     type: object
     properties:
-      event:
+      events:
         type: array
         items:
           $ref: '#/definitions/WebhookEvent'
       id:
         type: integer
-      image:
+      images:
         type: array
         items:
           type: string
       name:
         type: string
-      plugins_only:
-        type: boolean
       value:
         type: string
   StatusValue:
