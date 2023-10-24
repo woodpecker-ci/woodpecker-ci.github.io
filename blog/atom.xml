@@ -41,7 +41,7 @@ Customize your workflows to dynamically respond to specific triggers and events.
         <link href="https://woodpecker-ci.org/blog/hello-blog"/>
         <updated>2023-06-11T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[This our first post on Woodpecker.]]></summary>
-        <content type="html"><![CDATA[<p>Welcome to this blog. This is our first post on this blog ...</p><p>In the future we will  post about our releases and other things like tutorials.</p><p>We are currently working on the <code>1.0.0</code> release of Woodpecker. This release will include a lot of new features and improvements which most of you probably already tested using the <code>next</code> tag.</p><p>If you have any suggestions or ideas for posts, feel free to open an issue in the <a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>]]></content>
+        <content type="html"><![CDATA[<p>Welcome to this blog. This is our first post on this blog ...</p><p>In the future we will post about our releases and other things like tutorials.</p><p>We are currently working on the <code>1.0.0</code> release of Woodpecker. This release will include a lot of new features and improvements which most of you probably already tested using the <code>next</code> tag.</p><p>If you have any suggestions or ideas for posts, feel free to open an issue in the <a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer">GitHub repository</a>.</p>]]></content>
         <author>
             <name>Anbraten</name>
             <uri>https://github.com/anbraten</uri>
