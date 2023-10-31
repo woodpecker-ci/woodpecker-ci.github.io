@@ -883,8 +883,8 @@ paths:
           in: header
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
   /queue/pause:
     post:
       produces:
@@ -900,8 +900,8 @@ paths:
           in: header
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
   /queue/resume:
     post:
       produces:
@@ -917,8 +917,8 @@ paths:
           in: header
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
   /repos:
     get:
       produces:
@@ -1424,8 +1424,8 @@ paths:
           in: query
           required: true
       responses:
-        '200':
-          description: OK
+        '204':
+          description: No Content
   /repos/{repo_id}/permissions:
     get:
       description: The repository permission, according to the used access token.
