@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwoodpecker=self.webpackChunkwoodpecker||[]).push([[7163],{91767:e=>{e.exports=JSON.parse('{"label":"stable","permalink":"/blog/tags/stable","allTagsPath":"/blog/tags","count":1,"unlisted":false}')}}]);
