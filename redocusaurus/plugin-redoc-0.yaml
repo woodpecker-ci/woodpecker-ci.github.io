@@ -2711,10 +2711,10 @@ definitions:
         $ref: '#/definitions/WebhookEvent'
       finished_at:
         type: integer
+      forge_url:
+        type: string
       id:
         type: integer
-      link_url:
-        type: string
       message:
         type: string
       number:
@@ -2811,14 +2811,14 @@ definitions:
           ForgeRemoteID is the unique identifier for the repository on the
           forge.
         type: string
+      forge_url:
+        type: string
       full_name:
         type: string
       gated:
         type: boolean
       id:
         type: integer
-      link_url:
-        type: string
       name:
         type: string
       netrc_only_trusted:
