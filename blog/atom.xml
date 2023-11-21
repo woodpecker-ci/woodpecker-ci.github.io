@@ -18,33 +18,33 @@ It took us quite some time, but now we are sure it's ready, and you should reall
 Furthermore, a ton of bugs where addressed and various enhancements introduced, along with some highly anticipated features.
 With Woodpecker v1.0.0, you can now substantially improve and streamline your code pipelines,
 empowering you to automate and optimize workflows like never before.</p>
-<h2 class="anchor anchorWithStickyNavbar_BDdO" id="some-picked-highlights">Some picked highlights<a href="https://woodpecker-ci.org/blog/release-v1.0.0#some-picked-highlights" class="hash-link" aria-label="Direct link to Some picked highlights" title="Direct link to Some picked highlights">​</a></h2>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="add-support-for-cron-jobs">Add Support for Cron Jobs<a href="https://woodpecker-ci.org/blog/release-v1.0.0#add-support-for-cron-jobs" class="hash-link" aria-label="Direct link to Add Support for Cron Jobs" title="Direct link to Add Support for Cron Jobs">​</a></h3>
+<h2 class="anchor anchorWithStickyNavbar_eHWm" id="some-picked-highlights">Some picked highlights<a href="https://woodpecker-ci.org/blog/release-v1.0.0#some-picked-highlights" class="hash-link" aria-label="Direct link to Some picked highlights" title="Direct link to Some picked highlights">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="add-support-for-cron-jobs">Add Support for Cron Jobs<a href="https://woodpecker-ci.org/blog/release-v1.0.0#add-support-for-cron-jobs" class="hash-link" aria-label="Direct link to Add Support for Cron Jobs" title="Direct link to Add Support for Cron Jobs">​</a></h3>
 <p>Automate recurring tasks with ease using Woodpecker's new cron jobs feature.
 Schedule pipelines to run at specified intervals or times, optimizing repetitive workflows.
 <a href="https://woodpecker-ci.org/docs/usage/cron">Read more</a></p>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="yaml-map-merge-overrides-and-sequence-merge-support">YAML Map Merge, Overrides, and Sequence Merge Support<a href="https://woodpecker-ci.org/blog/release-v1.0.0#yaml-map-merge-overrides-and-sequence-merge-support" class="hash-link" aria-label="Direct link to YAML Map Merge, Overrides, and Sequence Merge Support" title="Direct link to YAML Map Merge, Overrides, and Sequence Merge Support">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="yaml-map-merge-overrides-and-sequence-merge-support">YAML Map Merge, Overrides, and Sequence Merge Support<a href="https://woodpecker-ci.org/blog/release-v1.0.0#yaml-map-merge-overrides-and-sequence-merge-support" class="hash-link" aria-label="Direct link to YAML Map Merge, Overrides, and Sequence Merge Support" title="Direct link to YAML Map Merge, Overrides, and Sequence Merge Support">​</a></h3>
 <p>With enhanced YAML support, managing complex configurations becomes a breeze.
 Merge maps, apply overrides, and sequence merging—all within your YAML files.
 This is providing more flexibility and control over your pipelines.
 <a href="https://woodpecker-ci.org/docs/usage/advanced-yaml-syntax">Read more</a></p>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="web-ui-for-admins">Web-UI for Admins<a href="https://woodpecker-ci.org/blog/release-v1.0.0#web-ui-for-admins" class="hash-link" aria-label="Direct link to Web-UI for Admins" title="Direct link to Web-UI for Admins">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="web-ui-for-admins">Web-UI for Admins<a href="https://woodpecker-ci.org/blog/release-v1.0.0#web-ui-for-admins" class="hash-link" aria-label="Direct link to Web-UI for Admins" title="Direct link to Web-UI for Admins">​</a></h3>
 <p>Simplify administration tasks with Woodpecker's new Admin UI.
 Effortlessly manage user accounts, agents, and tasks, including adding new agents or pausing the task queue for maintenance.</p>
-<p><img loading="lazy" alt="Image of admin queue view" src="https://woodpecker-ci.org/assets/images/admin_queue_ui-c5e0269e25c87f84a340419b23f40cd9.png" width="1065" height="585" class="img_iQsd"></p>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="localize-web-ui">Localize Web-UI<a href="https://woodpecker-ci.org/blog/release-v1.0.0#localize-web-ui" class="hash-link" aria-label="Direct link to Localize Web-UI" title="Direct link to Localize Web-UI">​</a></h3>
+<p><img loading="lazy" alt="Image of admin queue view" src="https://woodpecker-ci.org/assets/images/admin_queue_ui-c5e0269e25c87f84a340419b23f40cd9.png" width="1065" height="585" class="img__vwf"></p>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="localize-web-ui">Localize Web-UI<a href="https://woodpecker-ci.org/blog/release-v1.0.0#localize-web-ui" class="hash-link" aria-label="Direct link to Localize Web-UI" title="Direct link to Localize Web-UI">​</a></h3>
 <p>Embrace internationalization by changing your locale in the user settings.
 Interact with Woodpecker in the language of your choice, tailored to your preferences.
 If your language is not available or only partially translated, consider contributing to our <a href="https://translate.woodpecker-ci.org/engage/woodpecker-ci/" target="_blank" rel="noopener noreferrer">Weblate</a>.</p>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="add-evaluate-to-when-filter">Add <code>evaluate</code> to <code>when</code> Filter<a href="https://woodpecker-ci.org/blog/release-v1.0.0#add-evaluate-to-when-filter" class="hash-link" aria-label="Direct link to add-evaluate-to-when-filter" title="Direct link to add-evaluate-to-when-filter">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="add-evaluate-to-when-filter">Add <code>evaluate</code> to <code>when</code> Filter<a href="https://woodpecker-ci.org/blog/release-v1.0.0#add-evaluate-to-when-filter" class="hash-link" aria-label="Direct link to add-evaluate-to-when-filter" title="Direct link to add-evaluate-to-when-filter">​</a></h3>
 <p>Enhance pipeline flexibility with the new "when evaluate" filter, enabling or disabling steps based on custom conditions.
 Customize your workflows to dynamically respond to specific triggers and events.
 <a href="https://woodpecker-ci.org/docs/usage/pipeline-syntax#evaluate">Read more</a></p>
-<h3 class="anchor anchorWithStickyNavbar_BDdO" id="global--and-organization-secrets">Global- and Organization-Secrets<a href="https://woodpecker-ci.org/blog/release-v1.0.0#global--and-organization-secrets" class="hash-link" aria-label="Direct link to Global- and Organization-Secrets" title="Direct link to Global- and Organization-Secrets">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar_eHWm" id="global--and-organization-secrets">Global- and Organization-Secrets<a href="https://woodpecker-ci.org/blog/release-v1.0.0#global--and-organization-secrets" class="hash-link" aria-label="Direct link to Global- and Organization-Secrets" title="Direct link to Global- and Organization-Secrets">​</a></h3>
 <p>Save time and effort by declaring secrets for your entire instance or organization.
 Simplify your workflow and securely manage sensitive information across projects.</p>
-<p><img loading="lazy" alt="Image of settings view of org secrets" src="https://woodpecker-ci.org/assets/images/org_secrets-d45bd15bb3334510f7068d0f7d39f6c2.png" width="1076" height="505" class="img_iQsd"></p>
-<h2 class="anchor anchorWithStickyNavbar_BDdO" id="changelog">Changelog<a href="https://woodpecker-ci.org/blog/release-v1.0.0#changelog" class="hash-link" aria-label="Direct link to Changelog" title="Direct link to Changelog">​</a></h2>
+<p><img loading="lazy" alt="Image of settings view of org secrets" src="https://woodpecker-ci.org/assets/images/org_secrets-d45bd15bb3334510f7068d0f7d39f6c2.png" width="1076" height="505" class="img__vwf"></p>
+<h2 class="anchor anchorWithStickyNavbar_eHWm" id="changelog">Changelog<a href="https://woodpecker-ci.org/blog/release-v1.0.0#changelog" class="hash-link" aria-label="Direct link to Changelog" title="Direct link to Changelog">​</a></h2>
 <p>The full changelog can be viewed in our project source folder at <a href="https://github.com/woodpecker-ci/woodpecker/blob/v1.0.0/CHANGELOG.md" target="_blank" rel="noopener noreferrer">CHANGELOG.md</a></p>]]></content>
         <author>
             <name>6543</name>
