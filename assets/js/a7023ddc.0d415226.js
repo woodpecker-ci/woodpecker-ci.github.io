@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwoodpecker=self.webpackChunkwoodpecker||[]).push([[1713],{53457:e=>{e.exports=JSON.parse('[{"label":"release","permalink":"/blog/tags/release","count":2},{"label":"major","permalink":"/blog/tags/major","count":2},{"label":"hello","permalink":"/blog/tags/hello","count":1},{"label":"woodpecker","permalink":"/blog/tags/woodpecker","count":1}]')}}]);
