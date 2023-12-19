@@ -2,7 +2,7 @@ schemes: []
 swagger: '2.0'
 info:
   description: >-
-    Woodpecker is a simple CI engine with great extensibility.
+    Woodpecker is a simple yet powerful CI/CD engine with great extensibility.
 
     To get a personal access token (PAT) for authentication, please log in your
     Woodpecker server,
