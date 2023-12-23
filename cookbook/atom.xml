@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://woodpecker-ci.org/cookbook</id>
+    <title>Woodpecker CI Blog</title>
+    <updated>2023-12-23T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://woodpecker-ci.org/cookbook"/>
+    <subtitle>Woodpecker CI Blog</subtitle>
+    <entry>
+        <title type="html"><![CDATA[Welcome to Woodpecker's cookbook blog]]></title>
+        <id>https://woodpecker-ci.org/cookbook/hello-cookbook</id>
+        <link href="https://woodpecker-ci.org/cookbook/hello-cookbook"/>
+        <updated>2023-12-23T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Here, we'll publish various guides and tutorials.]]></summary>
+        <content type="html"><![CDATA[<p>Welcome to this cookbook blog. Here, we and any other interested user can publish guides and tutorials. If you got something in mind, just add your guide!</p>]]></content>
+        <author>
+            <name>qwerty287</name>
+            <uri>https://github.com/qwerty287</uri>
+        </author>
+    </entry>
+</feed>
