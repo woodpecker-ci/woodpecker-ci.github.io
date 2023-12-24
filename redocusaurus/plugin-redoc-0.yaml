@@ -2827,6 +2827,8 @@ definitions:
         type: integer
       owner:
         type: string
+      pr_enabled:
+        type: boolean
       private:
         type: boolean
       scm:
