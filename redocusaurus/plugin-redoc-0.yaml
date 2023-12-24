@@ -1,2526 +1,6 @@
-schemes: []
-swagger: '2.0'
-info:
-  description: >-
-    Woodpecker is a simple yet powerful CI/CD engine with great extensibility.
-
-    To get a personal access token (PAT) for authentication, please log in your
-    Woodpecker server,
-
-    and go to you personal profile page, by clicking the user icon at the top
-    right.
-  title: Woodpecker CI API
-  contact:
-    name: Woodpecker CI Community
-    url: https://woodpecker-ci.org/
-  version: dev
-host: ''
 basePath: /api
-paths:
-  /agents:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Agents
-      summary: Get agent list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Agent'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Agents
-      summary: >-
-        Create a new agent with a random token so a new agent can connect to the
-        server
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - description: the agent's data (only 'name' and 'no_schedule' are read)
-          name: agent
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Agent'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Agent'
-  /agents/{agent}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Agents
-      summary: Get agent information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the agent's id
-          name: agent
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Agent'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Agents
-      summary: Delete an agent
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the agent's id
-          name: agent
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Agents
-      summary: Update agent information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the agent's id
-          name: agent
-          in: path
-          required: true
-        - description: the agent's data
-          name: agentData
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Agent'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Agent'
-  /agents/{agent}/tasks:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Agents
-      summary: Get agent tasks
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the agent's id
-          name: agent
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Task'
-  /badges/{repo_id}/cc.xml:
-    get:
-      description: >-
-        CCMenu displays the pipeline status of projects on a CI server as an
-        item in the Mac's menu bar.
-
-        More details on how to install, you can find at http://ccmenu.org/
-
-        The response format adheres to CCTray v1 Specification,
-        https://cctray.org/v1/
-      produces:
-        - text/xml
-      tags:
-        - Badges
-      summary: Provide pipeline status information to the CCMenu tool
-      parameters:
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-  /badges/{repo_id}/status.svg:
-    get:
-      produces:
-        - image/svg+xml
-      tags:
-        - Badges
-      summary: Get status badge, SVG format
-      parameters:
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/html
-      tags:
-        - Process profiling and debugging
-      summary: List available pprof profiles (HTML)
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/block:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: >-
-        Get pprof stack traces that led to blocking on synchronization
-        primitives
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/cmdline:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get the command line invocation of the current program
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/goroutine:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof stack traces of all current goroutines
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          default: 1
-          description: >-
-            Use debug=2 as a query parameter to export in the same format as an
-            un-recovered panic
-          name: debug
-          in: query
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/heap:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof heap dump, a sampling of memory allocations of live objects
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          default: ''
-          description: You can specify gc=heap to run GC before taking the heap sample
-          name: gc
-          in: query
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/profile:
-    get:
-      description: >-
-        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-
-        After you get the profile file, use the go tool pprof command to
-        investigate the profile.
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof CPU profile
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: You can specify the duration in the seconds GET parameter.
-          name: seconds
-          in: query
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/symbol:
-    get:
-      description: >-
-        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-
-        Looks up the program counters listed in the request,
-
-        responding with a table mapping program counters to function names.
-
-        The requested program counters can be provided via GET + query
-        parameters,
-
-        or POST + body parameters. Program counters shall be space delimited.
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof program counters mapping to function names
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-    post:
-      description: >-
-        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-
-        Looks up the program counters listed in the request,
-
-        responding with a table mapping program counters to function names.
-
-        The requested program counters can be provided via GET + query
-        parameters,
-
-        or POST + body parameters. Program counters shall be space delimited.
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof program counters mapping to function names
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/threadcreate:
-    get:
-      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get pprof stack traces that led to the creation of new OS threads
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /debug/pprof/trace:
-    get:
-      description: >-
-        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
-
-        After you get the profile file, use the go tool pprof command to
-        investigate the profile.
-      produces:
-        - text/plain
-      tags:
-        - Process profiling and debugging
-      summary: Get a trace of execution of the current program
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: You can specify the duration in the seconds GET parameter.
-          name: seconds
-          in: query
-          required: true
-      responses:
-        '200':
-          description: OK
-  /healthz:
-    get:
-      description: >-
-        If everything is fine, just a 204 will be returned, a 500 signals server
-        state is unhealthy.
-      produces:
-        - text/plain
-      tags:
-        - System
-      summary: Health information
-      responses:
-        '204':
-          description: No Content
-        '500':
-          description: Internal Server Error
-  /hook:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - System
-      summary: Incoming webhook from forge
-      parameters:
-        - description: the webhook payload; forge is automatically detected
-          name: hook
-          in: body
-          required: true
-          schema:
-            type: object
-      responses:
-        '200':
-          description: OK
-  /log-level:
-    get:
-      description: Endpoint returns the current logging level. Requires admin rights.
-      produces:
-        - application/json
-      tags:
-        - System
-      summary: Current log level
-      responses:
-        '200':
-          description: OK
-          schema:
-            allOf:
-              - type: string
-              - type: object
-                properties:
-                  log-level:
-                    type: string
-    post:
-      description: Endpoint sets the current logging level. Requires admin rights.
-      produces:
-        - application/json
-      tags:
-        - System
-      summary: Set log level
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - description: >-
-            the new log level, one of
-            <debug,trace,info,warn,error,fatal,panic,disabled>
-          name: log-level
-          in: body
-          required: true
-          schema:
-            allOf:
-              - type: string
-              - type: object
-                properties:
-                  log-level:
-                    type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            allOf:
-              - type: string
-              - type: object
-                properties:
-                  log-level:
-                    type: string
-  /org/lookup/{org_full_name}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Organizations
-      summary: Lookup organization by full-name
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the organizations full-name / slug
-          name: org_full_name
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Org'
-  /orgs:
-    get:
-      description: Returns all registered orgs in the system. Requires admin rights.
-      produces:
-        - application/json
-      tags:
-        - Orgs
-      summary: Get all orgs
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Org'
-  /orgs/{id}:
-    delete:
-      description: Deletes the given org. Requires admin rights.
-      produces:
-        - text/plain
-      tags:
-        - Orgs
-      summary: Delete an org
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: id
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /orgs/{org_id}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Organization
-      summary: Get organization by id
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the organziation's id
-          name: org_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Org'
-  /orgs/{org_id}/permissions:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Organization permissions
-      summary: Get the permissions of the current user in the given organization
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the organziation's id
-          name: org_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/OrgPerm'
-  /orgs/{org_id}/secrets:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Organization secrets
-      summary: Get the organization secret list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: org_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Secret'
-  /orgs/{org_id}/secrets/{secret}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Organization secrets
-      summary: Get the named organization secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: org_id
-          in: path
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Organization secrets
-      summary: Delete the named secret from an organization
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: org_id
-          in: path
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Organization secrets
-      summary: Update an organization secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: org_id
-          in: path
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-        - description: the update secret data
-          name: secretData
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /orgs/{owner}/secrets:
-    post:
-      produces:
-        - application/json
-      tags:
-        - Organization secrets
-      summary: Persist/create an organization secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the org's id
-          name: org_id
-          in: path
-          required: true
-        - description: the new secret
-          name: secretData
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /pipelines:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Pipeline queues
-      summary: List pipeline queues
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Feed'
-  /queue/info:
-    get:
-      description: >-
-        TODO: link the InfoT response object - this is blocked, until the
-        `swaggo/swag` tool dependency is v1.18.12 or newer
-      produces:
-        - application/json
-      tags:
-        - Pipeline queues
-      summary: Get pipeline queue information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: object
-            additionalProperties:
-              type: string
-  /queue/norunningpipelines:
-    get:
-      produces:
-        - text/plain
-      tags:
-        - Pipeline queues
-      summary: Block til pipeline queue has a running item
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /queue/pause:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Pipeline queues
-      summary: Pause a pipeline queue
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /queue/resume:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Pipeline queues
-      summary: Resume a pipeline queue
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /repos:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: List all repositories on the server. Requires admin rights.
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: boolean
-          description: only list active repos
-          name: active
-          in: query
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Repo'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Activate a repository
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the id of a repository at the forge
-          name: forge_remote_id
-          in: query
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-  /repos/lookup/{repo_full_name}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Get repository by full-name
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the repository full-name / slug
-          name: repo_full_name
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-  /repos/repair:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Repositories
-      summary: Repair all repositories on the server. Requires admin rights.
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /repos/{repo_id}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Get repository information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-    delete:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Delete a repository
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Change a repository
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - description: the repository's information
-          name: repo
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/RepoPatch'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-  /repos/{repo_id}/branches:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Get repository branches
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              type: string
-  /repos/{repo_id}/chown:
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Change a repository's owner, to the one holding the access token
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Repo'
-  /repos/{repo_id}/cron:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository cron jobs
-      summary: Get the cron job list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Cron'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repository cron jobs
-      summary: Persist/creat a cron job
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - description: the new cron job
-          name: cronJob
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Cron'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Cron'
-  /repos/{repo_id}/cron/{cron}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository cron jobs
-      summary: Get a cron job by id
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the cron job id
-          name: cron
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Cron'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repository cron jobs
-      summary: Start a cron job now
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the cron job id
-          name: cron
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Repository cron jobs
-      summary: Delete a cron job by id
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the cron job id
-          name: cron
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Repository cron jobs
-      summary: Update a cron job
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the cron job id
-          name: cron
-          in: path
-          required: true
-        - description: the cron job data
-          name: cronJob
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Cron'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Cron'
-  /repos/{repo_id}/logs/{number}:
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Pipeline logs
-      summary: Deletes log
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /repos/{repo_id}/logs/{number}/{stepID}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Pipeline logs
-      summary: Log information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-        - type: integer
-          description: the step id
-          name: stepID
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/LogEntry'
-  /repos/{repo_id}/move:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Repositories
-      summary: Move a repository to a new owner
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the username to move the repository to
-          name: to
-          in: query
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /repos/{repo_id}/permissions:
-    get:
-      description: The repository permission, according to the used access token.
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: Repository permission information
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Perm'
-  /repos/{repo_id}/pipelines:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Get pipelines, current running and past ones
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Pipeline'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Run/trigger a pipelines
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - description: the options for the pipeline to run
-          name: options
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/PipelineOptions'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-  /repos/{repo_id}/pipelines/{number}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Pipeline information by number
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline, OR 'latest'
-          name: number
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-    post:
-      description: Restarts a pipeline optional with altered event, deploy or environment
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Restart a pipeline
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the repository owner's name
-          name: owner
-          in: path
-          required: true
-        - type: string
-          description: the repository name
-          name: name
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-        - type: string
-          description: override the event type
-          name: event
-          in: query
-        - type: string
-          description: override the target deploy value
-          name: deploy_to
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-  /repos/{repo_id}/pipelines/{number}/approve:
-    post:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Start pipelines in gated repos
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-  /repos/{repo_id}/pipelines/{number}/cancel:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Pipelines
-      summary: Cancels a pipeline
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-  /repos/{repo_id}/pipelines/{number}/config:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Pipeline configuration
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Config'
-  /repos/{repo_id}/pipelines/{number}/decline:
-    post:
-      produces:
-        - application/json
-      tags:
-        - Pipelines
-      summary: Decline pipelines in gated repos
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: number
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Pipeline'
-  /repos/{repo_id}/pull_requests:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repositories
-      summary: List active pull requests
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/PullRequest'
-  /repos/{repo_id}/registry:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository registries
-      summary: Get the registry list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Registry'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repository registries
-      summary: Persist/create a registry
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - description: the new registry data
-          name: registry
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Registry'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Registry'
-  /repos/{repo_id}/registry/{registry}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository registries
-      summary: Get a named registry
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the registry name
-          name: registry
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Registry'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Repository registries
-      summary: Delete a named registry
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the registry name
-          name: registry
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Repository registries
-      summary: Update a named registry
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the registry name
-          name: registry
-          in: path
-          required: true
-        - description: the attributes for the registry
-          name: registryData
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Registry'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Registry'
-  /repos/{repo_id}/repair:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - Repositories
-      summary: Repair a repository
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-  /repos/{repo_id}/secrets:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository secrets
-      summary: Get the secret list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Secret'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Repository secrets
-      summary: Persist/create a secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - description: the new secret
-          name: secret
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /repos/{repo_id}/secrets/{secretName}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Repository secrets
-      summary: Get a named secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the secret name
-          name: secretName
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Repository secrets
-      summary: Delete a named secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the secret name
-          name: secretName
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Repository secrets
-      summary: Update a named secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: string
-          description: the secret name
-          name: secretName
-          in: path
-          required: true
-        - description: the secret itself
-          name: secret
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /secrets:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Secrets
-      summary: Get the global secret list
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Secret'
-    post:
-      produces:
-        - application/json
-      tags:
-        - Secrets
-      summary: Persist/create a global secret
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - description: the secret object data
-          name: secret
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /secrets/{secret}:
-    get:
-      produces:
-        - application/json
-      tags:
-        - Secrets
-      summary: Get a global secret by name
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-    delete:
-      produces:
-        - text/plain
-      tags:
-        - Secrets
-      summary: Delete a global secret by name
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      produces:
-        - application/json
-      tags:
-        - Secrets
-      summary: Update a global secret by name
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the secret's name
-          name: secret
-          in: path
-          required: true
-        - description: the secret's data
-          name: secretData
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/Secret'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Secret'
-  /signature/public-key:
-    get:
-      produces:
-        - text/plain
-      tags:
-        - System
-      summary: Get server's signature public key
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /stream/events:
-    get:
-      description: event source streaming for compatibility with quic and http2
-      produces:
-        - text/plain
-      tags:
-        - Events
-      summary: Event stream
-      responses:
-        '200':
-          description: OK
-  /stream/logs/{repo_id}/{pipeline}/{stepID}:
-    get:
-      produces:
-        - text/plain
-      tags:
-        - Pipeline logs
-      summary: Log stream
-      parameters:
-        - type: integer
-          description: the repository id
-          name: repo_id
-          in: path
-          required: true
-        - type: integer
-          description: the number of the pipeline
-          name: pipeline
-          in: path
-          required: true
-        - type: integer
-          description: the step id
-          name: stepID
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-  /user:
-    get:
-      produces:
-        - application/json
-      tags:
-        - User
-      summary: Returns the currently authenticated user.
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/User'
-  /user/feed:
-    get:
-      description: Feed entries can be used to display information on the latest builds.
-      produces:
-        - application/json
-      tags:
-        - User
-      summary: A feed entry for a build.
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/Feed'
-  /user/repos:
-    get:
-      description: Retrieve the currently authenticated User's Repository list
-      produces:
-        - application/json
-      tags:
-        - User
-      summary: Get user's repos
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: boolean
-          description: query all repos, including inactive ones
-          name: all
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/Repo'
-  /user/token:
-    post:
-      produces:
-        - text/plain
-      tags:
-        - User
-      summary: Return the token of the current user as string
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-    delete:
-      description: >-
-        Reset's the current personal access token of the user and returns a new
-        one.
-      produces:
-        - text/plain
-      tags:
-        - User
-      summary: Reset a token
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-      responses:
-        '200':
-          description: OK
-  /users:
-    get:
-      description: >-
-        Returns all registered, active users in the system. Requires admin
-        rights.
-      produces:
-        - application/json
-      tags:
-        - Users
-      summary: Get all users
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: integer
-          default: 1
-          description: for response pagination, page offset number
-          name: page
-          in: query
-        - type: integer
-          default: 50
-          description: for response pagination, max items per page
-          name: perPage
-          in: query
-      responses:
-        '200':
-          description: OK
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/User'
-    post:
-      description: >-
-        Creates a new user account with the specified external login. Requires
-        admin rights.
-      produces:
-        - application/json
-      tags:
-        - Users
-      summary: Create a user
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - description: the user's data
-          name: user
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/User'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/User'
-  /users/{login}:
-    get:
-      description: Returns a user with the specified login name. Requires admin rights.
-      produces:
-        - application/json
-      tags:
-        - Users
-      summary: Get a user
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the user's login name
-          name: login
-          in: path
-          required: true
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/User'
-    delete:
-      description: Deletes the given user. Requires admin rights.
-      produces:
-        - text/plain
-      tags:
-        - Users
-      summary: Delete a user
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the user's login name
-          name: login
-          in: path
-          required: true
-      responses:
-        '204':
-          description: No Content
-    patch:
-      description: Changes the data of an existing user. Requires admin rights.
-      consumes:
-        - application/json
-      produces:
-        - application/json
-      tags:
-        - Users
-      summary: Change a user
-      parameters:
-        - type: string
-          default: Bearer <personal access token>
-          description: Insert your personal access token
-          name: Authorization
-          in: header
-          required: true
-        - type: string
-          description: the user's login name
-          name: login
-          in: path
-          required: true
-        - description: the user's data
-          name: user
-          in: body
-          required: true
-          schema:
-            $ref: '#/definitions/User'
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/User'
-  /version:
-    get:
-      description: Endpoint returns the server version and build information.
-      produces:
-        - application/json
-      tags:
-        - System
-      summary: Get version
-      responses:
-        '200':
-          description: OK
-          schema:
-            allOf:
-              - type: string
-              - type: object
-                properties:
-                  source:
-                    type: string
-                  version:
-                    type: string
 definitions:
   Agent:
-    type: object
     properties:
       backend:
         type: string
@@ -2546,19 +26,19 @@ definitions:
         type: integer
       version:
         type: string
-  Config:
     type: object
+  Config:
     properties:
       data:
-        type: array
         items:
           type: integer
+        type: array
       hash:
         type: string
       name:
         type: string
-  Cron:
     type: object
+  Cron:
     properties:
       branch:
         type: string
@@ -2577,8 +57,8 @@ definitions:
       schedule:
         description: "@weekly,\t3min, ..."
         type: string
-  Feed:
     type: object
+  Feed:
     properties:
       author:
         type: string
@@ -2616,13 +96,13 @@ definitions:
         type: string
       title:
         type: string
-  LogEntry:
     type: object
+  LogEntry:
     properties:
       data:
-        type: array
         items:
           type: integer
+        type: array
       id:
         type: integer
       line:
@@ -2633,14 +113,15 @@ definitions:
         type: integer
       type:
         $ref: '#/definitions/LogEntryType'
+    type: object
   LogEntryType:
-    type: integer
     enum:
       - 0
       - 1
       - 2
       - 3
       - 4
+    type: integer
     x-enum-varnames:
       - LogEntryStdout
       - LogEntryStderr
@@ -2648,7 +129,6 @@ definitions:
       - LogEntryMetadata
       - LogEntryProgress
   Org:
-    type: object
     properties:
       id:
         type: integer
@@ -2656,15 +136,15 @@ definitions:
         type: boolean
       name:
         type: string
-  OrgPerm:
     type: object
+  OrgPerm:
     properties:
       admin:
         type: boolean
       member:
         type: boolean
-  Perm:
     type: object
+  Perm:
     properties:
       admin:
         type: boolean
@@ -2678,8 +158,8 @@ definitions:
         type: integer
       updated:
         type: integer
-  Pipeline:
     type: object
+  Pipeline:
     properties:
       author:
         type: string
@@ -2690,9 +170,9 @@ definitions:
       branch:
         type: string
       changed_files:
-        type: array
         items:
           type: string
+        type: array
       clone_url:
         type: string
       commit:
@@ -2704,9 +184,9 @@ definitions:
       enqueued_at:
         type: integer
       errors:
-        type: array
         items:
           $ref: '#/definitions/errors.PipelineError'
+        type: array
       event:
         $ref: '#/definitions/WebhookEvent'
       finished_at:
@@ -2722,9 +202,9 @@ definitions:
       parent:
         type: integer
       pr_labels:
-        type: array
         items:
           type: string
+        type: array
       ref:
         type: string
       refspec:
@@ -2747,31 +227,31 @@ definitions:
       updated_at:
         type: integer
       variables:
-        type: object
         additionalProperties:
           type: string
+        type: object
       workflows:
-        type: array
         items:
           $ref: '#/definitions/model.Workflow'
-  PipelineOptions:
+        type: array
     type: object
+  PipelineOptions:
     properties:
       branch:
         type: string
       variables:
-        type: object
         additionalProperties:
           type: string
-  PullRequest:
+        type: object
     type: object
+  PullRequest:
     properties:
       index:
         type: string
       title:
         type: string
-  Registry:
     type: object
+  Registry:
     properties:
       address:
         type: string
@@ -2785,8 +265,8 @@ definitions:
         type: string
       username:
         type: string
-  Repo:
     type: object
+  Repo:
     properties:
       active:
         type: boolean
@@ -2795,9 +275,9 @@ definitions:
       avatar_url:
         type: string
       cancel_previous_pipeline_events:
-        type: array
         items:
           $ref: '#/definitions/WebhookEvent'
+        type: array
       clone_url:
         type: string
       clone_url_ssh:
@@ -2839,15 +319,15 @@ definitions:
         type: boolean
       visibility:
         $ref: '#/definitions/RepoVisibility'
-  RepoPatch:
     type: object
+  RepoPatch:
     properties:
       allow_pr:
         type: boolean
       cancel_previous_pipeline_events:
-        type: array
         items:
           $ref: '#/definitions/WebhookEvent'
+        type: array
       config_file:
         type: string
       gated:
@@ -2860,41 +340,41 @@ definitions:
         type: boolean
       visibility:
         type: string
+    type: object
   RepoVisibility:
-    type: string
     enum:
       - public
       - private
       - internal
+    type: string
     x-enum-varnames:
       - VisibilityPublic
       - VisibilityPrivate
       - VisibilityInternal
   SCMKind:
-    type: string
     enum:
       - git
       - hg
       - fossil
       - perforce
+    type: string
     x-enum-varnames:
       - RepoGit
       - RepoHg
       - RepoFossil
       - RepoPerforce
   Secret:
-    type: object
     properties:
       events:
-        type: array
         items:
           $ref: '#/definitions/WebhookEvent'
+        type: array
       id:
         type: integer
       images:
-        type: array
         items:
           type: string
+        type: array
       name:
         type: string
       org_id:
@@ -2903,8 +383,8 @@ definitions:
         type: integer
       value:
         type: string
+    type: object
   StatusValue:
-    type: string
     enum:
       - skipped
       - pending
@@ -2916,6 +396,7 @@ definitions:
       - blocked
       - declined
       - created
+    type: string
     x-enum-comments:
       StatusBlocked: waiting for approval
       StatusCreated: created / internal use only
@@ -2939,7 +420,6 @@ definitions:
       - StatusDeclined
       - StatusCreated
   Step:
-    type: object
     properties:
       end_time:
         type: integer
@@ -2965,14 +445,15 @@ definitions:
         $ref: '#/definitions/StepType'
       uuid:
         type: string
+    type: object
   StepType:
-    type: string
     enum:
       - clone
       - service
       - plugin
       - commands
       - cache
+    type: string
     x-enum-varnames:
       - StepTypeClone
       - StepTypeService
@@ -2980,34 +461,33 @@ definitions:
       - StepTypeCommands
       - StepTypeCache
   Task:
-    type: object
     properties:
       agent_id:
         type: integer
       data:
-        type: array
         items:
           type: integer
+        type: array
       dep_status:
-        type: object
         additionalProperties:
           $ref: '#/definitions/StatusValue'
+        type: object
       dependencies:
-        type: array
         items:
           type: string
+        type: array
       id:
         type: string
       labels:
-        type: object
         additionalProperties:
           type: string
+        type: object
       run_on:
-        type: array
         items:
           type: string
-  User:
+        type: array
     type: object
+  User:
     properties:
       admin:
         description: |-
@@ -3040,8 +520,8 @@ definitions:
       org_id:
         description: OrgID is the of the user as model.Org.
         type: integer
+    type: object
   WebhookEvent:
-    type: string
     enum:
       - push
       - pull_request
@@ -3049,6 +529,7 @@ definitions:
       - deployment
       - cron
       - manual
+    type: string
     x-enum-varnames:
       - EventPush
       - EventPull
@@ -3057,7 +538,6 @@ definitions:
       - EventCron
       - EventManual
   errors.PipelineError:
-    type: object
     properties:
       data: {}
       is_warning:
@@ -3066,13 +546,14 @@ definitions:
         type: string
       type:
         $ref: '#/definitions/errors.PipelineErrorType'
+    type: object
   errors.PipelineErrorType:
-    type: string
     enum:
       - linter
       - deprecation
       - compiler
       - generic
+    type: string
     x-enum-comments:
       PipelineErrorTypeCompiler: some error with the config semantics
       PipelineErrorTypeDeprecation: using some deprecated feature
@@ -3084,20 +565,19 @@ definitions:
       - PipelineErrorTypeCompiler
       - PipelineErrorTypeGeneric
   model.Workflow:
-    type: object
     properties:
       agent_id:
         type: integer
       children:
-        type: array
         items:
           $ref: '#/definitions/Step'
+        type: array
       end_time:
         type: integer
       environ:
-        type: object
         additionalProperties:
           type: string
+        type: object
       error:
         type: string
       id:
@@ -3114,3 +594,2506 @@ definitions:
         type: integer
       state:
         $ref: '#/definitions/StatusValue'
+    type: object
+info:
+  contact:
+    name: Woodpecker CI Community
+    url: https://woodpecker-ci.org/
+  description: >-
+    Woodpecker is a simple yet powerful CI/CD engine with great extensibility.
+
+    To get a personal access token (PAT) for authentication, please log in your
+    Woodpecker server,
+
+    and go to you personal profile page, by clicking the user icon at the top
+    right.
+  title: Woodpecker CI API
+  version: dev
+paths:
+  /agents:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Agent'
+            type: array
+      summary: Get agent list
+      tags:
+        - Agents
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the agent's data (only 'name' and 'no_schedule' are read)
+          in: body
+          name: agent
+          required: true
+          schema:
+            $ref: '#/definitions/Agent'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      summary: >-
+        Create a new agent with a random token so a new agent can connect to the
+        server
+      tags:
+        - Agents
+  /agents/{agent}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the agent's id
+          in: path
+          name: agent
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Delete an agent
+      tags:
+        - Agents
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the agent's id
+          in: path
+          name: agent
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      summary: Get agent information
+      tags:
+        - Agents
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the agent's id
+          in: path
+          name: agent
+          required: true
+          type: integer
+        - description: the agent's data
+          in: body
+          name: agentData
+          required: true
+          schema:
+            $ref: '#/definitions/Agent'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Agent'
+      summary: Update agent information
+      tags:
+        - Agents
+  /agents/{agent}/tasks:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the agent's id
+          in: path
+          name: agent
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Task'
+            type: array
+      summary: Get agent tasks
+      tags:
+        - Agents
+  /badges/{repo_id}/cc.xml:
+    get:
+      description: >-
+        CCMenu displays the pipeline status of projects on a CI server as an
+        item in the Mac's menu bar.
+
+        More details on how to install, you can find at http://ccmenu.org/
+
+        The response format adheres to CCTray v1 Specification,
+        https://cctray.org/v1/
+      parameters:
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - text/xml
+      responses:
+        '200':
+          description: OK
+      summary: Provide pipeline status information to the CCMenu tool
+      tags:
+        - Badges
+  /badges/{repo_id}/status.svg:
+    get:
+      parameters:
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - image/svg+xml
+      responses:
+        '200':
+          description: OK
+      summary: Get status badge, SVG format
+      tags:
+        - Badges
+  /debug/pprof:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: OK
+      summary: List available pprof profiles (HTML)
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/block:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: >-
+        Get pprof stack traces that led to blocking on synchronization
+        primitives
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/cmdline:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get the command line invocation of the current program
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/goroutine:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: >-
+            Use debug=2 as a query parameter to export in the same format as an
+            un-recovered panic
+          in: query
+          name: debug
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof stack traces of all current goroutines
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/heap:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: ''
+          description: You can specify gc=heap to run GC before taking the heap sample
+          in: query
+          name: gc
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof heap dump, a sampling of memory allocations of live objects
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/profile:
+    get:
+      description: >-
+        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+
+        After you get the profile file, use the go tool pprof command to
+        investigate the profile.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: You can specify the duration in the seconds GET parameter.
+          in: query
+          name: seconds
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof CPU profile
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/symbol:
+    get:
+      description: >-
+        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+
+        Looks up the program counters listed in the request,
+
+        responding with a table mapping program counters to function names.
+
+        The requested program counters can be provided via GET + query
+        parameters,
+
+        or POST + body parameters. Program counters shall be space delimited.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof program counters mapping to function names
+      tags:
+        - Process profiling and debugging
+    post:
+      description: >-
+        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+
+        Looks up the program counters listed in the request,
+
+        responding with a table mapping program counters to function names.
+
+        The requested program counters can be provided via GET + query
+        parameters,
+
+        or POST + body parameters. Program counters shall be space delimited.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof program counters mapping to function names
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/threadcreate:
+    get:
+      description: Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get pprof stack traces that led to the creation of new OS threads
+      tags:
+        - Process profiling and debugging
+  /debug/pprof/trace:
+    get:
+      description: >-
+        Only available, when server was started with WOODPECKER_LOG_LEVEL=debug
+
+        After you get the profile file, use the go tool pprof command to
+        investigate the profile.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: You can specify the duration in the seconds GET parameter.
+          in: query
+          name: seconds
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get a trace of execution of the current program
+      tags:
+        - Process profiling and debugging
+  /healthz:
+    get:
+      description: >-
+        If everything is fine, just a 204 will be returned, a 500 signals server
+        state is unhealthy.
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+        '500':
+          description: Internal Server Error
+      summary: Health information
+      tags:
+        - System
+  /hook:
+    post:
+      parameters:
+        - description: the webhook payload; forge is automatically detected
+          in: body
+          name: hook
+          required: true
+          schema:
+            type: object
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Incoming webhook from forge
+      tags:
+        - System
+  /log-level:
+    get:
+      description: Endpoint returns the current logging level. Requires admin rights.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            allOf:
+              - type: string
+              - properties:
+                  log-level:
+                    type: string
+                type: object
+      summary: Current log level
+      tags:
+        - System
+    post:
+      description: Endpoint sets the current logging level. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: >-
+            the new log level, one of
+            <debug,trace,info,warn,error,fatal,panic,disabled>
+          in: body
+          name: log-level
+          required: true
+          schema:
+            allOf:
+              - type: string
+              - properties:
+                  log-level:
+                    type: string
+                type: object
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            allOf:
+              - type: string
+              - properties:
+                  log-level:
+                    type: string
+                type: object
+      summary: Set log level
+      tags:
+        - System
+  /org/lookup/{org_full_name}:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the organizations full-name / slug
+          in: path
+          name: org_full_name
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Org'
+      summary: Lookup organization by full-name
+      tags:
+        - Organizations
+  /orgs:
+    get:
+      description: Returns all registered orgs in the system. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Org'
+            type: array
+      summary: Get all orgs
+      tags:
+        - Orgs
+  /orgs/{id}:
+    delete:
+      description: Deletes the given org. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: id
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete an org
+      tags:
+        - Orgs
+  /orgs/{org_id}:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the organziation's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Org'
+            type: array
+      summary: Get organization by id
+      tags:
+        - Organization
+  /orgs/{org_id}/permissions:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the organziation's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/OrgPerm'
+            type: array
+      summary: Get the permissions of the current user in the given organization
+      tags:
+        - Organization permissions
+  /orgs/{org_id}/secrets:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Secret'
+            type: array
+      summary: Get the organization secret list
+      tags:
+        - Organization secrets
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the new secret
+          in: body
+          name: secretData
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Persist/create an organization secret
+      tags:
+        - Organization secrets
+  /orgs/{org_id}/secrets/{secret}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete the named secret from an organization
+      tags:
+        - Organization secrets
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Get the named organization secret
+      tags:
+        - Organization secrets
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+        - description: the update secret data
+          in: body
+          name: secretData
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Update an organization secret
+      tags:
+        - Organization secrets
+  /pipelines:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Feed'
+            type: array
+      summary: List pipeline queues
+      tags:
+        - Pipeline queues
+  /queue/info:
+    get:
+      description: >-
+        TODO: link the InfoT response object - this is blocked, until the
+        `swaggo/swag` tool dependency is v1.18.12 or newer
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Get pipeline queue information
+      tags:
+        - Pipeline queues
+  /queue/norunningpipelines:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Block til pipeline queue has a running item
+      tags:
+        - Pipeline queues
+  /queue/pause:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Pause a pipeline queue
+      tags:
+        - Pipeline queues
+  /queue/resume:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Resume a pipeline queue
+      tags:
+        - Pipeline queues
+  /repos:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: only list active repos
+          in: query
+          name: active
+          type: boolean
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Repo'
+            type: array
+      summary: List all repositories on the server. Requires admin rights.
+      tags:
+        - Repositories
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the id of a repository at the forge
+          in: query
+          name: forge_remote_id
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Activate a repository
+      tags:
+        - Repositories
+  /repos/lookup/{repo_full_name}:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository full-name / slug
+          in: path
+          name: repo_full_name
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Get repository by full-name
+      tags:
+        - Repositories
+  /repos/repair:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Repair all repositories on the server. Requires admin rights.
+      tags:
+        - Repositories
+  /repos/{repo_id}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Delete a repository
+      tags:
+        - Repositories
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Get repository information
+      tags:
+        - Repositories
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the repository's information
+          in: body
+          name: repo
+          required: true
+          schema:
+            $ref: '#/definitions/RepoPatch'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Change a repository
+      tags:
+        - Repositories
+  /repos/{repo_id}/branches:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Get repository branches
+      tags:
+        - Repositories
+  /repos/{repo_id}/chown:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Repo'
+      summary: Change a repository's owner, to the one holding the access token
+      tags:
+        - Repositories
+  /repos/{repo_id}/cron:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Cron'
+            type: array
+      summary: Get the cron job list
+      tags:
+        - Repository cron jobs
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the new cron job
+          in: body
+          name: cronJob
+          required: true
+          schema:
+            $ref: '#/definitions/Cron'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cron'
+      summary: Persist/creat a cron job
+      tags:
+        - Repository cron jobs
+  /repos/{repo_id}/cron/{cron}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the cron job id
+          in: path
+          name: cron
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a cron job by id
+      tags:
+        - Repository cron jobs
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the cron job id
+          in: path
+          name: cron
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cron'
+      summary: Get a cron job by id
+      tags:
+        - Repository cron jobs
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the cron job id
+          in: path
+          name: cron
+          required: true
+          type: string
+        - description: the cron job data
+          in: body
+          name: cronJob
+          required: true
+          schema:
+            $ref: '#/definitions/Cron'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Cron'
+      summary: Update a cron job
+      tags:
+        - Repository cron jobs
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the cron job id
+          in: path
+          name: cron
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Start a cron job now
+      tags:
+        - Repository cron jobs
+  /repos/{repo_id}/logs/{number}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Deletes log
+      tags:
+        - Pipeline logs
+  /repos/{repo_id}/logs/{number}/{stepID}:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+        - description: the step id
+          in: path
+          name: stepID
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/LogEntry'
+            type: array
+      summary: Log information
+      tags:
+        - Pipeline logs
+  /repos/{repo_id}/move:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the username to move the repository to
+          in: query
+          name: to
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Move a repository to a new owner
+      tags:
+        - Repositories
+  /repos/{repo_id}/permissions:
+    get:
+      description: The repository permission, according to the used access token.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Perm'
+      summary: Repository permission information
+      tags:
+        - Repositories
+  /repos/{repo_id}/pipelines:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Pipeline'
+            type: array
+      summary: Get pipelines, current running and past ones
+      tags:
+        - Pipelines
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the options for the pipeline to run
+          in: body
+          name: options
+          required: true
+          schema:
+            $ref: '#/definitions/PipelineOptions'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Run/trigger a pipelines
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline, OR 'latest'
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Pipeline information by number
+      tags:
+        - Pipelines
+    post:
+      description: Restarts a pipeline optional with altered event, deploy or environment
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+        - description: override the event type
+          in: query
+          name: event
+          type: string
+        - description: override the target deploy value
+          in: query
+          name: deploy_to
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Restart a pipeline
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}/approve:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Start pipelines in gated repos
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}/cancel:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Cancels a pipeline
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}/config:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Config'
+            type: array
+      summary: Pipeline configuration
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}/decline:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Pipeline'
+      summary: Decline pipelines in gated repos
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pull_requests:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/PullRequest'
+            type: array
+      summary: List active pull requests
+      tags:
+        - Repositories
+  /repos/{repo_id}/registry:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Registry'
+            type: array
+      summary: Get the registry list
+      tags:
+        - Repository registries
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the new registry data
+          in: body
+          name: registry
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Persist/create a registry
+      tags:
+        - Repository registries
+  /repos/{repo_id}/registry/{registry}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the registry name
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a named registry
+      tags:
+        - Repository registries
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the registry name
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Get a named registry
+      tags:
+        - Repository registries
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the registry name
+          in: path
+          name: registry
+          required: true
+          type: string
+        - description: the attributes for the registry
+          in: body
+          name: registryData
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Update a named registry
+      tags:
+        - Repository registries
+  /repos/{repo_id}/repair:
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Repair a repository
+      tags:
+        - Repositories
+  /repos/{repo_id}/secrets:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Secret'
+            type: array
+      summary: Get the secret list
+      tags:
+        - Repository secrets
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the new secret
+          in: body
+          name: secret
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Persist/create a secret
+      tags:
+        - Repository secrets
+  /repos/{repo_id}/secrets/{secretName}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the secret name
+          in: path
+          name: secretName
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a named secret
+      tags:
+        - Repository secrets
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the secret name
+          in: path
+          name: secretName
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Get a named secret
+      tags:
+        - Repository secrets
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the secret name
+          in: path
+          name: secretName
+          required: true
+          type: string
+        - description: the secret itself
+          in: body
+          name: secret
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Update a named secret
+      tags:
+        - Repository secrets
+  /secrets:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Secret'
+            type: array
+      summary: Get the global secret list
+      tags:
+        - Secrets
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the secret object data
+          in: body
+          name: secret
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Persist/create a global secret
+      tags:
+        - Secrets
+  /secrets/{secret}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a global secret by name
+      tags:
+        - Secrets
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Get a global secret by name
+      tags:
+        - Secrets
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the secret's name
+          in: path
+          name: secret
+          required: true
+          type: string
+        - description: the secret's data
+          in: body
+          name: secretData
+          required: true
+          schema:
+            $ref: '#/definitions/Secret'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Secret'
+      summary: Update a global secret by name
+      tags:
+        - Secrets
+  /signature/public-key:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Get server's signature public key
+      tags:
+        - System
+  /stream/events:
+    get:
+      description: event source streaming for compatibility with quic and http2
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Event stream
+      tags:
+        - Events
+  /stream/logs/{repo_id}/{pipeline}/{stepID}:
+    get:
+      parameters:
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: pipeline
+          required: true
+          type: integer
+        - description: the step id
+          in: path
+          name: stepID
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Log stream
+      tags:
+        - Pipeline logs
+  /user:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+      summary: Returns the currently authenticated user.
+      tags:
+        - User
+  /user/feed:
+    get:
+      description: Feed entries can be used to display information on the latest builds.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Feed'
+      summary: A feed entry for a build.
+      tags:
+        - User
+  /user/repos:
+    get:
+      description: Retrieve the currently authenticated User's Repository list
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: query all repos, including inactive ones
+          in: query
+          name: all
+          type: boolean
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Repo'
+            type: array
+      summary: Get user's repos
+      tags:
+        - User
+  /user/token:
+    delete:
+      description: >-
+        Reset's the current personal access token of the user and returns a new
+        one.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Reset a token
+      tags:
+        - User
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Return the token of the current user as string
+      tags:
+        - User
+  /users:
+    get:
+      description: >-
+        Returns all registered, active users in the system. Requires admin
+        rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/User'
+            type: array
+      summary: Get all users
+      tags:
+        - Users
+    post:
+      description: >-
+        Creates a new user account with the specified external login. Requires
+        admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the user's data
+          in: body
+          name: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+      summary: Create a user
+      tags:
+        - Users
+  /users/{login}:
+    delete:
+      description: Deletes the given user. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the user's login name
+          in: path
+          name: login
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a user
+      tags:
+        - Users
+    get:
+      description: Returns a user with the specified login name. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the user's login name
+          in: path
+          name: login
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+      summary: Get a user
+      tags:
+        - Users
+    patch:
+      consumes:
+        - application/json
+      description: Changes the data of an existing user. Requires admin rights.
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the user's login name
+          in: path
+          name: login
+          required: true
+          type: string
+        - description: the user's data
+          in: body
+          name: user
+          required: true
+          schema:
+            $ref: '#/definitions/User'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/User'
+      summary: Change a user
+      tags:
+        - Users
+  /version:
+    get:
+      description: Endpoint returns the server version and build information.
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            allOf:
+              - type: string
+              - properties:
+                  source:
+                    type: string
+                  version:
+                    type: string
+                type: object
+      summary: Get version
+      tags:
+        - System
+schemes: []
+swagger: '2.0'
