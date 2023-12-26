@@ -525,6 +525,7 @@ definitions:
     enum:
       - push
       - pull_request
+      - pull_request_closed
       - tag
       - deployment
       - cron
@@ -533,6 +534,7 @@ definitions:
     x-enum-varnames:
       - EventPush
       - EventPull
+      - EventPullClosed
       - EventTag
       - EventDeploy
       - EventCron
