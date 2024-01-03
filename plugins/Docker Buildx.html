@@ -15,7 +15,7 @@
 
 <link rel="alternate" type="application/rss+xml" href="/cookbook/rss.xml" title="Woodpecker CI RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/cookbook/atom.xml" title="Woodpecker CI Atom Feed"><link rel="stylesheet" href="/assets/css/styles.7fa342d1.css">
-<script src="/assets/js/runtime~main.f93f1401.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.cc45b4ce.js" defer="defer"></script>
 <script src="/assets/js/main.c2dfb270.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -144,7 +144,7 @@ If it's not a tag event, and no default branch, automated tags are skipped.</p>
   settings:
     repo: codeberg.org/${CI_REPO_OWNER}/hello
     registry: codeberg.org
-    dry_run: true
+    dry-run: true
     output: type=oci,dest=${CI_REPO_OWNER}-hello.tar
 </code></pre>
 <h2>Advanced Settings</h2>
@@ -399,7 +399,7 @@ steps:
       - &lt;&lt;: *proxy_conf
     privileged: true
     settings:
-      dry_run: true
+      dry-run: true
       repo: *publish_repos
       dockerfile: Dockerfile.multi
       platforms: linux/amd64
