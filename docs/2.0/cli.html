@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-2.0 docs-doc-page docs-doc-id-cli" data-has-hydrated="false">
 <head>
 <meta charset="UTF-8">
-<meta name="generator" content="Docusaurus v3.0.1">
+<meta name="generator" content="Docusaurus v3.1.0">
 <title data-rh="true">CLI | Woodpecker CI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://woodpecker-ci.org/docs/2.0/cli"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="2.0"><meta data-rh="true" name="docusaurus_tag" content="docs-default-2.0"><meta data-rh="true" name="docsearch:version" content="2.0"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-2.0"><meta data-rh="true" property="og:title" content="CLI | Woodpecker CI"><meta data-rh="true" name="description" content="woodpecker-cli - command line utility"><meta data-rh="true" property="og:description" content="woodpecker-cli - command line utility"><link data-rh="true" rel="canonical" href="https://woodpecker-ci.org/docs/2.0/cli"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/2.0/cli" hreflang="en"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/2.0/cli" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Woodpecker CI RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Woodpecker CI Atom Feed">
 
@@ -14,19 +14,19 @@
 <link rel="icon" href="/img/favicon.svg" type="image/svg+xml">
 
 <link rel="alternate" type="application/rss+xml" href="/cookbook/rss.xml" title="Woodpecker CI RSS Feed">
-<link rel="alternate" type="application/atom+xml" href="/cookbook/atom.xml" title="Woodpecker CI Atom Feed"><link rel="stylesheet" href="/assets/css/styles.7fa342d1.css">
-<script src="/assets/js/runtime~main.32deb3ab.js" defer="defer"></script>
-<script src="/assets/js/main.872b5fdf.js" defer="defer"></script>
+<link rel="alternate" type="application/atom+xml" href="/cookbook/atom.xml" title="Woodpecker CI Atom Feed"><link rel="stylesheet" href="/assets/css/styles.14764558.css">
+<script src="/assets/js/runtime~main.c482e88c.js" defer="defer"></script>
+<script src="/assets/js/main.3e97b328.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
-<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_MplQ" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar__7Dd" style="background-color:var(--ifm-color-primary);color:var(--ifm-color-gray-900)" role="banner"><div class="announcementBarPlaceholder_JJXs"></div><div class="content_hAVC announcementBarContent_YFai"> If you like Woodpecker-CI, <a href="https://github.com/woodpecker-ci/woodpecker" rel="noopener noreferrer" target="_blank">give us a star on GitHub</a> ! ⭐️</div><button type="button" aria-label="Close" class="clean-btn close closeButton_umTk announcementBarClose_eNgr"><svg viewBox="0 0 15 15" width="14" height="14"><g stroke="currentColor" stroke-width="3.1"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path></g></svg></button></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_Xm0t themedComponent--light_V741"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_Xm0t themedComponent--dark_CcH9"></div><b class="navbar__title text--truncate">Woodpecker</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/2.0/intro">Docs</a><a class="navbar__item navbar__link" href="/plugins">Plugins</a><a class="navbar__item navbar__link" href="/docs/next/migrations">Migrations</a><a class="navbar__item navbar__link" href="/faq">FAQ</a><a class="navbar__item navbar__link" href="/docs/next/awesome">Awesome</a><a class="navbar__item navbar__link" href="/api">API</a><a class="navbar__item navbar__link" href="/blog">Blog</a><a class="navbar__item navbar__link" href="/cookbook">Cookbook</a></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="/docs/2.0/intro">2.0.x</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/next/cli">Next</a></li><li><a class="dropdown__link" href="/docs/cli">2.1.x</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/2.0/cli">2.0.x</a></li><li><a class="dropdown__link" href="/docs/1.0/cli">1.0.x</a></li><li><a class="dropdown__link" href="/docs/0.15/cli">0.15.x</a></li></ul></div><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href="https://opencollective.com/woodpecker-ci" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">🧡 Sponsor Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_XcnP colorModeToggle_hYvk"><button class="clean-btn toggleButton_gySu toggleButtonDisabled_lBvy" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_jcN4"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_tMV8"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_cwxy"><div class="navbar__search searchBarContainer_aZbo"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_DzGn searchBarLoadingRing_e2EE"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_jQd2"><div class="docsWrapper_hcyX"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_z2I4" type="button"></button><div class="docRoot_aFdV"><aside class="theme-doc-sidebar-container docSidebarContainer_Vb3X"><div class="sidebarViewport_ieoC"><div class="sidebar_Eb7T"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_wXSr menuWithAnnouncementBar_MTns"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/intro">Welcome to Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/docs/2.0/usage/intro">Usage</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/intro">Getting started</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/terminiology">Terminology</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/workflow-syntax">Workflow syntax</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/workflows">Workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/matrix-workflows">Matrix workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/secrets">Secrets</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/registries">Registries</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/cron">Cron</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/environment">Environment variables</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/docs/2.0/usage/plugins/plugins">Plugins</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/services">Services</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/volumes">Volumes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/project-settings">Project settings</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/badges">Status Badges</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/advanced-usage">Advanced usage</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/docs/2.0/administration/deployment/overview">Administration</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/2.0/cli">CLI</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/migrations">Migrations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/awesome">Awesome Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/docs/2.0/development/getting-started">Development</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_iugr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_NUUm"><div class="theme-doc-version-banner alert alert--warning margin-bottom--md" role="alert"><div>This is documentation for <!-- -->Woodpecker CI<!-- --> <b>2.0.x</b>, which is no longer actively maintained.</div><div class="margin-top--md">For up-to-date documentation, see the <b><a href="/docs/cli">latest version</a></b> (<!-- -->2.1.x<!-- -->).</div></div><div class="docItemContainer_DRv8"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_xM3U" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_xdCL"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">CLI</span><meta itemprop="position" content="1"></li></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: 2.0.x</span><div class="tocCollapsible_H_ka theme-doc-toc-mobile tocMobile_gH9Y"><button type="button" class="clean-btn tocCollapsibleButton_nCTq">On this page</button></div><div class="theme-doc-markdown markdown"><h1>CLI</h1>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_QLuK" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar_CI8n" style="background-color:var(--ifm-color-primary);color:var(--ifm-color-gray-900)" role="banner"><div class="announcementBarPlaceholder_RG8L"></div><div class="content_srLU announcementBarContent_c8cK"> If you like Woodpecker-CI, <a href="https://github.com/woodpecker-ci/woodpecker" rel="noopener noreferrer" target="_blank">give us a star on GitHub</a> ! ⭐️</div><button type="button" aria-label="Close" class="clean-btn close closeButton_Ngg5 announcementBarClose_CZSc"><svg viewBox="0 0 15 15" width="14" height="14"><g stroke="currentColor" stroke-width="3.1"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path></g></svg></button></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_koeu themedComponent--light_D4et"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_koeu themedComponent--dark__Swk"></div><b class="navbar__title text--truncate">Woodpecker</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/2.0/intro">Docs</a><a class="navbar__item navbar__link" href="/plugins">Plugins</a><a class="navbar__item navbar__link" href="/docs/next/migrations">Migrations</a><a class="navbar__item navbar__link" href="/faq">FAQ</a><a class="navbar__item navbar__link" href="/docs/next/awesome">Awesome</a><a class="navbar__item navbar__link" href="/api">API</a><a class="navbar__item navbar__link" href="/blog">Blog</a><a class="navbar__item navbar__link" href="/cookbook">Cookbook</a></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="/docs/2.0/intro">2.0.x</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/next/cli">Next</a></li><li><a class="dropdown__link" href="/docs/cli">2.1.x</a></li><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/2.0/cli">2.0.x</a></li><li><a class="dropdown__link" href="/docs/1.0/cli">1.0.x</a></li><li><a class="dropdown__link" href="/docs/0.15/cli">0.15.x</a></li></ul></div><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href="https://opencollective.com/woodpecker-ci" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">🧡 Sponsor Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_UTj4 colorModeToggle_anXb"><button class="clean-btn toggleButton_I5kw toggleButtonDisabled_rVTo" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_Gj_r"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_NUYc"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_XLiP"><div class="navbar__search searchBarContainer_OYLt"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_Vg1s searchBarLoadingRing_BhaB"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_SQbO"><div class="docsWrapper_Cy3X"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_ubE1" type="button"></button><div class="docRoot_rDyM"><aside class="theme-doc-sidebar-container docSidebarContainer_vdlW"><div class="sidebarViewport_srj5"><div class="sidebar_qzys"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_ZLcC menuWithAnnouncementBar_MkF1"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/intro">Welcome to Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="true" href="/docs/2.0/usage/intro">Usage</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/intro">Getting started</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/terminiology">Terminology</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/workflow-syntax">Workflow syntax</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/workflows">Workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/matrix-workflows">Matrix workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/secrets">Secrets</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/registries">Registries</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/cron">Cron</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/environment">Environment variables</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" tabindex="0" href="/docs/2.0/usage/plugins/plugins">Plugins</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/services">Services</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/volumes">Volumes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/project-settings">Project settings</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/badges">Status Badges</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/2.0/usage/advanced-usage">Advanced usage</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/docs/2.0/administration/deployment/overview">Administration</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/2.0/cli">CLI</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/migrations">Migrations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/2.0/awesome">Awesome Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" aria-expanded="false" href="/docs/2.0/development/getting-started">Development</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_myom"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_MvyE"><div class="theme-doc-version-banner alert alert--warning margin-bottom--md" role="alert"><div>This is documentation for <!-- -->Woodpecker CI<!-- --> <b>2.0.x</b>, which is no longer actively maintained.</div><div class="margin-top--md">For up-to-date documentation, see the <b><a href="/docs/cli">latest version</a></b> (<!-- -->2.1.x<!-- -->).</div></div><div class="docItemContainer_AN0m"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_vZHW" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_wWKC"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">CLI</span><meta itemprop="position" content="1"></li></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: 2.0.x</span><div class="tocCollapsible_JJoQ theme-doc-toc-mobile tocMobile_GliX"><button type="button" class="clean-btn tocCollapsibleButton_TkpG">On this page</button></div><div class="theme-doc-markdown markdown"><h1>CLI</h1>
 <h1>NAME</h1>
 <p>woodpecker-cli - command line utility</p>
 <h1>SYNOPSIS</h1>
 <p>woodpecker-cli</p>
-<div class="codeBlockContainer_UR6f theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_VlML"><pre tabindex="0" class="prism-code language-text codeBlock_yfQn thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e5Yg"><span class="token-line" style="color:#393A34"><span class="token plain">[--log-file]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--log-level]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--nocolor]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--pretty]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--server|-s]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--token|-t]=[value]</span><br></span></code></pre><div class="buttonGroup_iSuz"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_Eboc" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_fMjR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_MLXi"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_o9Y9 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_ghDU"><pre tabindex="0" class="prism-code language-text codeBlock_NggK thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_KvBS"><span class="token-line" style="color:#393A34"><span class="token plain">[--log-file]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--log-level]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--nocolor]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--pretty]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--server|-s]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--token|-t]=[value]</span><br></span></code></pre><div class="buttonGroup_aAs0"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_NMfV" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_MoqH"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_nhy3"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <p><strong>Usage</strong>:</p>
-<div class="codeBlockContainer_UR6f theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_VlML"><pre tabindex="0" class="prism-code language-text codeBlock_yfQn thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e5Yg"><span class="token-line" style="color:#393A34"><span class="token plain">woodpecker-cli [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]</span><br></span></code></pre><div class="buttonGroup_iSuz"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_Eboc" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_fMjR"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_MLXi"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_o9Y9 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_ghDU"><pre tabindex="0" class="prism-code language-text codeBlock_NggK thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_KvBS"><span class="token-line" style="color:#393A34"><span class="token plain">woodpecker-cli [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]</span><br></span></code></pre><div class="buttonGroup_aAs0"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_NMfV" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_MoqH"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_nhy3"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h1>GLOBAL OPTIONS</h1>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -35,7 +35,7 @@
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <h1>COMMANDS</h1>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="pipeline">pipeline<a href="#pipeline" class="hash-link" aria-label="Direct link to pipeline" title="Direct link to pipeline">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="pipeline">pipeline<a href="#pipeline" class="hash-link" aria-label="Direct link to pipeline" title="Direct link to pipeline">​</a></h2>
 <p>manage pipelines</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -43,7 +43,7 @@
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls">ls<a href="#ls" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls">ls<a href="#ls" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>show pipeline history</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch filter</p>
 <p><strong>--event</strong>=&quot;&quot;: event filter</p>
@@ -64,7 +64,7 @@ Message: {{ .Message }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--status</strong>=&quot;&quot;: status filter</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="last">last<a href="#last" class="hash-link" aria-label="Direct link to last" title="Direct link to last">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="last">last<a href="#last" class="hash-link" aria-label="Direct link to last" title="Direct link to last">​</a></h3>
 <p>show latest pipeline details</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch name (default: main)</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: Number: {{ .Number }}
@@ -82,7 +82,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="logs">logs<a href="#logs" class="hash-link" aria-label="Direct link to logs" title="Direct link to logs">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="logs">logs<a href="#logs" class="hash-link" aria-label="Direct link to logs" title="Direct link to logs">​</a></h3>
 <p>show pipeline logs</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -90,7 +90,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info">info<a href="#info" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info">info<a href="#info" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>show pipeline details</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -99,7 +99,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="stop">stop<a href="#stop" class="hash-link" aria-label="Direct link to stop" title="Direct link to stop">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="stop">stop<a href="#stop" class="hash-link" aria-label="Direct link to stop" title="Direct link to stop">​</a></h3>
 <p>stop a pipeline</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -107,7 +107,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="start">start<a href="#start" class="hash-link" aria-label="Direct link to start" title="Direct link to start">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="start">start<a href="#start" class="hash-link" aria-label="Direct link to start" title="Direct link to start">​</a></h3>
 <p>start a pipeline</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -116,7 +116,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="approve">approve<a href="#approve" class="hash-link" aria-label="Direct link to approve" title="Direct link to approve">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="approve">approve<a href="#approve" class="hash-link" aria-label="Direct link to approve" title="Direct link to approve">​</a></h3>
 <p>approve a pipeline</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -124,7 +124,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="decline">decline<a href="#decline" class="hash-link" aria-label="Direct link to decline" title="Direct link to decline">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="decline">decline<a href="#decline" class="hash-link" aria-label="Direct link to decline" title="Direct link to decline">​</a></h3>
 <p>decline a pipeline</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -132,7 +132,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="queue">queue<a href="#queue" class="hash-link" aria-label="Direct link to queue" title="Direct link to queue">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="queue">queue<a href="#queue" class="hash-link" aria-label="Direct link to queue" title="Direct link to queue">​</a></h3>
 <p>show pipeline queue</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -141,7 +141,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ps">ps<a href="#ps" class="hash-link" aria-label="Direct link to ps" title="Direct link to ps">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ps">ps<a href="#ps" class="hash-link" aria-label="Direct link to ps" title="Direct link to ps">​</a></h3>
 <p>show pipeline steps</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -150,7 +150,7 @@ Author: {{ .Author }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="create">create<a href="#create" class="hash-link" aria-label="Direct link to create" title="Direct link to create">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="create">create<a href="#create" class="hash-link" aria-label="Direct link to create" title="Direct link to create">​</a></h3>
 <p>create new pipeline</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch to create pipeline from</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: [33mPipeline #{{ .Number }} [0m
@@ -169,7 +169,7 @@ Message: {{ .Message }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <p><strong>--var</strong>=&quot;&quot;: key=value</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="log">log<a href="#log" class="hash-link" aria-label="Direct link to log" title="Direct link to log">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="log">log<a href="#log" class="hash-link" aria-label="Direct link to log" title="Direct link to log">​</a></h2>
 <p>manage logs</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -177,7 +177,7 @@ Message: {{ .Message }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="purge">purge<a href="#purge" class="hash-link" aria-label="Direct link to purge" title="Direct link to purge">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="purge">purge<a href="#purge" class="hash-link" aria-label="Direct link to purge" title="Direct link to purge">​</a></h3>
 <p>purge a log</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -185,7 +185,7 @@ Message: {{ .Message }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="deploy">deploy<a href="#deploy" class="hash-link" aria-label="Direct link to deploy" title="Direct link to deploy">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="deploy">deploy<a href="#deploy" class="hash-link" aria-label="Direct link to deploy" title="Direct link to deploy">​</a></h2>
 <p>deploy code</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch filter (default: main)</p>
 <p><strong>--event</strong>=&quot;&quot;: event filter (default: push)</p>
@@ -206,7 +206,7 @@ Target: {{ .Deploy }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--status</strong>=&quot;&quot;: status filter (default: success)</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="exec">exec<a href="#exec" class="hash-link" aria-label="Direct link to exec" title="Direct link to exec">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="exec">exec<a href="#exec" class="hash-link" aria-label="Direct link to exec" title="Direct link to exec">​</a></h2>
 <p>execute a local pipeline</p>
 <p><strong>--backend-docker-api-version</strong>=&quot;&quot;: the version of the API to reach, leave empty for latest.</p>
 <p><strong>--backend-docker-cert</strong>=&quot;&quot;: path to load the TLS certificates for connecting to docker server</p>
@@ -292,7 +292,7 @@ Target: {{ .Deploy }}
 <p><strong>--workflow-number</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--workspace-base</strong>=&quot;&quot;:  (default: /woodpecker)</p>
 <p><strong>--workspace-path</strong>=&quot;&quot;:  (default: src)</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="info-1">info<a href="#info-1" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="info-1">info<a href="#info-1" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h2>
 <p>show information about the current user</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -301,7 +301,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="registry">registry<a href="#registry" class="hash-link" aria-label="Direct link to registry" title="Direct link to registry">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="registry">registry<a href="#registry" class="hash-link" aria-label="Direct link to registry" title="Direct link to registry">​</a></h2>
 <p>manage registries</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -309,7 +309,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="add">add<a href="#add" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="add">add<a href="#add" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
 <p>adds a registry</p>
 <p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -321,7 +321,7 @@ Target: {{ .Deploy }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="rm">rm<a href="#rm" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="rm">rm<a href="#rm" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
 <p>remove a registry</p>
 <p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -331,7 +331,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="update">update<a href="#update" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="update">update<a href="#update" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
 <p>update a registry</p>
 <p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -343,7 +343,7 @@ Target: {{ .Deploy }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info-2">info<a href="#info-2" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info-2">info<a href="#info-2" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>display registry info</p>
 <p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -353,7 +353,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls-1">ls<a href="#ls-1" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls-1">ls<a href="#ls-1" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>list registries</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -362,7 +362,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="secret">secret<a href="#secret" class="hash-link" aria-label="Direct link to secret" title="Direct link to secret">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="secret">secret<a href="#secret" class="hash-link" aria-label="Direct link to secret" title="Direct link to secret">​</a></h2>
 <p>manage secrets</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -370,7 +370,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="add-1">add<a href="#add-1" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="add-1">add<a href="#add-1" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
 <p>adds a secret</p>
 <p><strong>--event</strong>=&quot;&quot;: secret limited to these events</p>
 <p><strong>--global</strong>: global secret</p>
@@ -385,7 +385,7 @@ Target: {{ .Deploy }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <p><strong>--value</strong>=&quot;&quot;: secret value</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="rm-1">rm<a href="#rm-1" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="rm-1">rm<a href="#rm-1" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
 <p>remove a secret</p>
 <p><strong>--global</strong>: global secret</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -397,7 +397,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="update-1">update<a href="#update-1" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="update-1">update<a href="#update-1" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
 <p>update a secret</p>
 <p><strong>--event</strong>=&quot;&quot;: secret limited to these events</p>
 <p><strong>--global</strong>: global secret</p>
@@ -412,7 +412,7 @@ Target: {{ .Deploy }}
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
 <p><strong>--value</strong>=&quot;&quot;: secret value</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info-3">info<a href="#info-3" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info-3">info<a href="#info-3" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>display secret info</p>
 <p><strong>--global</strong>: global secret</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -424,7 +424,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls-2">ls<a href="#ls-2" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls-2">ls<a href="#ls-2" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>list secrets</p>
 <p><strong>--global</strong>: global secret</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -435,7 +435,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="repo">repo<a href="#repo" class="hash-link" aria-label="Direct link to repo" title="Direct link to repo">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="repo">repo<a href="#repo" class="hash-link" aria-label="Direct link to repo" title="Direct link to repo">​</a></h2>
 <p>manage repositories</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -443,7 +443,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls-3">ls<a href="#ls-3" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls-3">ls<a href="#ls-3" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>list all repos</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: [33m{{ .FullName }}[0m (id: {{ .ID }}, forgeRemoteID: {{ .ForgeRemoteID }}))</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -453,7 +453,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info-4">info<a href="#info-4" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info-4">info<a href="#info-4" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>show repository details</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -462,7 +462,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="add-2">add<a href="#add-2" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="add-2">add<a href="#add-2" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
 <p>add a repository</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -470,7 +470,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="update-2">update<a href="#update-2" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="update-2">update<a href="#update-2" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
 <p>update a repository</p>
 <p><strong>--config</strong>=&quot;&quot;: repository configuration path (e.g. .woodpecker.yml)</p>
 <p><strong>--gated</strong>: repository is gated</p>
@@ -485,7 +485,7 @@ Target: {{ .Deploy }}
 <p><strong>--trusted</strong>: repository is trusted</p>
 <p><strong>--unsafe</strong>: validate updating the pipeline-counter is unsafe</p>
 <p><strong>--visibility</strong>=&quot;&quot;: repository visibility</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="rm-2">rm<a href="#rm-2" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="rm-2">rm<a href="#rm-2" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
 <p>remove a repository</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -493,7 +493,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="repair">repair<a href="#repair" class="hash-link" aria-label="Direct link to repair" title="Direct link to repair">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="repair">repair<a href="#repair" class="hash-link" aria-label="Direct link to repair" title="Direct link to repair">​</a></h3>
 <p>repair repository webhooks</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -501,7 +501,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="chown">chown<a href="#chown" class="hash-link" aria-label="Direct link to chown" title="Direct link to chown">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="chown">chown<a href="#chown" class="hash-link" aria-label="Direct link to chown" title="Direct link to chown">​</a></h3>
 <p>assume ownership of a repository</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -509,7 +509,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="sync">sync<a href="#sync" class="hash-link" aria-label="Direct link to sync" title="Direct link to sync">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="sync">sync<a href="#sync" class="hash-link" aria-label="Direct link to sync" title="Direct link to sync">​</a></h3>
 <p>synchronize the repository list</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -518,7 +518,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="user">user<a href="#user" class="hash-link" aria-label="Direct link to user" title="Direct link to user">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="user">user<a href="#user" class="hash-link" aria-label="Direct link to user" title="Direct link to user">​</a></h2>
 <p>manage users</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -526,7 +526,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls-4">ls<a href="#ls-4" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls-4">ls<a href="#ls-4" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>list all users</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -535,7 +535,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info-5">info<a href="#info-5" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info-5">info<a href="#info-5" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>show user details</p>
 <p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -544,7 +544,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="add-3">add<a href="#add-3" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="add-3">add<a href="#add-3" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
 <p>adds a user</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -552,7 +552,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="rm-3">rm<a href="#rm-3" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="rm-3">rm<a href="#rm-3" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
 <p>remove a user</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -560,7 +560,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="lint">lint<a href="#lint" class="hash-link" aria-label="Direct link to lint" title="Direct link to lint">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="lint">lint<a href="#lint" class="hash-link" aria-label="Direct link to lint" title="Direct link to lint">​</a></h2>
 <p>lint a pipeline configuration file</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -568,7 +568,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="log-level">log-level<a href="#log-level" class="hash-link" aria-label="Direct link to log-level" title="Direct link to log-level">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="log-level">log-level<a href="#log-level" class="hash-link" aria-label="Direct link to log-level" title="Direct link to log-level">​</a></h2>
 <p>get the logging level of the server, or set it with [level]</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -576,7 +576,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h2 class="anchor anchorWithStickyNavbar_Io7M" id="cron">cron<a href="#cron" class="hash-link" aria-label="Direct link to cron" title="Direct link to cron">​</a></h2>
+<h2 class="anchor anchorWithStickyNavbar__2ig" id="cron">cron<a href="#cron" class="hash-link" aria-label="Direct link to cron" title="Direct link to cron">​</a></h2>
 <p>manage cron jobs</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -584,7 +584,7 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="add-4">add<a href="#add-4" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="add-4">add<a href="#add-4" class="hash-link" aria-label="Direct link to add" title="Direct link to add">​</a></h3>
 <p>add a cron job</p>
 <p><strong>--branch</strong>=&quot;&quot;: cron branch</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -596,7 +596,7 @@ Target: {{ .Deploy }}
 <p><strong>--schedule</strong>=&quot;&quot;: cron schedule</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="rm-4">rm<a href="#rm-4" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="rm-4">rm<a href="#rm-4" class="hash-link" aria-label="Direct link to rm" title="Direct link to rm">​</a></h3>
 <p>remove a cron job</p>
 <p><strong>--id</strong>=&quot;&quot;: cron id</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -606,7 +606,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="update-3">update<a href="#update-3" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="update-3">update<a href="#update-3" class="hash-link" aria-label="Direct link to update" title="Direct link to update">​</a></h3>
 <p>update a cron job</p>
 <p><strong>--branch</strong>=&quot;&quot;: cron branch</p>
 <p><strong>--id</strong>=&quot;&quot;: cron id</p>
@@ -619,7 +619,7 @@ Target: {{ .Deploy }}
 <p><strong>--schedule</strong>=&quot;&quot;: cron schedule</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="info-6">info<a href="#info-6" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="info-6">info<a href="#info-6" class="hash-link" aria-label="Direct link to info" title="Direct link to info">​</a></h3>
 <p>display info about a cron job</p>
 <p><strong>--id</strong>=&quot;&quot;: cron id</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
@@ -629,7 +629,7 @@ Target: {{ .Deploy }}
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
 <p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p>
-<h3 class="anchor anchorWithStickyNavbar_Io7M" id="ls-5">ls<a href="#ls-5" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
+<h3 class="anchor anchorWithStickyNavbar__2ig" id="ls-5">ls<a href="#ls-5" class="hash-link" aria-label="Direct link to ls" title="Direct link to ls">​</a></h3>
 <p>list cron jobs</p>
 <p><strong>--log-file</strong>=&quot;&quot;: where logs are written to. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords (default: stderr)</p>
 <p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
@@ -637,6 +637,6 @@ Target: {{ .Deploy }}
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full-name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
-<p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/woodpecker-ci/woodpecker/edit/main/docs/versioned_docs/version-2.0/40-cli.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_dU6c" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_UOLl"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/2.0/administration/external-configuration-api"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">External Configuration API</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/2.0/migrations"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Migrations</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_zLQo thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#pipeline" class="table-of-contents__link toc-highlight">pipeline</a><ul><li><a href="#ls" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#last" class="table-of-contents__link toc-highlight">last</a></li><li><a href="#logs" class="table-of-contents__link toc-highlight">logs</a></li><li><a href="#info" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#stop" class="table-of-contents__link toc-highlight">stop</a></li><li><a href="#start" class="table-of-contents__link toc-highlight">start</a></li><li><a href="#approve" class="table-of-contents__link toc-highlight">approve</a></li><li><a href="#decline" class="table-of-contents__link toc-highlight">decline</a></li><li><a href="#queue" class="table-of-contents__link toc-highlight">queue</a></li><li><a href="#ps" class="table-of-contents__link toc-highlight">ps</a></li><li><a href="#create" class="table-of-contents__link toc-highlight">create</a></li></ul></li><li><a href="#log" class="table-of-contents__link toc-highlight">log</a><ul><li><a href="#purge" class="table-of-contents__link toc-highlight">purge</a></li></ul></li><li><a href="#deploy" class="table-of-contents__link toc-highlight">deploy</a></li><li><a href="#exec" class="table-of-contents__link toc-highlight">exec</a></li><li><a href="#info-1" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#registry" class="table-of-contents__link toc-highlight">registry</a><ul><li><a href="#add" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-2" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-1" class="table-of-contents__link toc-highlight">ls</a></li></ul></li><li><a href="#secret" class="table-of-contents__link toc-highlight">secret</a><ul><li><a href="#add-1" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-1" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update-1" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-3" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-2" class="table-of-contents__link toc-highlight">ls</a></li></ul></li><li><a href="#repo" class="table-of-contents__link toc-highlight">repo</a><ul><li><a href="#ls-3" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#info-4" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#add-2" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#update-2" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#rm-2" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#repair" class="table-of-contents__link toc-highlight">repair</a></li><li><a href="#chown" class="table-of-contents__link toc-highlight">chown</a></li><li><a href="#sync" class="table-of-contents__link toc-highlight">sync</a></li></ul></li><li><a href="#user" class="table-of-contents__link toc-highlight">user</a><ul><li><a href="#ls-4" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#info-5" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#add-3" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-3" class="table-of-contents__link toc-highlight">rm</a></li></ul></li><li><a href="#lint" class="table-of-contents__link toc-highlight">lint</a></li><li><a href="#log-level" class="table-of-contents__link toc-highlight">log-level</a></li><li><a href="#cron" class="table-of-contents__link toc-highlight">cron</a><ul><li><a href="#add-4" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-4" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update-3" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-6" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-5" class="table-of-contents__link toc-highlight">ls</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Introduction</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/usage/intro">Usage</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/administration/deployment/overview">Server setup</a></li><li class="footer__item"><a class="footer__link-item" href="/faq">FAQ</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/fcMQqSMXJy" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://matrix.to/#/#woodpecker:matrix.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Matrix<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://floss.social/@WoodpeckerCI" target="_blank" rel="noopener noreferrer" class="footer__link-item">Mastodon<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/woodpeckerci" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://translate.woodpecker-ci.org/engage/woodpecker-ci/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Translate<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://ci.woodpecker-ci.org/repos/3780" target="_blank" rel="noopener noreferrer" class="footer__link-item">CI<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_T9YG"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Woodpecker CI. Built with Docusaurus.</div></div></div></footer></div>
+<p><strong>--token, -t</strong>=&quot;&quot;: server auth token</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="theme-doc-footer-edit-meta-row row"><div class="col"><a href="https://github.com/woodpecker-ci/woodpecker/edit/main/docs/versioned_docs/version-2.0/40-cli.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_elBE" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_vKAq"></div></div></footer></article><nav class="pagination-nav docusaurus-mt-lg" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/2.0/administration/external-configuration-api"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">External Configuration API</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/2.0/migrations"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Migrations</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_AGTX thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#pipeline" class="table-of-contents__link toc-highlight">pipeline</a><ul><li><a href="#ls" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#last" class="table-of-contents__link toc-highlight">last</a></li><li><a href="#logs" class="table-of-contents__link toc-highlight">logs</a></li><li><a href="#info" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#stop" class="table-of-contents__link toc-highlight">stop</a></li><li><a href="#start" class="table-of-contents__link toc-highlight">start</a></li><li><a href="#approve" class="table-of-contents__link toc-highlight">approve</a></li><li><a href="#decline" class="table-of-contents__link toc-highlight">decline</a></li><li><a href="#queue" class="table-of-contents__link toc-highlight">queue</a></li><li><a href="#ps" class="table-of-contents__link toc-highlight">ps</a></li><li><a href="#create" class="table-of-contents__link toc-highlight">create</a></li></ul></li><li><a href="#log" class="table-of-contents__link toc-highlight">log</a><ul><li><a href="#purge" class="table-of-contents__link toc-highlight">purge</a></li></ul></li><li><a href="#deploy" class="table-of-contents__link toc-highlight">deploy</a></li><li><a href="#exec" class="table-of-contents__link toc-highlight">exec</a></li><li><a href="#info-1" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#registry" class="table-of-contents__link toc-highlight">registry</a><ul><li><a href="#add" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-2" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-1" class="table-of-contents__link toc-highlight">ls</a></li></ul></li><li><a href="#secret" class="table-of-contents__link toc-highlight">secret</a><ul><li><a href="#add-1" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-1" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update-1" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-3" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-2" class="table-of-contents__link toc-highlight">ls</a></li></ul></li><li><a href="#repo" class="table-of-contents__link toc-highlight">repo</a><ul><li><a href="#ls-3" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#info-4" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#add-2" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#update-2" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#rm-2" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#repair" class="table-of-contents__link toc-highlight">repair</a></li><li><a href="#chown" class="table-of-contents__link toc-highlight">chown</a></li><li><a href="#sync" class="table-of-contents__link toc-highlight">sync</a></li></ul></li><li><a href="#user" class="table-of-contents__link toc-highlight">user</a><ul><li><a href="#ls-4" class="table-of-contents__link toc-highlight">ls</a></li><li><a href="#info-5" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#add-3" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-3" class="table-of-contents__link toc-highlight">rm</a></li></ul></li><li><a href="#lint" class="table-of-contents__link toc-highlight">lint</a></li><li><a href="#log-level" class="table-of-contents__link toc-highlight">log-level</a></li><li><a href="#cron" class="table-of-contents__link toc-highlight">cron</a><ul><li><a href="#add-4" class="table-of-contents__link toc-highlight">add</a></li><li><a href="#rm-4" class="table-of-contents__link toc-highlight">rm</a></li><li><a href="#update-3" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#info-6" class="table-of-contents__link toc-highlight">info</a></li><li><a href="#ls-5" class="table-of-contents__link toc-highlight">ls</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Introduction</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/usage/intro">Usage</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/administration/deployment/overview">Server setup</a></li><li class="footer__item"><a class="footer__link-item" href="/faq">FAQ</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/fcMQqSMXJy" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://matrix.to/#/#woodpecker:matrix.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Matrix<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://floss.social/@WoodpeckerCI" target="_blank" rel="noopener noreferrer" class="footer__link-item">Mastodon<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/woodpeckerci" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://translate.woodpecker-ci.org/engage/woodpecker-ci/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Translate<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://ci.woodpecker-ci.org/repos/3780" target="_blank" rel="noopener noreferrer" class="footer__link-item">CI<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_EZhA"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Woodpecker CI. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
