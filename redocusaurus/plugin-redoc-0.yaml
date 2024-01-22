@@ -86,8 +86,6 @@ definitions:
         type: string
       refspec:
         type: string
-      remote:
-        type: string
       repo_id:
         type: integer
       started_at:
@@ -173,16 +171,12 @@ definitions:
         items:
           type: string
         type: array
-      clone_url:
-        type: string
       commit:
         type: string
       created_at:
         type: integer
       deploy_to:
         type: string
-      enqueued_at:
-        type: integer
       errors:
         items:
           $ref: '#/definitions/errors.PipelineError'
@@ -255,13 +249,9 @@ definitions:
     properties:
       address:
         type: string
-      email:
-        type: string
       id:
         type: integer
       password:
-        type: string
-      token:
         type: string
       username:
         type: string
