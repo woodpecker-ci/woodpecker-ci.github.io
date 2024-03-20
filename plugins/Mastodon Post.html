@@ -15,7 +15,7 @@
 
 <link rel="alternate" type="application/rss+xml" href="/cookbook/rss.xml" title="Woodpecker CI RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/cookbook/atom.xml" title="Woodpecker CI Atom Feed"><link rel="stylesheet" href="/assets/css/styles.6899d9c2.css">
-<script src="/assets/js/runtime~main.fa97beda.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.e7de5884.js" defer="defer"></script>
 <script src="/assets/js/main.451ed9db.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -25,7 +25,8 @@
 <pre><code class="language-yaml">image: woodpeckerci/plugin-mastodon-post
 settings:
   server: https://mastodon.social
-  access_token: your-access-token
+  access_token:
+    from_secret: your_access_token
   status: We just released {{ CI_COMMIT_TAG }} 🚀
 </code></pre>
 <h3>Settings</h3>
@@ -34,45 +35,94 @@ settings:
 <tr>
 <th>Setting</th>
 <th>Description</th>
+<th>Required?</th>
+<th>Default</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><code>server_url</code></td>
-<td>Mastodon server url, including protocol. <strong>Required</strong></td>
+<td>Mastodon server url, including protocol.</td>
+<td>Yes</td>
+<td></td>
 </tr>
 <tr>
 <td><code>access_token</code></td>
-<td>Mastodon access token. <strong>Required</strong></td>
+<td>Mastodon access token. (<a href="#get-access-token">How to get Token</a>)</td>
+<td>Yes</td>
+<td></td>
 </tr>
 <tr>
 <td><code>status</code></td>
-<td>Status message (You can use variables like <code>{{ CI_COMMIT_TAG }}</code>) <strong>Required</strong></td>
+<td>Status message (Allows <a href="#templating">Templating</a>)</td>
+<td>Yes (if <code>ai_token</code> is not set)</td>
+<td></td>
 </tr>
 <tr>
 <td><code>sensitive</code></td>
 <td>Mark post as sensitive (<code>true</code>)</td>
+<td>No</td>
+<td><code>false</code></td>
 </tr>
 <tr>
 <td><code>media</code></td>
 <td><code>,</code>-separated list of paths to attachments</td>
+<td>No</td>
+<td></td>
 </tr>
 <tr>
 <td><code>in_reply_to_id</code></td>
-<td>Post as reply to this post (ID)</td>
+<td>ID of post to reply to</td>
+<td>No</td>
+<td></td>
 </tr>
 <tr>
 <td><code>spoiler_text</code></td>
 <td>Spoiler text</td>
+<td>No</td>
+<td></td>
 </tr>
 <tr>
 <td><code>visibility</code></td>
 <td>Visibility (<code>private</code>, <code>unlisted</code>, <code>public</code> or <code>direct</code>)</td>
+<td>No</td>
+<td><code>null</code></td>
 </tr>
 <tr>
 <td><code>language</code></td>
 <td>Status language</td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ai_token</code></td>
+<td>Provide an AI token (OpenAI) to generate a status message</td>
+<td>Yes (if <code>status</code> is not set)</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ai_model</code></td>
+<td>Select the model used to generate a status message</td>
+<td>No</td>
+<td><code>gpt-3.5-turbo</code></td>
+</tr>
+<tr>
+<td><code>ai_prompt</code></td>
+<td>Prompt used to generate a status message. (Allows <a href="#templating">Templating</a>)</td>
+<td>No</td>
+<td><a href="https://codeberg.org/woodpecker-plugins/mastodon-post/src/commit/e40ca562e9e84de40ad4f148ec617f45ed583b11/src/index.ts#L37-L42">prompt</a></td>
+</tr>
+<tr>
+<td><code>changelog_file</code></td>
+<td>File to use for the AI to make a changelog from.</td>
+<td>No</td>
+<td><code>CHANGELOG.md</code></td>
 </tr>
 </tbody></table>
+<h3>Get Access Token</h3>
+<p>In order to get an access token, open your Settings and go to the <code>Development</code> section. There create a new application and make sure that <code>write:statuses</code> is checked (Also requires <code>write:media</code> when using the <code>media</code> setting).<br>After creating your application, copy the text next to <code>Your access token</code> and use that as your <code>access_token</code> value.</p>
+<h3>Templating</h3>
+<p>You can use <code>{{ CI_COMMIT_TAG }}</code> and other environment variables in the <code>status</code> or <code>ai_prompt</code> settings.
+The <code>ai_prompt</code> template can also use <code>{{ CHANGELOG }}</code> to include the changelog of the release.</p>
 </div></div></section></main></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class="footer__title">Docs</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/intro">Introduction</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/usage/intro">Usage</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/administration/deployment/overview">Server setup</a></li><li class="footer__item"><a class="footer__link-item" href="/faq">FAQ</a></li></ul></div><div class="col footer__col"><div class="footer__title">Community</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://discord.gg/fcMQqSMXJy" target="_blank" rel="noopener noreferrer" class="footer__link-item">Discord<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://matrix.to/#/#woodpecker:matrix.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Matrix<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://floss.social/@WoodpeckerCI" target="_blank" rel="noopener noreferrer" class="footer__link-item">Mastodon<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://twitter.com/woodpeckerci" target="_blank" rel="noopener noreferrer" class="footer__link-item">X<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div><div class="col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://translate.woodpecker-ci.org/engage/woodpecker-ci/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Translate<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://ci.woodpecker-ci.org/repos/3780" target="_blank" rel="noopener noreferrer" class="footer__link-item">CI<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li><li class="footer__item"><a href="https://opencollective.com/woodpecker-ci" target="_blank" rel="noopener noreferrer" class="footer__link-item">Open Collective<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_JgYn"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2024 Woodpecker CI. Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
