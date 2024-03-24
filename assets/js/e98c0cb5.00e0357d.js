@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwoodpecker=self.webpackChunkwoodpecker||[]).push([[286],{6113:e=>{e.exports=JSON.parse('{"label":"major","permalink":"/blog/tags/major","allTagsPath":"/blog/tags","count":2,"unlisted":false}')}}]);

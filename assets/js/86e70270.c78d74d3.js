@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwoodpecker=self.webpackChunkwoodpecker||[]).push([[4926],{77353:o=>{o.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Continuous Deployment","permalink":"/cookbook/continuous-deployment","unlisted":false},{"title":"Welcome to Woodpecker\'s cookbook blog","permalink":"/cookbook/hello-cookbook","unlisted":false}]}')}}]);
