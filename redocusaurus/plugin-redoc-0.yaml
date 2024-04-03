@@ -262,6 +262,8 @@ definitions:
     properties:
       active:
         type: boolean
+      allow_deploy:
+        type: boolean
       allow_pr:
         type: boolean
       avatar_url:
@@ -314,6 +316,8 @@ definitions:
     type: object
   RepoPatch:
     properties:
+      allow_deploy:
+        type: boolean
       allow_pr:
         type: boolean
       cancel_previous_pipeline_events:
