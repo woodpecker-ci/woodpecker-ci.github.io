@@ -179,7 +179,7 @@ definitions:
         type: string
       errors:
         items:
-          $ref: '#/definitions/errors.PipelineError'
+          $ref: '#/definitions/types.PipelineError'
         type: array
       event:
         $ref: '#/definitions/WebhookEvent'
@@ -537,36 +537,6 @@ definitions:
       - EventDeploy
       - EventCron
       - EventManual
-  errors.PipelineError:
-    properties:
-      data: {}
-      is_warning:
-        type: boolean
-      message:
-        type: string
-      type:
-        $ref: '#/definitions/errors.PipelineErrorType'
-    type: object
-  errors.PipelineErrorType:
-    enum:
-      - linter
-      - deprecation
-      - compiler
-      - generic
-      - bad_habit
-    type: string
-    x-enum-comments:
-      PipelineErrorTypeBadHabit: some bad-habit error
-      PipelineErrorTypeCompiler: some error with the config semantics
-      PipelineErrorTypeDeprecation: using some deprecated feature
-      PipelineErrorTypeGeneric: some generic error
-      PipelineErrorTypeLinter: some error with the config syntax
-    x-enum-varnames:
-      - PipelineErrorTypeLinter
-      - PipelineErrorTypeDeprecation
-      - PipelineErrorTypeCompiler
-      - PipelineErrorTypeGeneric
-      - PipelineErrorTypeBadHabit
   model.Workflow:
     properties:
       agent_id:
@@ -598,6 +568,36 @@ definitions:
       state:
         $ref: '#/definitions/StatusValue'
     type: object
+  types.PipelineError:
+    properties:
+      data: {}
+      is_warning:
+        type: boolean
+      message:
+        type: string
+      type:
+        $ref: '#/definitions/types.PipelineErrorType'
+    type: object
+  types.PipelineErrorType:
+    enum:
+      - linter
+      - deprecation
+      - compiler
+      - generic
+      - bad_habit
+    type: string
+    x-enum-comments:
+      PipelineErrorTypeBadHabit: some bad-habit error
+      PipelineErrorTypeCompiler: some error with the config semantics
+      PipelineErrorTypeDeprecation: using some deprecated feature
+      PipelineErrorTypeGeneric: some generic error
+      PipelineErrorTypeLinter: some error with the config syntax
+    x-enum-varnames:
+      - PipelineErrorTypeLinter
+      - PipelineErrorTypeDeprecation
+      - PipelineErrorTypeCompiler
+      - PipelineErrorTypeGeneric
+      - PipelineErrorTypeBadHabit
 info:
   contact:
     name: Woodpecker CI Community
