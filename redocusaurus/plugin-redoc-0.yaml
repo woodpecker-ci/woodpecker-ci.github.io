@@ -128,6 +128,8 @@ definitions:
       - LogEntryProgress
   Org:
     properties:
+      forge_id:
+        type: integer
       id:
         type: integer
       is_user:
@@ -280,6 +282,8 @@ definitions:
         type: string
       default_branch:
         type: string
+      forge_id:
+        type: integer
       forge_remote_id:
         description: >-
           ForgeRemoteID is the unique identifier for the repository on the
@@ -501,6 +505,8 @@ definitions:
 
           required: true
         type: string
+      forge_id:
+        type: integer
       id:
         description: |-
           the id for this user.
