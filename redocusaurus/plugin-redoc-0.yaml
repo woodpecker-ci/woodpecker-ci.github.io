@@ -2103,6 +2103,14 @@ paths:
           in: query
           name: perPage
           type: integer
+        - description: only return pipelines before this RFC3339 date
+          in: query
+          name: before
+          type: string
+        - description: only return pipelines after this RFC3339 date
+          in: query
+          name: after
+          type: string
       produces:
         - application/json
       responses:
