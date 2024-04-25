@@ -2153,6 +2153,32 @@ paths:
       tags:
         - Pipelines
   /repos/{repo_id}/pipelines/{number}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete pipeline
+      tags:
+        - Pipelines
     get:
       parameters:
         - default: Bearer <personal access token>
