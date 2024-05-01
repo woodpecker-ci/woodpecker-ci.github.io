@@ -647,10 +647,11 @@ paths:
             items:
               $ref: '#/definitions/Agent'
             type: array
-      summary: Get agent list
+      summary: List agents
       tags:
         - Agents
     post:
+      description: Creates a new agent with a random token
       parameters:
         - default: Bearer <personal access token>
           description: Insert your personal access token
@@ -671,9 +672,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Agent'
-      summary: >-
-        Create a new agent with a random token so a new agent can connect to the
-        server
+      summary: Create a new agent
       tags:
         - Agents
   /agents/{agent}:
@@ -718,7 +717,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Agent'
-      summary: Get agent information
+      summary: Get an agent
       tags:
         - Agents
     patch:
@@ -747,7 +746,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Agent'
-      summary: Update agent information
+      summary: Update an agent
       tags:
         - Agents
   /agents/{agent}/tasks:
@@ -773,7 +772,7 @@ paths:
             items:
               $ref: '#/definitions/Task'
             type: array
-      summary: Get agent tasks
+      summary: List agent tasks
       tags:
         - Agents
   /badges/{repo_id}/cc.xml:
@@ -813,7 +812,7 @@ paths:
       responses:
         '200':
           description: OK
-      summary: Get status badge, SVG format
+      summary: Get status of pipeline as SVG badge
       tags:
         - Badges
   /debug/pprof:
@@ -1143,7 +1142,7 @@ paths:
           name: Authorization
           required: true
           type: string
-        - description: the organizations full-name / slug
+        - description: the organizations full name / slug
           in: path
           name: org_full_name
           required: true
@@ -1155,7 +1154,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Org'
-      summary: Lookup organization by full-name
+      summary: Lookup an organization by full name
       tags:
         - Organizations
   /orgs:
@@ -1187,7 +1186,7 @@ paths:
             items:
               $ref: '#/definitions/Org'
             type: array
-      summary: Get all orgs
+      summary: List organizations
       tags:
         - Orgs
   /orgs/{id}:
@@ -1210,7 +1209,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete an org
+      summary: Delete an organization
       tags:
         - Orgs
   /orgs/{org_id}:
@@ -1236,7 +1235,7 @@ paths:
             items:
               $ref: '#/definitions/Org'
             type: array
-      summary: Get organization by id
+      summary: Get an organization
       tags:
         - Organization
   /orgs/{org_id}/permissions:
@@ -1262,7 +1261,9 @@ paths:
             items:
               $ref: '#/definitions/OrgPerm'
             type: array
-      summary: Get the permissions of the current user in the given organization
+      summary: >-
+        Get the permissions of the currently authenticated user for the given
+        organization
       tags:
         - Organization permissions
   /orgs/{org_id}/secrets:
@@ -1298,7 +1299,7 @@ paths:
             items:
               $ref: '#/definitions/Secret'
             type: array
-      summary: Get the organization secret list
+      summary: List organization secrets
       tags:
         - Organization secrets
     post:
@@ -1327,7 +1328,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Persist/create an organization secret
+      summary: Create an organization secret
       tags:
         - Organization secrets
   /orgs/{org_id}/secrets/{secret}:
@@ -1354,7 +1355,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete the named secret from an organization
+      summary: Delete an organization secret by name
       tags:
         - Organization secrets
     get:
@@ -1382,7 +1383,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Get the named organization secret
+      summary: Get a organization secret by name
       tags:
         - Organization secrets
     patch:
@@ -1416,7 +1417,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Update an organization secret
+      summary: Update an organization secret by name
       tags:
         - Organization secrets
   /pipelines:
@@ -1437,7 +1438,7 @@ paths:
             items:
               $ref: '#/definitions/Feed'
             type: array
-      summary: List pipeline queues
+      summary: List pipelines in queue
       tags:
         - Pipeline queues
   /queue/info:
@@ -1495,7 +1496,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Pause a pipeline queue
+      summary: Pause the pipeline queue
       tags:
         - Pipeline queues
   /queue/resume:
@@ -1512,11 +1513,12 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Resume a pipeline queue
+      summary: Resume the pipeline queue
       tags:
         - Pipeline queues
   /repos:
     get:
+      description: Returns a list of all repositories. Requires admin rights.
       parameters:
         - default: Bearer <personal access token>
           description: Insert your personal access token
@@ -1547,7 +1549,7 @@ paths:
             items:
               $ref: '#/definitions/Repo'
             type: array
-      summary: List all repositories on the server. Requires admin rights.
+      summary: List all repositories on the server
       tags:
         - Repositories
     post:
@@ -1582,7 +1584,7 @@ paths:
           name: Authorization
           required: true
           type: string
-        - description: the repository full-name / slug
+        - description: the repository full name / slug
           in: path
           name: repo_full_name
           required: true
@@ -1594,11 +1596,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-      summary: Get repository by full-name
+      summary: Lookup a repository by full name
       tags:
         - Repositories
   /repos/repair:
     post:
+      description: Executes a repair process on all repositories. Requires admin rights.
       parameters:
         - default: Bearer <personal access token>
           description: Insert your personal access token
@@ -1611,7 +1614,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Repair all repositories on the server. Requires admin rights.
+      summary: Repair all repositories on the server
       tags:
         - Repositories
   /repos/{repo_id}:
@@ -1658,7 +1661,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-      summary: Get repository information
+      summary: Get a repository
       tags:
         - Repositories
     patch:
@@ -1687,7 +1690,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-      summary: Change a repository
+      summary: Update a repository
       tags:
         - Repositories
   /repos/{repo_id}/branches:
@@ -1723,7 +1726,7 @@ paths:
             items:
               type: string
             type: array
-      summary: Get repository branches
+      summary: Get branches of a repository
       tags:
         - Repositories
   /repos/{repo_id}/chown:
@@ -1747,7 +1750,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Repo'
-      summary: Change a repository's owner, to the one holding the access token
+      summary: Change a repository's owner to the currently authenticated user
       tags:
         - Repositories
   /repos/{repo_id}/cron:
@@ -1783,7 +1786,7 @@ paths:
             items:
               $ref: '#/definitions/Cron'
             type: array
-      summary: Get the cron job list
+      summary: List cron jobs
       tags:
         - Repository cron jobs
     post:
@@ -1812,7 +1815,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Cron'
-      summary: Persist/creat a cron job
+      summary: Create a cron job
       tags:
         - Repository cron jobs
   /repos/{repo_id}/cron/{cron}:
@@ -1839,7 +1842,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete a cron job by id
+      summary: Delete a cron job
       tags:
         - Repository cron jobs
     get:
@@ -1867,7 +1870,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Cron'
-      summary: Get a cron job by id
+      summary: Get a cron job
       tags:
         - Repository cron jobs
     patch:
@@ -1956,7 +1959,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Deletes log
+      summary: Deletes all logs of a pipeline
       tags:
         - Pipeline logs
   /repos/{repo_id}/logs/{number}/{stepID}:
@@ -1992,7 +1995,7 @@ paths:
             items:
               $ref: '#/definitions/LogEntry'
             type: array
-      summary: Log information
+      summary: Get logs for a pipeline step
       tags:
         - Pipeline logs
   /repos/{repo_id}/logs/{number}/{stepId}:
@@ -2024,7 +2027,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Deletes step log
+      summary: Delete step logs of a pipeline
       tags:
         - Pipeline logs
   /repos/{repo_id}/move:
@@ -2076,11 +2079,12 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Perm'
-      summary: Repository permission information
+      summary: Check current authenticated users access to the repository
       tags:
         - Repositories
   /repos/{repo_id}/pipelines:
     get:
+      description: Get a list of pipelines for a repository.
       parameters:
         - default: Bearer <personal access token>
           description: Insert your personal access token
@@ -2120,7 +2124,7 @@ paths:
             items:
               $ref: '#/definitions/Pipeline'
             type: array
-      summary: Get pipelines, current running and past ones
+      summary: List repository pipelines
       tags:
         - Pipelines
     post:
@@ -2149,7 +2153,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-      summary: Run/trigger a pipelines
+      summary: Trigger a manual pipeline
       tags:
         - Pipelines
   /repos/{repo_id}/pipelines/{number}:
@@ -2176,7 +2180,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete pipeline
+      summary: Delete a pipeline
       tags:
         - Pipelines
     get:
@@ -2204,7 +2208,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-      summary: Pipeline information by number
+      summary: Get a repositories pipeline
       tags:
         - Pipelines
     post:
@@ -2270,7 +2274,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-      summary: Start pipelines in gated repos
+      summary: Approve and start a pipeline
       tags:
         - Pipelines
   /repos/{repo_id}/pipelines/{number}/cancel:
@@ -2297,7 +2301,7 @@ paths:
       responses:
         '200':
           description: OK
-      summary: Cancels a pipeline
+      summary: Cancel a pipeline
       tags:
         - Pipelines
   /repos/{repo_id}/pipelines/{number}/config:
@@ -2328,7 +2332,7 @@ paths:
             items:
               $ref: '#/definitions/Config'
             type: array
-      summary: Pipeline configuration
+      summary: Get configuration files for a pipeline
       tags:
         - Pipelines
   /repos/{repo_id}/pipelines/{number}/decline:
@@ -2357,7 +2361,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Pipeline'
-      summary: Decline pipelines in gated repos
+      summary: Decline a pipeline
       tags:
         - Pipelines
   /repos/{repo_id}/pull_requests:
@@ -2393,7 +2397,7 @@ paths:
             items:
               $ref: '#/definitions/PullRequest'
             type: array
-      summary: List active pull requests
+      summary: List active pull requests of a repository
       tags:
         - Repositories
   /repos/{repo_id}/registry:
@@ -2429,7 +2433,7 @@ paths:
             items:
               $ref: '#/definitions/Registry'
             type: array
-      summary: Get the registry list
+      summary: List registries
       tags:
         - Repository registries
     post:
@@ -2458,7 +2462,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Registry'
-      summary: Persist/create a registry
+      summary: Create a registry
       tags:
         - Repository registries
   /repos/{repo_id}/registry/{registry}:
@@ -2485,7 +2489,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete a named registry
+      summary: Delete a registry by name
       tags:
         - Repository registries
     get:
@@ -2513,7 +2517,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Registry'
-      summary: Get a named registry
+      summary: Get a registry by name
       tags:
         - Repository registries
     patch:
@@ -2547,7 +2551,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Registry'
-      summary: Update a named registry
+      summary: Update a registry by name
       tags:
         - Repository registries
   /repos/{repo_id}/repair:
@@ -2605,7 +2609,7 @@ paths:
             items:
               $ref: '#/definitions/Secret'
             type: array
-      summary: Get the secret list
+      summary: List repository secrets
       tags:
         - Repository secrets
     post:
@@ -2634,7 +2638,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Persist/create a secret
+      summary: Create a repository secret
       tags:
         - Repository secrets
   /repos/{repo_id}/secrets/{secretName}:
@@ -2661,7 +2665,7 @@ paths:
       responses:
         '204':
           description: No Content
-      summary: Delete a named secret
+      summary: Delete a repository secret by name
       tags:
         - Repository secrets
     get:
@@ -2689,7 +2693,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Get a named secret
+      summary: Get a repository secret by name
       tags:
         - Repository secrets
     patch:
@@ -2723,7 +2727,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Update a named secret
+      summary: Update a repository secret by name
       tags:
         - Repository secrets
   /secrets:
@@ -2754,7 +2758,7 @@ paths:
             items:
               $ref: '#/definitions/Secret'
             type: array
-      summary: Get the global secret list
+      summary: List global secrets
       tags:
         - Secrets
     post:
@@ -2778,7 +2782,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/Secret'
-      summary: Persist/create a global secret
+      summary: Create a global secret
       tags:
         - Secrets
   /secrets/{secret}:
@@ -2874,13 +2878,13 @@ paths:
         - System
   /stream/events:
     get:
-      description: event source streaming for compatibility with quic and http2
+      description: With quic and http2 support
       produces:
         - text/plain
       responses:
         '200':
           description: OK
-      summary: Event stream
+      summary: Stream events like pipeline updates
       tags:
         - Events
   /stream/logs/{repo_id}/{pipeline}/{stepID}:
@@ -2906,7 +2910,7 @@ paths:
       responses:
         '200':
           description: OK
-      summary: Log stream
+      summary: Stream logs of a pipeline step
       tags:
         - Pipeline logs
   /user:
@@ -2925,12 +2929,14 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/User'
-      summary: Returns the currently authenticated user.
+      summary: Get the currently authenticated user
       tags:
         - User
   /user/feed:
     get:
-      description: Feed entries can be used to display information on the latest builds.
+      description: >-
+        The feed lists the most recent pipeline for the currently authenticated
+        user.
       parameters:
         - default: Bearer <personal access token>
           description: Insert your personal access token
@@ -2944,8 +2950,10 @@ paths:
         '200':
           description: OK
           schema:
-            $ref: '#/definitions/Feed'
-      summary: A feed entry for a build.
+            items:
+              $ref: '#/definitions/Feed'
+            type: array
+      summary: Get the currently authenticaed users pipeline feed
       tags:
         - User
   /user/repos:
@@ -2971,7 +2979,7 @@ paths:
             items:
               $ref: '#/definitions/Repo'
             type: array
-      summary: Get user's repos
+      summary: Get user's repositories
       tags:
         - User
   /user/token:
@@ -3041,7 +3049,7 @@ paths:
             items:
               $ref: '#/definitions/User'
             type: array
-      summary: Get all users
+      summary: List users
       tags:
         - Users
     post:
@@ -3147,7 +3155,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/User'
-      summary: Change a user
+      summary: Update a user
       tags:
         - Users
   /version:
