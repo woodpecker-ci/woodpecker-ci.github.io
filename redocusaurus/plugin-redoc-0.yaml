@@ -2955,7 +2955,7 @@ paths:
             items:
               $ref: '#/definitions/Feed'
             type: array
-      summary: Get the currently authenticaed users pipeline feed
+      summary: Get the currently authenticated users pipeline feed
       tags:
         - User
   /user/repos:
