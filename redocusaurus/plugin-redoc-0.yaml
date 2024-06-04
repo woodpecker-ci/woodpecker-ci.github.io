@@ -1223,7 +1223,7 @@ paths:
           name: Authorization
           required: true
           type: string
-        - description: the organziation's id
+        - description: the organization's id
           in: path
           name: org_id
           required: true
@@ -1249,7 +1249,7 @@ paths:
           name: Authorization
           required: true
           type: string
-        - description: the organziation's id
+        - description: the organization's id
           in: path
           name: org_id
           required: true
