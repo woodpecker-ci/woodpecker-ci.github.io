@@ -95,6 +95,25 @@ definitions:
       title:
         type: string
     type: object
+  Forge:
+    properties:
+      additional_options:
+        additionalProperties: {}
+        type: object
+      client:
+        type: string
+      id:
+        type: integer
+      oauth_host:
+        description: public url for oauth if different from url
+        type: string
+      skip_verify:
+        type: boolean
+      type:
+        $ref: '#/definitions/model.ForgeType'
+      url:
+        type: string
+    type: object
   LogEntry:
     properties:
       data:
@@ -545,6 +564,24 @@ definitions:
       - EventDeploy
       - EventCron
       - EventManual
+  model.ForgeType:
+    enum:
+      - github
+      - gitlab
+      - gitea
+      - forgejo
+      - bitbucket
+      - bitbucket-dc
+      - addon
+    type: string
+    x-enum-varnames:
+      - ForgeTypeGithub
+      - ForgeTypeGitlab
+      - ForgeTypeGitea
+      - ForgeTypeForgejo
+      - ForgeTypeBitbucket
+      - ForgeTypeBitbucketDatacenter
+      - ForgeTypeAddon
   model.Workflow:
     properties:
       agent_id:
@@ -1048,6 +1085,134 @@ paths:
       summary: Get a trace of execution of the current program
       tags:
         - Process profiling and debugging
+  /forges:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Forge'
+            type: array
+      summary: List forges
+      tags:
+        - Forges
+    post:
+      description: Creates a new forge with a random token
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the forge's data (only 'name' and 'no_schedule' are read)
+          in: body
+          name: forge
+          required: true
+          schema:
+            $ref: '#/definitions/Forge'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Forge'
+      summary: Create a new forge
+      tags:
+        - Forges
+  /forges/{forgeId}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the forge's id
+          in: path
+          name: forgeId
+          required: true
+          type: integer
+      produces:
+        - text/plain
+      responses:
+        '200':
+          description: OK
+      summary: Delete a forge
+      tags:
+        - Forges
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          type: string
+        - description: the forge's id
+          in: path
+          name: forgeId
+          required: true
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Forge'
+      summary: Get a forge
+      tags:
+        - Forges
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the forge's id
+          in: path
+          name: forgeId
+          required: true
+          type: integer
+        - description: the forge's data
+          in: body
+          name: forgeData
+          required: true
+          schema:
+            $ref: '#/definitions/Forge'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Forge'
+      summary: Update a forge
+      tags:
+        - Forges
   /healthz:
     get:
       description: >-
