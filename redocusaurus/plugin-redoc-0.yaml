@@ -43,6 +43,7 @@ definitions:
       branch:
         type: string
       created_at:
+        description: TODO change JSON field to "created" in 3.0
         type: integer
       creator_id:
         type: integer
@@ -71,10 +72,12 @@ definitions:
       commit:
         type: string
       created_at:
+        description: TODO change JSON field to "created" in 3.0
         type: integer
       event:
         type: string
       finished_at:
+        description: TODO change JSON field to "finished" in 3.0
         type: integer
       id:
         type: integer
@@ -89,6 +92,7 @@ definitions:
       repo_id:
         type: integer
       started_at:
+        description: TODO change JSON field to "started" in 3.0
         type: integer
       status:
         type: string
@@ -195,6 +199,7 @@ definitions:
       commit:
         type: string
       created_at:
+        description: TODO change JSON field to "created" in 3.0
         type: integer
       deploy_task:
         type: string
@@ -207,6 +212,7 @@ definitions:
       event:
         $ref: '#/definitions/WebhookEvent'
       finished_at:
+        description: TODO change JSON field to "finished" in 3.0
         type: integer
       forge_url:
         type: string
@@ -229,6 +235,7 @@ definitions:
       refspec:
         type: string
       reviewed_at:
+        description: TODO change JSON field to "reviewed" in 3.0
         type: integer
       reviewed_by:
         type: string
@@ -236,6 +243,7 @@ definitions:
         description: uses reported user for webhooks and name of cron for cron pipelines
         type: string
       started_at:
+        description: TODO change JSON field to "started" in 3.0
         type: integer
       status:
         $ref: '#/definitions/StatusValue'
@@ -244,6 +252,7 @@ definitions:
       title:
         type: string
       updated_at:
+        description: TODO change JSON field to "updated" in 3.0
         type: integer
       variables:
         additionalProperties:
