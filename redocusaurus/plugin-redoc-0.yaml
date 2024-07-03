@@ -290,8 +290,14 @@ definitions:
         type: string
       id:
         type: integer
+      org_id:
+        type: integer
       password:
         type: string
+      readonly:
+        type: boolean
+      repo_id:
+        type: integer
       username:
         type: string
     type: object
@@ -1447,6 +1453,160 @@ paths:
         organization
       tags:
         - Organization permissions
+  /orgs/{org_id}/registries:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Registry'
+            type: array
+      summary: List organization registries
+      tags:
+        - Organization registries
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the new registry
+          in: body
+          name: registryData
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Create an organization registry
+      tags:
+        - Organization registries
+  /orgs/{org_id}/registries/{registry}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the registry's name
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete an organization registry by name
+      tags:
+        - Organization registries
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the registry's address
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Get a organization registry by address
+      tags:
+        - Organization registries
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the org's id
+          in: path
+          name: org_id
+          required: true
+          type: string
+        - description: the registry's name
+          in: path
+          name: registry
+          required: true
+          type: string
+        - description: the update registry data
+          in: body
+          name: registryData
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Update an organization registry by name
+      tags:
+        - Organization registries
   /orgs/{org_id}/secrets:
     get:
       parameters:
@@ -1697,6 +1857,135 @@ paths:
       summary: Resume the pipeline queue
       tags:
         - Pipeline queues
+  /registries:
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - default: 1
+          description: for response pagination, page offset number
+          in: query
+          name: page
+          type: integer
+        - default: 50
+          description: for response pagination, max items per page
+          in: query
+          name: perPage
+          type: integer
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/Registry'
+            type: array
+      summary: List global registries
+      tags:
+        - Registries
+    post:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the registry object data
+          in: body
+          name: registry
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Create a global registry
+      tags:
+        - Registries
+  /registries/{registry}:
+    delete:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the registry's name
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - text/plain
+      responses:
+        '204':
+          description: No Content
+      summary: Delete a global registry by name
+      tags:
+        - Registries
+    get:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the registry's name
+          in: path
+          name: registry
+          required: true
+          type: string
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Get a global registry by name
+      tags:
+        - Registries
+    patch:
+      parameters:
+        - default: Bearer <personal access token>
+          description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          type: string
+        - description: the registry's name
+          in: path
+          name: registry
+          required: true
+          type: string
+        - description: the registry's data
+          in: body
+          name: registryData
+          required: true
+          schema:
+            $ref: '#/definitions/Registry'
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Registry'
+      summary: Update a global registry by name
+      tags:
+        - Registries
   /repos:
     get:
       description: Returns a list of all repositories. Requires admin rights.
@@ -2581,7 +2870,7 @@ paths:
       summary: List active pull requests of a repository
       tags:
         - Repositories
-  /repos/{repo_id}/registry:
+  /repos/{repo_id}/registries:
     get:
       parameters:
         - default: Bearer <personal access token>
@@ -2646,7 +2935,7 @@ paths:
       summary: Create a registry
       tags:
         - Repository registries
-  /repos/{repo_id}/registry/{registry}:
+  /repos/{repo_id}/registries/{registry}:
     delete:
       parameters:
         - default: Bearer <personal access token>
