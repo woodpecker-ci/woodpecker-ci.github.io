@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.4.0">
-<title data-rh="true">CLI | Woodpecker CI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://woodpecker-ci.org/docs/next/cli"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI | Woodpecker CI"><meta data-rh="true" name="description" content="woodpecker-cli - A new cli application"><meta data-rh="true" property="og:description" content="woodpecker-cli - A new cli application"><link data-rh="true" rel="canonical" href="https://woodpecker-ci.org/docs/next/cli"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/next/cli" hreflang="en"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/next/cli" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Woodpecker CI RSS Feed">
+<title data-rh="true">CLI | Woodpecker CI</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://woodpecker-ci.org/docs/next/cli"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI | Woodpecker CI"><meta data-rh="true" name="description" content="woodpecker-cli - command line utility"><meta data-rh="true" property="og:description" content="woodpecker-cli - command line utility"><link data-rh="true" rel="canonical" href="https://woodpecker-ci.org/docs/next/cli"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/next/cli" hreflang="en"><link data-rh="true" rel="alternate" href="https://woodpecker-ci.org/docs/next/cli" hreflang="x-default"><link rel="alternate" type="application/rss+xml" href="/blog/rss.xml" title="Woodpecker CI RSS Feed">
 <link rel="alternate" type="application/atom+xml" href="/blog/atom.xml" title="Woodpecker CI Atom Feed">
 
 
@@ -17,24 +17,24 @@
 
 <link href="https://floss.social/@WoodpeckerCI" rel="me"><link rel="stylesheet" href="/assets/css/styles.dfc2859d.css">
 <script src="/assets/js/runtime~main.05feab87.js" defer="defer"></script>
-<script src="/assets/js/main.01afd869.js" defer="defer"></script>
+<script src="/assets/js/main.6ba7c5bd.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
 <script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();null!==e?t(e):window.matchMedia("(prefers-color-scheme: dark)").matches?t("dark"):(window.matchMedia("(prefers-color-scheme: light)").matches,t("light"))}(),function(){try{const n=new URLSearchParams(window.location.search).entries();for(var[t,e]of n)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_J7qI" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><div class="announcementBar__LN8" style="background-color:var(--ifm-color-primary);color:var(--ifm-color-gray-900)" role="banner"><div class="announcementBarPlaceholder_BsFX"></div><div class="content_Rvq7 announcementBarContent_HJEG"> If you like Woodpecker-CI, <a href="https://github.com/woodpecker-ci/woodpecker" rel="noopener noreferrer" target="_blank">give us a star on GitHub</a> ! ⭐️</div><button type="button" aria-label="Close" class="clean-btn close closeButton_xl9c announcementBarClose_z_hA"><svg viewBox="0 0 15 15" width="14" height="14"><g stroke="currentColor" stroke-width="3.1"><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path></g></svg></button></div><nav aria-label="Main" class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/"><div class="navbar__logo"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_RRMy themedComponent--light__bX7"><img src="/img/logo.svg" alt="Woodpecker Logo" class="themedComponent_RRMy themedComponent--dark_WPqM"></div><b class="navbar__title text--truncate">Woodpecker</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/plugins">Plugins</a><a class="navbar__item navbar__link" href="/blog">Blog</a><div class="navbar__item dropdown dropdown--hoverable"><a aria-haspopup="true" aria-expanded="false" role="button" class="navbar__link" href="/docs/next/cli">More Resources</a><ul class="dropdown__menu"><li><a class="dropdown__link" href="/docs/next/migrations">Migrations</a></li><li><a class="dropdown__link" href="/docs/next/awesome">Awesome</a></li><li><a class="dropdown__link" href="/api">API</a></li></ul></div></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class="navbar__link" aria-haspopup="true" aria-expanded="false" role="button" href="/docs/next/intro">Next 🚧</a><ul class="dropdown__menu"><li><a aria-current="page" class="dropdown__link dropdown__link--active" href="/docs/next/cli">Next 🚧</a></li><li><a class="dropdown__link" href="/docs/cli">2.6.x</a></li><li><a class="dropdown__link" href="/docs/2.5/cli">2.5.x 💀</a></li><li><a class="dropdown__link" href="/docs/2.4/cli">2.4.x 💀</a></li><li><a class="dropdown__link" href="/docs/1.0/cli">1.0.x 💀</a></li><li><a class="dropdown__link" href="/versions">All versions</a></li></ul></div><a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href="https://opencollective.com/woodpecker-ci" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">🧡 Sponsor Us<svg width="13.5" height="13.5" aria-hidden="true" viewBox="0 0 24 24" class="iconExternalLink_wLxt"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"></path></svg></a><div class="toggle_MMvF colorModeToggle_uI07"><button class="clean-btn toggleButton_UTEL toggleButtonDisabled_iIhM" type="button" disabled="" title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live="polite"><svg viewBox="0 0 24 24" width="24" height="24" class="lightToggleIcon_i2Zf"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" class="darkToggleIcon_H_kr"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg></button></div><div class="navbarSearchContainer_RSTG"><div class="navbar__search searchBarContainer_ogmM" dir="ltr"><input placeholder="Search" aria-label="Search" class="navbar__search-input"><div class="loadingRing_hK9r searchBarLoadingRing_psOr"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="main-wrapper mainWrapper_AaM3"><div class="docsWrapper_pkJa"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_zYb_" type="button"></button><div class="docRoot__nLP"><aside class="theme-doc-sidebar-container docSidebarContainer_bgUQ"><div class="sidebarViewport_dvpy"><div class="sidebar_G9if"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SqaT menuWithAnnouncementBar_luyo"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/next/intro">Welcome to Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/next/usage/intro">Usage</a></div><ul style="display:block;overflow:visible;height:auto" class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/intro">Your first pipeline</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/terminology">Terminology</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/workflow-syntax">Workflow syntax</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/workflows">Workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/matrix-workflows">Matrix workflows</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/secrets">Secrets</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/registries">Registries</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/cron">Cron</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/environment">Environment variables</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist" tabindex="0" href="/docs/next/usage/plugins/overview">Plugins</a><button aria-label="Expand sidebar category &#x27;Plugins&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/services">Services</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/volumes">Volumes</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/linter">Linter</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/project-settings">Project settings</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/badges">Status Badges</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/advanced-usage">Advanced usage</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/next/usage/troubleshooting">Troubleshooting</a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/next/administration/getting-started">Administration</a></div></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/docs/next/cli">CLI</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/next/about">About</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/next/migrations">Migrations</a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/next/awesome">Awesome Woodpecker</a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/next/development/getting-started">Development</a></div></li></ul></nav></div></div></aside><main class="docMainContainer_T18I"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_EFkd"><div class="theme-doc-version-banner alert alert--warning margin-bottom--md" role="alert"><div>This is unreleased documentation for <!-- -->Woodpecker CI<!-- --> <b>Next 🚧</b> version.</div><div class="margin-top--md">For up-to-date documentation, see the <b><a href="/docs/cli">latest version</a></b> (<!-- -->2.6.x<!-- -->).</div></div><div class="docItemContainer_uVCO"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_eOiZ" aria-label="Breadcrumbs"><ul class="breadcrumbs" itemscope="" itemtype="https://schema.org/BreadcrumbList"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_t_Qi"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li itemscope="" itemprop="itemListElement" itemtype="https://schema.org/ListItem" class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link" itemprop="name">CLI</span><meta itemprop="position" content="1"></li></ul></nav><span class="theme-doc-version-badge badge badge--secondary">Version: Next 🚧</span><div class="tocCollapsible_JETg theme-doc-toc-mobile tocMobile__KVG"><button type="button" class="clean-btn tocCollapsibleButton_BnXk">On this page</button></div><div class="theme-doc-markdown markdown"><h1>CLI</h1>
 <h1>NAME</h1>
-<p>woodpecker-cli - A new cli application</p>
+<p>woodpecker-cli - command line utility</p>
 <h1>SYNOPSIS</h1>
 <p>woodpecker-cli</p>
 <div class="codeBlockContainer_FHXV theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_f9tK"><pre tabindex="0" class="prism-code language-text codeBlock_K_fh thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_qUTB"><span class="token-line" style="color:#393A34"><span class="token plain">[--config|-c]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--disable-update-check]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--log-file]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--log-level]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--nocolor]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--pretty]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--server|-s]=[value]</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">[--token|-t]=[value]</span><br></span></code></pre><div class="buttonGroup_MWVy"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_vQql" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_Gfhe"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_bLE6"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h1>DESCRIPTION</h1>
 <p>Woodpecker command line utility</p>
 <p><strong>Usage</strong>:</p>
-<div class="codeBlockContainer_FHXV theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_f9tK"><pre tabindex="0" class="prism-code language-text codeBlock_K_fh thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_qUTB"><span class="token-line" style="color:#393A34"><span class="token plain">woodpecker-cli [GLOBAL OPTIONS] command [COMMAND OPTIONS] [ARGUMENTS...]</span><br></span></code></pre><div class="buttonGroup_MWVy"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_vQql" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_Gfhe"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_bLE6"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
+<div class="codeBlockContainer_FHXV theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_f9tK"><pre tabindex="0" class="prism-code language-text codeBlock_K_fh thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_qUTB"><span class="token-line" style="color:#393A34"><span class="token plain">woodpecker-cli [GLOBAL OPTIONS] [command [COMMAND OPTIONS]] [ARGUMENTS...]</span><br></span></code></pre><div class="buttonGroup_MWVy"><button type="button" aria-label="Copy code to clipboard" title="Copy" class="clean-btn"><span class="copyButtonIcons_vQql" aria-hidden="true"><svg viewBox="0 0 24 24" class="copyButtonIcon_Gfhe"><path fill="currentColor" d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"></path></svg><svg viewBox="0 0 24 24" class="copyButtonSuccessIcon_bLE6"><path fill="currentColor" d="M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z"></path></svg></span></button></div></div></div>
 <h1>GLOBAL OPTIONS</h1>
 <p><strong>--config, -c</strong>=&quot;&quot;: path to config file</p>
 <p><strong>--disable-update-check</strong>: disable update check</p>
-<p><strong>--log-file</strong>=&quot;&quot;: Output destination for logs. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords. (default: &quot;stderr&quot;)</p>
-<p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: &quot;info&quot;)</p>
+<p><strong>--log-file</strong>=&quot;&quot;: Output destination for logs. &#x27;stdout&#x27; and &#x27;stderr&#x27; can be used as special keywords. (default: stderr)</p>
+<p><strong>--log-level</strong>=&quot;&quot;: set logging level (default: info)</p>
 <p><strong>--nocolor</strong>: disable colored debug output, only has effect if pretty output is set too</p>
 <p><strong>--pretty</strong>: enable pretty-printed debug output</p>
 <p><strong>--server, -s</strong>=&quot;&quot;: server address</p>
@@ -46,21 +46,21 @@
 <p>manage global registries</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="add">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add">​</a></h4>
 <p>adds a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="rm">rm<a class="hash-link" aria-label="Direct link to rm" title="Direct link to rm" href="/docs/next/cli#rm">​</a></h4>
 <p>remove a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="update">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update">​</a></h4>
 <p>update a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="info">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info">​</a></h4>
 <p>display registry info</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="ls">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls">​</a></h4>
 <p>list registries</p>
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="org">org<a class="hash-link" aria-label="Direct link to org" title="Direct link to org" href="/docs/next/cli#org">​</a></h2>
@@ -69,23 +69,23 @@
 <p>manage organization registries</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="add-1">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-1">​</a></h4>
 <p>adds a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="rm-1">rm<a class="hash-link" aria-label="Direct link to rm" title="Direct link to rm" href="/docs/next/cli#rm-1">​</a></h4>
 <p>remove a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="update-1">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update-1">​</a></h4>
 <p>update a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="info-1">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-1">​</a></h4>
 <p>display registry info</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="ls-1">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls-1">​</a></h4>
 <p>list registries</p>
@@ -94,11 +94,21 @@
 <p>manage repositories</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="ls-2">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls-2">​</a></h3>
 <p>list all repos</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;\x1b[33m{{ .FullName }}\x1b[0m (id: {{ .ID }}, forgeRemoteID: {{ .ForgeRemoteID }})&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: [33m{{ .FullName }}[0m (id: {{ .ID }}, forgeRemoteID: {{ .ForgeRemoteID }}))</p>
 <p><strong>--org</strong>=&quot;&quot;: filter by organization</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="info-2">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-2">​</a></h3>
 <p>show repository details</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;Owner: {{ .Owner }}\nRepo: {{ .Name }}\nURL: {{ .ForgeURL }}\nConfig path: {{ .Config }}\nVisibility: {{ .Visibility }}\nPrivate: {{ .IsSCMPrivate }}\nTrusted: {{ .IsTrusted }}\nGated: {{ .IsGated }}\nClone url: {{ .Clone }}\nAllow pull-requests: {{ .AllowPullRequests }}\n&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: Owner: {{ .Owner }}
+Repo: {{ .Name }}
+URL: {{ .ForgeURL }}
+Config path: {{ .Config }}
+Visibility: {{ .Visibility }}
+Private: {{ .IsSCMPrivate }}
+Trusted: {{ .IsTrusted }}
+Gated: {{ .IsGated }}
+Clone url: {{ .Clone }}
+Allow pull-requests: {{ .AllowPullRequests }}
+)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="add-2">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-2">​</a></h3>
 <p>add a repository</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="update-2">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update-2">​</a></h3>
@@ -118,28 +128,28 @@
 <p>assume ownership of a repository</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="sync">sync<a class="hash-link" aria-label="Direct link to sync" title="Direct link to sync" href="/docs/next/cli#sync">​</a></h3>
 <p>synchronize the repository list</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;\x1b[33m{{ .FullName }}\x1b[0m (id: {{ .ID }}, forgeRemoteID: {{ .ForgeRemoteID }})&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: [33m{{ .FullName }}[0m (id: {{ .ID }}, forgeRemoteID: {{ .ForgeRemoteID }}))</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="registry-2">registry<a class="hash-link" aria-label="Direct link to registry" title="Direct link to registry" href="/docs/next/cli#registry-2">​</a></h3>
 <p>manage registries</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="add-3">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-3">​</a></h4>
 <p>adds a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="rm-3">rm<a class="hash-link" aria-label="Direct link to rm" title="Direct link to rm" href="/docs/next/cli#rm-3">​</a></h4>
 <p>remove a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="update-3">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update-3">​</a></h4>
 <p>update a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="info-3">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-3">​</a></h4>
 <p>display registry info</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <h4 class="anchor anchorWithStickyNavbar_A1xE" id="ls-3">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls-3">​</a></h4>
 <p>list registries</p>
@@ -151,41 +161,52 @@
 <p><strong>--branch</strong>=&quot;&quot;: branch filter</p>
 <p><strong>--event</strong>=&quot;&quot;: event filter</p>
 <p><strong>--limit</strong>=&quot;&quot;: limit the list size (default: 25)</p>
-<p><strong>--output</strong>=&quot;&quot;: output format (default: &quot;table&quot;)</p>
+<p><strong>--output</strong>=&quot;&quot;: output format (default: table)</p>
 <p><strong>--output-no-headers</strong>: don&#x27;t print headers</p>
 <p><strong>--status</strong>=&quot;&quot;: status filter</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="last">last<a class="hash-link" aria-label="Direct link to last" title="Direct link to last" href="/docs/next/cli#last">​</a></h3>
 <p>show latest pipeline details</p>
-<p><strong>--branch</strong>=&quot;&quot;: branch name (default: &quot;main&quot;)</p>
-<p><strong>--output</strong>=&quot;&quot;: output format (default: &quot;table&quot;)</p>
+<p><strong>--branch</strong>=&quot;&quot;: branch name (default: main)</p>
+<p><strong>--output</strong>=&quot;&quot;: output format (default: table)</p>
 <p><strong>--output-no-headers</strong>: don&#x27;t print headers</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="logs">logs<a class="hash-link" aria-label="Direct link to logs" title="Direct link to logs" href="/docs/next/cli#logs">​</a></h3>
 <p>show pipeline logs</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="info-4">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-4">​</a></h3>
 <p>show pipeline details</p>
-<p><strong>--output</strong>=&quot;&quot;: output format (default: &quot;table&quot;)</p>
+<p><strong>--output</strong>=&quot;&quot;: output format (default: table)</p>
 <p><strong>--output-no-headers</strong>: don&#x27;t print headers</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="stop">stop<a class="hash-link" aria-label="Direct link to stop" title="Direct link to stop" href="/docs/next/cli#stop">​</a></h3>
 <p>stop a pipeline</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="start">start<a class="hash-link" aria-label="Direct link to start" title="Direct link to start" href="/docs/next/cli#start">​</a></h3>
 <p>start a pipeline</p>
-<p><strong>--param, -p</strong>=&quot;&quot;: custom parameters to be injected into the step environment. Format: KEY=value</p>
+<p><strong>--param, -p</strong>=&quot;&quot;: custom parameters to be injected into the step environment. Format: KEY=value (default: [])</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="approve">approve<a class="hash-link" aria-label="Direct link to approve" title="Direct link to approve" href="/docs/next/cli#approve">​</a></h3>
 <p>approve a pipeline</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="decline">decline<a class="hash-link" aria-label="Direct link to decline" title="Direct link to decline" href="/docs/next/cli#decline">​</a></h3>
 <p>decline a pipeline</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="queue">queue<a class="hash-link" aria-label="Direct link to queue" title="Direct link to queue" href="/docs/next/cli#queue">​</a></h3>
 <p>show pipeline queue</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;\x1b[33m{{ .FullName }} #{{ .Number }} \x1b[0m\nStatus: {{ .Status }}\nEvent: {{ .Event }}\nCommit: {{ .Commit }}\nBranch: {{ .Branch }}\nRef: {{ .Ref }}\nAuthor: {{ .Author }} {{ if .Email }}&lt;{{.Email}}&gt;{{ end }}\nMessage: {{ .Message }}\n&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: [33m{{ .FullName }} #{{ .Number }} [0m
+Status: {{ .Status }}
+Event: {{ .Event }}
+Commit: {{ .Commit }}
+Branch: {{ .Branch }}
+Ref: {{ .Ref }}
+Author: {{ .Author }} {{ if .Email }}&lt;{{.Email}}&gt;{{ end }}
+Message: {{ .Message }}
+)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="ps">ps<a class="hash-link" aria-label="Direct link to ps" title="Direct link to ps" href="/docs/next/cli#ps">​</a></h3>
 <p>show pipeline steps</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;\x1b[33mStep #{{ .PID }} \x1b[0m\nStep: {{ .Name }}\nState: {{ .State }}\n&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: [33mStep #{{ .PID }} [0m
+Step: {{ .Name }}
+State: {{ .State }}
+)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="create">create<a class="hash-link" aria-label="Direct link to create" title="Direct link to create" href="/docs/next/cli#create">​</a></h3>
 <p>create new pipeline</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch to create pipeline from</p>
-<p><strong>--output</strong>=&quot;&quot;: output format (default: &quot;table&quot;)</p>
+<p><strong>--output</strong>=&quot;&quot;: output format (default: table)</p>
 <p><strong>--output-no-headers</strong>: don&#x27;t print headers</p>
-<p><strong>--var</strong>=&quot;&quot;: key=value</p>
+<p><strong>--var</strong>=&quot;&quot;: key=value (default: [])</p>
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="log">log<a class="hash-link" aria-label="Direct link to log" title="Direct link to log" href="/docs/next/cli#log">​</a></h2>
 <p>manage logs</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="purge">purge<a class="hash-link" aria-label="Direct link to purge" title="Direct link to purge" href="/docs/next/cli#purge">​</a></h3>
@@ -193,10 +214,18 @@
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="deploy">deploy<a class="hash-link" aria-label="Direct link to deploy" title="Direct link to deploy" href="/docs/next/cli#deploy">​</a></h2>
 <p>trigger a pipeline with the &#x27;deployment&#x27; event</p>
 <p><strong>--branch</strong>=&quot;&quot;: branch filter</p>
-<p><strong>--event</strong>=&quot;&quot;: event filter (default: &quot;push&quot;)</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;Number: {{ .Number }}\nStatus: {{ .Status }}\nCommit: {{ .Commit }}\nBranch: {{ .Branch }}\nRef: {{ .Ref }}\nMessage: {{ .Message }}\nAuthor: {{ .Author }}\nTarget: {{ .Deploy }}\n&quot;)</p>
-<p><strong>--param, -p</strong>=&quot;&quot;: custom parameters to be injected into the step environment. Format: KEY=value</p>
-<p><strong>--status</strong>=&quot;&quot;: status filter (default: &quot;success&quot;)</p>
+<p><strong>--event</strong>=&quot;&quot;: event filter (default: push)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: Number: {{ .Number }}
+Status: {{ .Status }}
+Commit: {{ .Commit }}
+Branch: {{ .Branch }}
+Ref: {{ .Ref }}
+Message: {{ .Message }}
+Author: {{ .Author }}
+Target: {{ .Deploy }}
+)</p>
+<p><strong>--param, -p</strong>=&quot;&quot;: custom parameters to be injected into the step environment. Format: KEY=value (default: [])</p>
+<p><strong>--status</strong>=&quot;&quot;: status filter (default: success)</p>
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="exec">exec<a class="hash-link" aria-label="Direct link to exec" title="Direct link to exec" href="/docs/next/cli#exec">​</a></h2>
 <p>execute a local pipeline</p>
 <p><strong>--backend-docker-api-version</strong>=&quot;&quot;: the version of the API to reach, leave empty for latest.</p>
@@ -206,22 +235,22 @@
 <p><strong>--backend-docker-network</strong>=&quot;&quot;: backend docker network</p>
 <p><strong>--backend-docker-tls-verify</strong>: enable or disable TLS verification for connecting to docker server</p>
 <p><strong>--backend-docker-volumes</strong>=&quot;&quot;: backend docker volumes (comma separated)</p>
-<p><strong>--backend-engine</strong>=&quot;&quot;: backend engine to run pipelines on (default: &quot;auto-detect&quot;)</p>
+<p><strong>--backend-engine</strong>=&quot;&quot;: backend engine to run pipelines on (default: auto-detect)</p>
 <p><strong>--backend-http-proxy</strong>=&quot;&quot;: if set, pass the environment variable down as &quot;HTTP_PROXY&quot; to steps</p>
 <p><strong>--backend-https-proxy</strong>=&quot;&quot;: if set, pass the environment variable down as &quot;HTTPS_PROXY&quot; to steps</p>
 <p><strong>--backend-k8s-allow-native-secrets</strong>: whether to allow existing Kubernetes secrets to be referenced from steps</p>
-<p><strong>--backend-k8s-namespace</strong>=&quot;&quot;: backend k8s namespace (default: &quot;woodpecker&quot;)</p>
+<p><strong>--backend-k8s-namespace</strong>=&quot;&quot;: backend k8s namespace (default: woodpecker)</p>
 <p><strong>--backend-k8s-pod-annotations</strong>=&quot;&quot;: backend k8s additional Agent-wide worker pod annotations</p>
 <p><strong>--backend-k8s-pod-annotations-allow-from-step</strong>: whether to allow using annotations from step&#x27;s backend options</p>
-<p><strong>--backend-k8s-pod-image-pull-secret-names</strong>=&quot;&quot;: backend k8s pull secret names for private registries (default: &quot;regcred&quot;)</p>
+<p><strong>--backend-k8s-pod-image-pull-secret-names</strong>=&quot;&quot;: backend k8s pull secret names for private registries (default: [regcred])</p>
 <p><strong>--backend-k8s-pod-labels</strong>=&quot;&quot;: backend k8s additional Agent-wide worker pod labels</p>
 <p><strong>--backend-k8s-pod-labels-allow-from-step</strong>: whether to allow using labels from step&#x27;s backend options</p>
 <p><strong>--backend-k8s-pod-node-selector</strong>=&quot;&quot;: backend k8s Agent-wide worker pod node selector</p>
 <p><strong>--backend-k8s-secctx-nonroot</strong>: <code>run as non root</code> Kubernetes security context option</p>
 <p><strong>--backend-k8s-storage-class</strong>=&quot;&quot;: backend k8s storage class</p>
 <p><strong>--backend-k8s-storage-rwx</strong>: backend k8s storage access mode, should ReadWriteMany (RWX) instead of ReadWriteOnce (RWO) be used? (default: true)</p>
-<p><strong>--backend-k8s-volume-size</strong>=&quot;&quot;: backend k8s volume size (default 10G) (default: &quot;10G&quot;)</p>
-<p><strong>--backend-local-temp-dir</strong>=&quot;&quot;: set a different temp dir to clone workflows into (default: &quot;/tmp&quot;)</p>
+<p><strong>--backend-k8s-volume-size</strong>=&quot;&quot;: backend k8s volume size (default 10G) (default: 10G)</p>
+<p><strong>--backend-local-temp-dir</strong>=&quot;&quot;: set a different temp dir to clone workflows into (default: /tmp)</p>
 <p><strong>--backend-no-proxy</strong>=&quot;&quot;: if set, pass the environment variable down as &quot;NO_PROXY&quot; to steps</p>
 <p><strong>--commit-author-avatar</strong>=&quot;&quot;:</p>
 <p><strong>--commit-author-email</strong>=&quot;&quot;:</p>
@@ -231,18 +260,18 @@
 <p><strong>--commit-ref</strong>=&quot;&quot;:</p>
 <p><strong>--commit-refspec</strong>=&quot;&quot;:</p>
 <p><strong>--commit-sha</strong>=&quot;&quot;:</p>
-<p><strong>--env</strong>=&quot;&quot;:</p>
+<p><strong>--env</strong>=&quot;&quot;:  (default: [])</p>
 <p><strong>--forge-type</strong>=&quot;&quot;:</p>
 <p><strong>--forge-url</strong>=&quot;&quot;:</p>
 <p><strong>--local</strong>: run from local directory</p>
 <p><strong>--netrc-machine</strong>=&quot;&quot;:</p>
 <p><strong>--netrc-password</strong>=&quot;&quot;:</p>
 <p><strong>--netrc-username</strong>=&quot;&quot;:</p>
-<p><strong>--network</strong>=&quot;&quot;: external networks</p>
+<p><strong>--network</strong>=&quot;&quot;: external networks (default: [])</p>
 <p><strong>--pipeline-created</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--pipeline-deploy-task</strong>=&quot;&quot;:</p>
 <p><strong>--pipeline-deploy-to</strong>=&quot;&quot;:</p>
-<p><strong>--pipeline-event</strong>=&quot;&quot;:  (default: &quot;manual&quot;)</p>
+<p><strong>--pipeline-event</strong>=&quot;&quot;:  (default: manual)</p>
 <p><strong>--pipeline-finished</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--pipeline-number</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--pipeline-parent</strong>=&quot;&quot;:  (default: 0)</p>
@@ -264,7 +293,7 @@
 <p><strong>--prev-pipeline-started</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--prev-pipeline-status</strong>=&quot;&quot;:</p>
 <p><strong>--prev-pipeline-url</strong>=&quot;&quot;:</p>
-<p><strong>--privileged</strong>=&quot;&quot;: privileged plugins (default: &quot;plugins/docker&quot;, &quot;plugins/gcr&quot;, &quot;plugins/ecr&quot;, &quot;woodpeckerci/plugin-docker-buildx&quot;, &quot;codeberg.org/woodpecker-plugins/docker-buildx&quot;)</p>
+<p><strong>--privileged</strong>=&quot;&quot;: privileged plugins (default: [plugins/docker plugins/gcr plugins/ecr woodpeckerci/plugin-docker-buildx codeberg.org/woodpecker-plugins/docker-buildx])</p>
 <p><strong>--repo</strong>=&quot;&quot;: full repo name</p>
 <p><strong>--repo-clone-ssh-url</strong>=&quot;&quot;:</p>
 <p><strong>--repo-clone-url</strong>=&quot;&quot;:</p>
@@ -274,38 +303,38 @@
 <p><strong>--repo-trusted</strong>:</p>
 <p><strong>--repo-url</strong>=&quot;&quot;:</p>
 <p><strong>--step-name</strong>=&quot;&quot;:  (default: 0)</p>
-<p><strong>--system-name</strong>=&quot;&quot;:  (default: &quot;woodpecker&quot;)</p>
+<p><strong>--system-name</strong>=&quot;&quot;:  (default: woodpecker)</p>
 <p><strong>--system-platform</strong>=&quot;&quot;:</p>
-<p><strong>--system-url</strong>=&quot;&quot;:  (default: &quot;<a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer">https://github.com/woodpecker-ci/woodpecker</a>&quot;)</p>
+<p><strong>--system-url</strong>=&quot;&quot;:  (default: <a href="https://github.com/woodpecker-ci/woodpecker" target="_blank" rel="noopener noreferrer">https://github.com/woodpecker-ci/woodpecker</a>)</p>
 <p><strong>--timeout</strong>=&quot;&quot;: pipeline timeout (default: 1h0m0s)</p>
-<p><strong>--volumes</strong>=&quot;&quot;: pipeline volumes</p>
+<p><strong>--volumes</strong>=&quot;&quot;: pipeline volumes (default: [])</p>
 <p><strong>--workflow-name</strong>=&quot;&quot;:  (default: 0)</p>
 <p><strong>--workflow-number</strong>=&quot;&quot;:  (default: 0)</p>
-<p><strong>--workspace-base</strong>=&quot;&quot;:  (default: &quot;/woodpecker&quot;)</p>
-<p><strong>--workspace-path</strong>=&quot;&quot;:  (default: &quot;src&quot;)</p>
+<p><strong>--workspace-base</strong>=&quot;&quot;:  (default: /woodpecker)</p>
+<p><strong>--workspace-path</strong>=&quot;&quot;:  (default: src)</p>
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="info-5">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-5">​</a></h2>
 <p>show information about the current user</p>
 <h2 class="anchor anchorWithStickyNavbar_A1xE" id="registry-3">registry<a class="hash-link" aria-label="Direct link to registry" title="Direct link to registry" href="/docs/next/cli#registry-3">​</a></h2>
 <p>manage registries</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="add-4">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-4">​</a></h3>
 <p>adds a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="rm-4">rm<a class="hash-link" aria-label="Direct link to rm" title="Direct link to rm" href="/docs/next/cli#rm-4">​</a></h3>
 <p>remove a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="update-4">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update-4">​</a></h3>
 <p>update a registry</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--password</strong>=&quot;&quot;: registry password</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <p><strong>--username</strong>=&quot;&quot;: registry username</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="info-6">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-6">​</a></h3>
 <p>display registry info</p>
-<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: &quot;docker.io&quot;)</p>
+<p><strong>--hostname</strong>=&quot;&quot;: registry hostname (default: docker.io)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="ls-5">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls-5">​</a></h3>
 <p>list registries</p>
@@ -314,9 +343,9 @@
 <p>manage secrets</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="add-5">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-5">​</a></h3>
 <p>adds a secret</p>
-<p><strong>--event</strong>=&quot;&quot;: secret limited to these events</p>
+<p><strong>--event</strong>=&quot;&quot;: secret limited to these events (default: [])</p>
 <p><strong>--global</strong>: global secret</p>
-<p><strong>--image</strong>=&quot;&quot;: secret limited to these images</p>
+<p><strong>--image</strong>=&quot;&quot;: secret limited to these images (default: [])</p>
 <p><strong>--name</strong>=&quot;&quot;: secret name</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
@@ -329,9 +358,9 @@
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="update-5">update<a class="hash-link" aria-label="Direct link to update" title="Direct link to update" href="/docs/next/cli#update-5">​</a></h3>
 <p>update a secret</p>
-<p><strong>--event</strong>=&quot;&quot;: secret limited to these events</p>
+<p><strong>--event</strong>=&quot;&quot;: secret limited to these events (default: [])</p>
 <p><strong>--global</strong>: global secret</p>
-<p><strong>--image</strong>=&quot;&quot;: secret limited to these images</p>
+<p><strong>--image</strong>=&quot;&quot;: secret limited to these images (default: [])</p>
 <p><strong>--name</strong>=&quot;&quot;: secret name</p>
 <p><strong>--organization, --org</strong>=&quot;&quot;: organization id or full name (e.g. 123 or octocat)</p>
 <p><strong>--repository, --repo</strong>=&quot;&quot;: repository id or full name (e.g. 134 or octocat/hello-world)</p>
@@ -351,10 +380,11 @@
 <p>manage users</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="ls-7">ls<a class="hash-link" aria-label="Direct link to ls" title="Direct link to ls" href="/docs/next/cli#ls-7">​</a></h3>
 <p>list all users</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;{{ .Login }}&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: {{ .Login }})</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="info-8">info<a class="hash-link" aria-label="Direct link to info" title="Direct link to info" href="/docs/next/cli#info-8">​</a></h3>
 <p>show user details</p>
-<p><strong>--format</strong>=&quot;&quot;: format output (default: &quot;User: {{ .Login }}\nEmail: {{ .Email }}&quot;)</p>
+<p><strong>--format</strong>=&quot;&quot;: format output (default: User: {{ .Login }}
+Email: {{ .Email }})</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="add-6">add<a class="hash-link" aria-label="Direct link to add" title="Direct link to add" href="/docs/next/cli#add-6">​</a></h3>
 <p>adds a user</p>
 <h3 class="anchor anchorWithStickyNavbar_A1xE" id="rm-6">rm<a class="hash-link" aria-label="Direct link to rm" title="Direct link to rm" href="/docs/next/cli#rm-6">​</a></h3>
