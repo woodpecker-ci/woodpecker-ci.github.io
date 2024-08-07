@@ -47,8 +47,7 @@ components:
       properties:
         branch:
           type: string
-        created_at:
-          description: TODO change JSON field to "created" in 3.0
+        created:
           type: integer
         creator_id:
           type: integer
@@ -76,13 +75,11 @@ components:
           type: string
         commit:
           type: string
-        created_at:
-          description: TODO change JSON field to "created" in 3.0
+        created:
           type: integer
         event:
           type: string
-        finished_at:
-          description: TODO change JSON field to "finished" in 3.0
+        finished:
           type: integer
         id:
           type: integer
@@ -96,8 +93,7 @@ components:
           type: string
         repo_id:
           type: integer
-        started_at:
-          description: TODO change JSON field to "started" in 3.0
+        started:
           type: integer
         status:
           type: string
@@ -203,8 +199,7 @@ components:
           type: array
         commit:
           type: string
-        created_at:
-          description: TODO change JSON field to "created" in 3.0
+        created:
           type: integer
         deploy_task:
           type: string
@@ -216,8 +211,7 @@ components:
           type: array
         event:
           $ref: '#/components/schemas/WebhookEvent'
-        finished_at:
-          description: TODO change JSON field to "finished" in 3.0
+        finished:
           type: integer
         forge_url:
           type: string
@@ -239,16 +233,14 @@ components:
           type: string
         refspec:
           type: string
-        reviewed_at:
-          description: TODO change JSON field to "reviewed" in 3.0
+        reviewed:
           type: integer
         reviewed_by:
           type: string
         sender:
           description: uses reported user for webhooks and name of cron for cron pipelines
           type: string
-        started_at:
-          description: TODO change JSON field to "started" in 3.0
+        started:
           type: integer
         status:
           $ref: '#/components/schemas/StatusValue'
@@ -256,8 +248,7 @@ components:
           type: integer
         title:
           type: string
-        updated_at:
-          description: TODO change JSON field to "updated" in 3.0
+        updated:
           type: integer
         variables:
           additionalProperties:
@@ -462,11 +453,11 @@ components:
         - StatusCreated
     Step:
       properties:
-        end_time:
-          type: integer
         error:
           type: string
         exit_code:
+          type: integer
+        finished:
           type: integer
         id:
           type: integer
@@ -478,7 +469,7 @@ components:
           type: integer
         ppid:
           type: integer
-        start_time:
+        started:
           type: integer
         state:
           $ref: '#/components/schemas/StatusValue'
@@ -610,14 +601,14 @@ components:
           items:
             $ref: '#/components/schemas/Step'
           type: array
-        end_time:
-          type: integer
         environ:
           additionalProperties:
             type: string
           type: object
         error:
           type: string
+        finished:
+          type: integer
         id:
           type: integer
         name:
@@ -628,7 +619,7 @@ components:
           type: integer
         platform:
           type: string
-        start_time:
+        started:
           type: integer
         state:
           $ref: '#/components/schemas/StatusValue'
