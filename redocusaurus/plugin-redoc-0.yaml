@@ -496,10 +496,6 @@ components:
       properties:
         agent_id:
           type: integer
-        data:
-          items:
-            type: integer
-          type: array
         dep_status:
           additionalProperties:
             $ref: '#/components/schemas/StatusValue'
