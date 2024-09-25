@@ -571,6 +571,149 @@ components:
         - EventDeploy
         - EventCron
         - EventManual
+    metadata.Author:
+      properties:
+        avatar:
+          type: string
+        email:
+          type: string
+        name:
+          type: string
+      type: object
+    metadata.Commit:
+      properties:
+        author:
+          $ref: '#/components/schemas/metadata.Author'
+        branch:
+          type: string
+        changed_files:
+          items:
+            type: string
+          type: array
+        is_prerelease:
+          type: boolean
+        labels:
+          items:
+            type: string
+          type: array
+        message:
+          type: string
+        ref:
+          type: string
+        refspec:
+          type: string
+        sha:
+          type: string
+      type: object
+    metadata.Forge:
+      properties:
+        type:
+          type: string
+        url:
+          type: string
+      type: object
+    metadata.Metadata:
+      properties:
+        curr:
+          $ref: '#/components/schemas/metadata.Pipeline'
+        forge:
+          $ref: '#/components/schemas/metadata.Forge'
+        id:
+          type: string
+        prev:
+          $ref: '#/components/schemas/metadata.Pipeline'
+        repo:
+          $ref: '#/components/schemas/metadata.Repo'
+        step:
+          $ref: '#/components/schemas/metadata.Step'
+        sys:
+          $ref: '#/components/schemas/metadata.System'
+        workflow:
+          $ref: '#/components/schemas/metadata.Workflow'
+      type: object
+    metadata.Pipeline:
+      properties:
+        commit:
+          $ref: '#/components/schemas/metadata.Commit'
+        created:
+          type: integer
+        cron:
+          type: string
+        event:
+          type: string
+        finished:
+          type: integer
+        forge_url:
+          type: string
+        number:
+          type: integer
+        parent:
+          type: integer
+        started:
+          type: integer
+        status:
+          type: string
+        target:
+          type: string
+        task:
+          type: string
+      type: object
+    metadata.Repo:
+      properties:
+        clone_url:
+          type: string
+        clone_url_ssh:
+          type: string
+        default_branch:
+          type: string
+        forge_url:
+          type: string
+        id:
+          type: integer
+        name:
+          type: string
+        owner:
+          type: string
+        private:
+          type: boolean
+        remote_id:
+          type: string
+        scm:
+          type: string
+        trusted:
+          type: boolean
+      type: object
+    metadata.Step:
+      properties:
+        name:
+          type: string
+        number:
+          type: integer
+      type: object
+    metadata.System:
+      properties:
+        arch:
+          type: string
+        host:
+          type: string
+        name:
+          type: string
+        url:
+          type: string
+        version:
+          type: string
+      type: object
+    metadata.Workflow:
+      properties:
+        matrix:
+          additionalProperties:
+            type: string
+          type: object
+        name:
+          type: string
+        number:
+          type: integer
+      type: object
     model.ForgeType:
       enum:
         - github
@@ -2966,6 +3109,40 @@ paths:
                 $ref: '#/components/schemas/Pipeline'
           description: OK
       summary: Decline a pipeline
+      tags:
+        - Pipelines
+  /repos/{repo_id}/pipelines/{number}/metadata:
+    get:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          schema:
+            type: integer
+        - description: the number of the pipeline
+          in: path
+          name: number
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/metadata.Metadata'
+          description: OK
+      summary: >-
+        Get metadata for a pipeline or a specific workflow, including previous
+        pipeline info
       tags:
         - Pipelines
   /repos/{repo_id}/pull_requests:
