@@ -21,6 +21,11 @@ components:
           type: string
         no_schedule:
           type: boolean
+        org_id:
+          description: >-
+            OrgID is counted as unset if set to -1, this is done to ensure a
+            new(Agent) still enforce the OrgID check by default
+          type: integer
         owner_id:
           type: integer
         platform:
@@ -871,7 +876,7 @@ paths:
       summary: Create a new agent
       tags:
         - Agents
-  /agents/{agent}:
+  /agents/{agent_id}:
     delete:
       parameters:
         - description: Insert your personal access token
@@ -951,7 +956,7 @@ paths:
       summary: Update an agent
       tags:
         - Agents
-  /agents/{agent}/tasks:
+  /agents/{agent_id}/tasks:
     get:
       parameters:
         - description: Insert your personal access token
@@ -1575,6 +1580,149 @@ paths:
       summary: Get an organization
       tags:
         - Organization
+  /orgs/{org_id}/agents:
+    get:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organization's id
+          in: path
+          name: org_id
+          required: true
+          schema:
+            type: integer
+        - description: for response pagination, page offset number
+          in: query
+          name: page
+          schema:
+            default: 1
+            type: integer
+        - description: for response pagination, max items per page
+          in: query
+          name: perPage
+          schema:
+            default: 50
+            type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Agent'
+                type: array
+          description: OK
+      summary: List agents for an organization
+      tags:
+        - Agents
+    post:
+      description: >-
+        Creates a new agent with a random token, scoped to the specified
+        organization
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organization's id
+          in: path
+          name: org_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Agent'
+        description: the agent's data (only 'name' and 'no_schedule' are read)
+        required: true
+        x-originalParamName: agent
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+          description: OK
+      summary: Create a new organization-scoped agent
+      tags:
+        - Agents
+  /orgs/{org_id}/agents/{agent_id}:
+    delete:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organization's id
+          in: path
+          name: org_id
+          required: true
+          schema:
+            type: integer
+        - description: the agent's id
+          in: path
+          name: agent_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No Content
+      summary: Delete an organization-scoped agent
+      tags:
+        - Agents
+    patch:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organization's id
+          in: path
+          name: org_id
+          required: true
+          schema:
+            type: integer
+        - description: the agent's id
+          in: path
+          name: agent_id
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Agent'
+        description: the agent's updated data
+        required: true
+        x-originalParamName: agent
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Agent'
+          description: OK
+      summary: Update an organization-scoped agent
+      tags:
+        - Agents
   /orgs/{org_id}/permissions:
     get:
       parameters:
