@@ -8,6 +8,10 @@ components:
           type: integer
         created:
           type: integer
+        custom_labels:
+          additionalProperties:
+            type: string
+          type: object
         id:
           type: integer
         last_contact:
