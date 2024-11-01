@@ -355,7 +355,7 @@ components:
         timeout:
           type: integer
         trusted:
-          type: boolean
+          $ref: '#/components/schemas/model.TrustedConfiguration'
         visibility:
           $ref: '#/components/schemas/RepoVisibility'
       type: object
@@ -378,7 +378,7 @@ components:
         timeout:
           type: integer
         trusted:
-          type: boolean
+          $ref: '#/components/schemas/model.TrustedConfigurationPatch'
         visibility:
           type: string
       type: object
@@ -690,7 +690,7 @@ components:
         scm:
           type: string
         trusted:
-          type: boolean
+          $ref: '#/components/schemas/metadata.TrustedConfiguration'
       type: object
     metadata.Step:
       properties:
@@ -711,6 +711,15 @@ components:
           type: string
         version:
           type: string
+      type: object
+    metadata.TrustedConfiguration:
+      properties:
+        network:
+          type: boolean
+        security:
+          type: boolean
+        volumes:
+          type: boolean
       type: object
     metadata.Workflow:
       properties:
@@ -741,6 +750,24 @@ components:
         - ForgeTypeBitbucket
         - ForgeTypeBitbucketDatacenter
         - ForgeTypeAddon
+    model.TrustedConfiguration:
+      properties:
+        network:
+          type: boolean
+        security:
+          type: boolean
+        volumes:
+          type: boolean
+      type: object
+    model.TrustedConfigurationPatch:
+      properties:
+        network:
+          type: boolean
+        security:
+          type: boolean
+        volumes:
+          type: boolean
+      type: object
     model.Workflow:
       properties:
         agent_id:
