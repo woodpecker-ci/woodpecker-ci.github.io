@@ -42,7 +42,7 @@ be removed in the next major release:</p>
 <li>Use <code>WOODPECKER_EXPERT_FORGE_OAUTH_HOST</code> instead of <code>WOODPECKER_DEV_GITEA_OAUTH_URL</code> or <code>WOODPECKER_DEV_OAUTH_HOST</code></li>
 <li>Deprecated <code>WOODPECKER_WEBHOOK_HOST</code> in favor of <code>WOODPECKER_EXPERT_WEBHOOK_HOST</code></li>
 </ul>
-<p>For a full list of deprecations that will be dropped in the <code>next</code> major release <code>3.0.0</code> (no eta yet), please check the <a href="https://woodpecker-ci.org/docs/migrations#next">migrations</a> section.</p>]]></content>
+<p>For a full list of deprecations that will be dropped in the <code>next</code> major release <code>3.0.0</code> (no eta yet), please check the <a href="https://woodpecker-ci.org/migrations#next">migrations</a> section.</p>]]></content>
         <author>
             <name>Anbraten</name>
             <uri>https://github.com/anbraten</uri>
@@ -186,7 +186,7 @@ As an alternative, you can install an agent running the local backend directly o
 <h3 class="anchor anchorWithStickyNavbar_QmVW" id="removed-plugin-only-option-from-secrets">Removed plugin-only option from secrets<a href="https://woodpecker-ci.org/blog/release-v200#removed-plugin-only-option-from-secrets" class="hash-link" aria-label="Direct link to Removed plugin-only option from secrets" title="Direct link to Removed plugin-only option from secrets">​</a></h3>
 <p>Security is pretty important to us and we want to make sure that no one can steal your secrets. Therefore, we decided to remove the plugin-only option from secrets and instead, if you define an image filter, it will be automatically only available to plugins using the defined image names.</p>
 <h2 class="anchor anchorWithStickyNavbar_QmVW" id="migration-notes">Migration notes<a href="https://woodpecker-ci.org/blog/release-v200#migration-notes" class="hash-link" aria-label="Direct link to Migration notes" title="Direct link to Migration notes">​</a></h2>
-<p>There have been a few more breaking changes. <a href="https://woodpecker-ci.org/docs/migrations#200">Read more about what you need to do when upgrading!</a></p>
+<p>There have been a few more breaking changes. <a href="https://woodpecker-ci.org/migrations#200">Read more about what you need to do when upgrading!</a></p>
 <h2 class="anchor anchorWithStickyNavbar_QmVW" id="new-features">New features<a href="https://woodpecker-ci.org/blog/release-v200#new-features" class="hash-link" aria-label="Direct link to New features" title="Direct link to New features">​</a></h2>
 <p>But that's enough about breaking changes. Let's talk about the new features!</p>
 <h3 class="anchor anchorWithStickyNavbar_QmVW" id="config-warnings-and-errors-in-the-ui">Config warnings and errors in the UI<a href="https://woodpecker-ci.org/blog/release-v200#config-warnings-and-errors-in-the-ui" class="hash-link" aria-label="Direct link to Config warnings and errors in the UI" title="Direct link to Config warnings and errors in the UI">​</a></h3>
