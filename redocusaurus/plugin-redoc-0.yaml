@@ -224,6 +224,8 @@ components:
           type: integer
         forge_url:
           type: string
+        from_fork:
+          type: boolean
         id:
           type: integer
         is_prerelease:
@@ -334,8 +336,6 @@ components:
           type: string
         full_name:
           type: string
-        gated:
-          type: boolean
         id:
           type: integer
         name:
@@ -350,6 +350,8 @@ components:
           type: boolean
         private:
           type: boolean
+        require_approval:
+          $ref: '#/components/schemas/model.ApprovalMode'
         scm:
           $ref: '#/components/schemas/SCMKind'
         timeout:
@@ -372,9 +374,14 @@ components:
         config_file:
           type: string
         gated:
+          description: >-
+            TODO: deprecated in favor of RequireApproval => Remove in next major
+            release
           type: boolean
         netrc_only_trusted:
           type: boolean
+        require_approval:
+          type: string
         timeout:
           type: integer
         trusted:
@@ -732,6 +739,23 @@ components:
         number:
           type: integer
       type: object
+    model.ApprovalMode:
+      enum:
+        - none
+        - forks
+        - pull_requests
+        - all_events
+      type: string
+      x-enum-comments:
+        RequireApprovalAllEvents: require approval for all external events
+        RequireApprovalForks: require approval for PRs from forks (default)
+        RequireApprovalNone: require approval for no events
+        RequireApprovalPullRequests: require approval for all PRs
+      x-enum-varnames:
+        - RequireApprovalNone
+        - RequireApprovalForks
+        - RequireApprovalPullRequests
+        - RequireApprovalAllEvents
     model.ForgeType:
       enum:
         - github
