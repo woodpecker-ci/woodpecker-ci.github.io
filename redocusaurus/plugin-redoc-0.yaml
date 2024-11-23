@@ -855,7 +855,7 @@ components:
         - PipelineErrorTypeBadHabit
 info:
   contact:
-    name: Woodpecker CI Community
+    name: Woodpecker CI
     url: https://woodpecker-ci.org/
   description: >-
     Woodpecker is a simple, yet powerful CI/CD engine with great extensibility.
@@ -943,7 +943,7 @@ paths:
             type: string
         - description: the agent's id
           in: path
-          name: agent
+          name: agent_id
           required: true
           schema:
             type: integer
@@ -964,7 +964,7 @@ paths:
             type: string
         - description: the agent's id
           in: path
-          name: agent
+          name: agent_id
           required: true
           schema:
             type: integer
@@ -989,7 +989,7 @@ paths:
             type: string
         - description: the agent's id
           in: path
-          name: agent
+          name: agent_id
           required: true
           schema:
             type: integer
@@ -1023,7 +1023,7 @@ paths:
             type: string
         - description: the agent's id
           in: path
-          name: agent
+          name: agent_id
           required: true
           schema:
             type: integer
@@ -4210,14 +4210,12 @@ paths:
           content:
             application/json:
               schema:
-                allOf:
-                  - type: string
-                  - properties:
-                      source:
-                        type: string
-                      version:
-                        type: string
-                    type: object
+                properties:
+                  source:
+                    type: string
+                  version:
+                    type: string
+                type: object
           description: OK
       summary: Get version
       tags:
