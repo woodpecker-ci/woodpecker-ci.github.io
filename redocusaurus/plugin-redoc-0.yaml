@@ -340,8 +340,10 @@ components:
           type: integer
         name:
           type: string
-        netrc_only_trusted:
-          type: boolean
+        netrc_trusted:
+          items:
+            type: string
+          type: array
         org_id:
           type: integer
         owner:
@@ -378,8 +380,10 @@ components:
             TODO: deprecated in favor of RequireApproval => Remove in next major
             release
           type: boolean
-        netrc_only_trusted:
-          type: boolean
+        netrc_trusted:
+          items:
+            type: string
+          type: array
         require_approval:
           type: string
         timeout:
