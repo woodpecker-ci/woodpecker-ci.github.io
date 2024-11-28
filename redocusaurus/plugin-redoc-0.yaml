@@ -3046,6 +3046,21 @@ paths:
           name: after
           schema:
             type: string
+        - description: filter pipelines by branch
+          in: query
+          name: branch
+          schema:
+            type: string
+        - description: filter pipelines by webhook events (comma separated)
+          in: query
+          name: event
+          schema:
+            type: string
+        - description: filter pipelines by strings contained in ref
+          in: query
+          name: ref
+          schema:
+            type: string
       responses:
         '200':
           content:
