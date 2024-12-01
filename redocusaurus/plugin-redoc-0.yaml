@@ -3061,6 +3061,11 @@ paths:
           name: ref
           schema:
             type: string
+        - description: filter pipelines by status
+          in: query
+          name: status
+          schema:
+            type: string
       responses:
         '200':
           content:
