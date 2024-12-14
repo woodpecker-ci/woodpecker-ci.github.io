@@ -153,12 +153,6 @@ components:
         - 3
         - 4
       type: integer
-      x-enum-varnames:
-        - LogEntryStdout
-        - LogEntryStderr
-        - LogEntryExitCode
-        - LogEntryMetadata
-        - LogEntryProgress
     Org:
       properties:
         forge_id:
@@ -399,10 +393,6 @@ components:
         - private
         - internal
       type: string
-      x-enum-varnames:
-        - VisibilityPublic
-        - VisibilityPrivate
-        - VisibilityInternal
     SCMKind:
       enum:
         - git
@@ -410,11 +400,6 @@ components:
         - fossil
         - perforce
       type: string
-      x-enum-varnames:
-        - RepoGit
-        - RepoHg
-        - RepoFossil
-        - RepoPerforce
     Secret:
       properties:
         events:
@@ -449,28 +434,6 @@ components:
         - declined
         - created
       type: string
-      x-enum-comments:
-        StatusBlocked: waiting for approval
-        StatusCreated: created / internal use only
-        StatusDeclined: blocked and declined
-        StatusError: error with the config / while parsing / some other system problem
-        StatusFailure: failed to finish (exit code != 0)
-        StatusKilled: killed by user
-        StatusPending: pending to be executed
-        StatusRunning: currently running
-        StatusSkipped: skipped as another step failed
-        StatusSuccess: successfully finished
-      x-enum-varnames:
-        - StatusSkipped
-        - StatusPending
-        - StatusRunning
-        - StatusSuccess
-        - StatusFailure
-        - StatusKilled
-        - StatusError
-        - StatusBlocked
-        - StatusDeclined
-        - StatusCreated
     Step:
       properties:
         error:
@@ -506,12 +469,6 @@ components:
         - commands
         - cache
       type: string
-      x-enum-varnames:
-        - StepTypeClone
-        - StepTypeService
-        - StepTypePlugin
-        - StepTypeCommands
-        - StepTypeCache
     Task:
       properties:
         agent_id:
@@ -582,15 +539,6 @@ components:
         - cron
         - manual
       type: string
-      x-enum-varnames:
-        - EventPush
-        - EventPull
-        - EventPullClosed
-        - EventTag
-        - EventRelease
-        - EventDeploy
-        - EventCron
-        - EventManual
     metadata.Author:
       properties:
         avatar:
@@ -750,16 +698,6 @@ components:
         - pull_requests
         - all_events
       type: string
-      x-enum-comments:
-        RequireApprovalAllEvents: require approval for all external events
-        RequireApprovalForks: require approval for PRs from forks (default)
-        RequireApprovalNone: require approval for no events
-        RequireApprovalPullRequests: require approval for all PRs
-      x-enum-varnames:
-        - RequireApprovalNone
-        - RequireApprovalForks
-        - RequireApprovalPullRequests
-        - RequireApprovalAllEvents
     model.ForgeType:
       enum:
         - github
@@ -770,14 +708,6 @@ components:
         - bitbucket-dc
         - addon
       type: string
-      x-enum-varnames:
-        - ForgeTypeGithub
-        - ForgeTypeGitlab
-        - ForgeTypeGitea
-        - ForgeTypeForgejo
-        - ForgeTypeBitbucket
-        - ForgeTypeBitbucketDatacenter
-        - ForgeTypeAddon
     model.TrustedConfiguration:
       properties:
         network:
@@ -845,18 +775,6 @@ components:
         - generic
         - bad_habit
       type: string
-      x-enum-comments:
-        PipelineErrorTypeBadHabit: some bad-habit error
-        PipelineErrorTypeCompiler: some error with the config semantics
-        PipelineErrorTypeDeprecation: using some deprecated feature
-        PipelineErrorTypeGeneric: some generic error
-        PipelineErrorTypeLinter: some error with the config syntax
-      x-enum-varnames:
-        - PipelineErrorTypeLinter
-        - PipelineErrorTypeDeprecation
-        - PipelineErrorTypeCompiler
-        - PipelineErrorTypeGeneric
-        - PipelineErrorTypeBadHabit
 info:
   contact:
     name: Woodpecker CI
