@@ -1,69 +1,235 @@
-<!doctype html><html lang=en dir=ltr class="mdx-wrapper mdx-page plugin-pages plugin-id-default" data-has-hydrated=false><meta charset=UTF-8><meta name=generator content="Docusaurus v3.6.3"><title data-rh=true>Migrations | Woodpecker CI</title><meta data-rh=true name=viewport content="width=device-width,initial-scale=1.0"><meta data-rh=true name=twitter:card content=summary_large_image><meta data-rh=true property=og:url content=https://woodpecker-ci.org/migrations><meta data-rh=true property=og:locale content=en><meta data-rh=true name=docusaurus_locale content=en><meta data-rh=true name=docusaurus_tag content=default><meta data-rh=true name=docsearch:language content=en><meta data-rh=true name=docsearch:docusaurus_tag content=default><meta data-rh=true property=og:title content="Migrations | Woodpecker CI"><meta data-rh=true name=description content="Some versions need some changes to the server configuration or the pipeline configuration files. If you are an user check the User migrations section of an version. As an admin of a Woodpecker server or agent check the Admin migrations section."><meta data-rh=true property=og:description content="Some versions need some changes to the server configuration or the pipeline configuration files. If you are an user check the User migrations section of an version. As an admin of a Woodpecker server or agent check the Admin migrations section."><link data-rh=true rel=canonical href=https://woodpecker-ci.org/migrations><link data-rh=true rel=alternate href=https://woodpecker-ci.org/migrations hreflang=en><link data-rh=true rel=alternate href=https://woodpecker-ci.org/migrations hreflang=x-default><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="Woodpecker CI RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="Woodpecker CI Atom Feed"><link rel=icon href=/img/favicon.ico sizes=any><link rel=icon href=/img/favicon.svg type=image/svg+xml><link href=https://floss.social/@WoodpeckerCI rel=me><link rel=stylesheet href=/assets/css/styles.51e8b14c.css><script src=/assets/js/runtime~main.0af62d6f.js defer></script><script src=/assets/js/main.755548ea.js defer></script><body class=navigation-with-keyboard><script>!function(){var t,e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t=null!==e?e:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":(window.matchMedia("(prefers-color-scheme: light)").matches,"light"),document.documentElement.setAttribute("data-theme",t)}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id=__docusaurus><div role=region aria-label="Skip to main content"><a class=skipToContent_syZr href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><div class=announcementBar_jwf5 style=background-color:var(--ifm-color-primary);color:var(--ifm-color-gray-900) role=banner><div class=announcementBarPlaceholder_uvx1></div><div class="content_oRA8 announcementBarContent_xoiQ"> If you like Woodpecker-CI, <a href=https://github.com/woodpecker-ci/woodpecker rel="noopener noreferrer" target=_blank>give us a star on GitHub</a> ! ⭐️</div><button type=button aria-label=Close class="clean-btn close closeButton_bpj1 announcementBarClose_tU6C"><svg viewBox="0 0 15 15" width=14 height=14><g stroke=currentColor stroke-width=3.1><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg></button></div><nav aria-label=Main class="navbar navbar--fixed-top"><div class=navbar__inner><div class=navbar__items><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.svg alt="Woodpecker Logo" class="themedComponent_CM2F themedComponent--light_XTTn"><img src=/img/logo.svg alt="Woodpecker Logo" class="themedComponent_CM2F themedComponent--dark_U5H9"></div><b class="navbar__title text--truncate">Woodpecker</b></a><a class="navbar__item navbar__link" href=/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/plugins>Plugins</a><a class="navbar__item navbar__link" href=/blog>Blog</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>More Resources</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/migrations>Migrations</a><li><a class=dropdown__link href=/awesome>Awesome</a><li><a class=dropdown__link href=/api>API</a></ul></div></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/docs/intro>2.8.x</a><ul class=dropdown__menu><li><a class=dropdown__link href=/docs/next/intro>Next 🚧</a><li><a class=dropdown__link href=/docs/intro>2.8.x</a><li><a class=dropdown__link href=/docs/2.7/intro>2.7.x 💀</a><li><a class=dropdown__link href=/docs/2.6/intro>2.6.x 💀</a><li><a class=dropdown__link href=/docs/1.0/intro>1.0.x 💀</a><li><a class=dropdown__link href=/versions>All versions</a></ul></div><a href=https://github.com/woodpecker-ci/woodpecker target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href=https://opencollective.com/woodpecker-ci target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">🧡 Sponsor Us<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><div class="toggle_o5FG colorModeToggle_USM_"><button class="clean-btn toggleButton_N56I toggleButtonDisabled_YqXx" type=button disabled title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live=polite aria-pressed=false><svg viewBox="0 0 24 24" width=24 height=24 class=lightToggleIcon_AwV3><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 class=darkToggleIcon_Zj8N><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg></button></div><div class=navbarSearchContainer_qwP4><div class="navbar__search searchBarContainer_iGJ9" dir=ltr><input placeholder=Search aria-label=Search class=navbar__search-input value=""><div class="loadingRing_mLmY searchBarLoadingRing_WOCe"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="main-wrapper mainWrapper_FqCG"><main class="container container--fluid margin-vert--lg"><div class="row mdxPageWrapper_Ag2P"><div class="col col--8"><article><header><h1>Migrations</h1></header>
-<p>Some versions need some changes to the server configuration or the pipeline configuration files. If you are an user check the <code>User migrations</code> section of an version. As an admin of a Woodpecker server or agent check the <code>Admin migrations</code> section.</p>
+<!doctype html><html lang=en dir=ltr class="mdx-wrapper mdx-page plugin-pages plugin-id-default" data-has-hydrated=false><meta charset=UTF-8><meta name=generator content="Docusaurus v3.6.3"><title data-rh=true>Migrations | Woodpecker CI</title><meta data-rh=true name=viewport content="width=device-width,initial-scale=1.0"><meta data-rh=true name=twitter:card content=summary_large_image><meta data-rh=true property=og:url content=https://woodpecker-ci.org/migrations><meta data-rh=true property=og:locale content=en><meta data-rh=true name=docusaurus_locale content=en><meta data-rh=true name=docusaurus_tag content=default><meta data-rh=true name=docsearch:language content=en><meta data-rh=true name=docsearch:docusaurus_tag content=default><meta data-rh=true property=og:title content="Migrations | Woodpecker CI"><meta data-rh=true name=description content=next><meta data-rh=true property=og:description content=next><link data-rh=true rel=canonical href=https://woodpecker-ci.org/migrations><link data-rh=true rel=alternate href=https://woodpecker-ci.org/migrations hreflang=en><link data-rh=true rel=alternate href=https://woodpecker-ci.org/migrations hreflang=x-default><link rel=alternate type=application/rss+xml href=/blog/rss.xml title="Woodpecker CI RSS Feed"><link rel=alternate type=application/atom+xml href=/blog/atom.xml title="Woodpecker CI Atom Feed"><link rel=icon href=/img/favicon.ico sizes=any><link rel=icon href=/img/favicon.svg type=image/svg+xml><link href=https://floss.social/@WoodpeckerCI rel=me><link rel=stylesheet href=/assets/css/styles.51e8b14c.css><script src=/assets/js/runtime~main.d7d7751c.js defer></script><script src=/assets/js/main.755548ea.js defer></script><body class=navigation-with-keyboard><script>!function(){var t,e=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();t=null!==e?e:window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":(window.matchMedia("(prefers-color-scheme: light)").matches,"light"),document.documentElement.setAttribute("data-theme",t)}(),function(){try{for(var[t,e]of new URLSearchParams(window.location.search).entries())if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}(),document.documentElement.setAttribute("data-announcement-bar-initially-dismissed",function(){try{return"true"===localStorage.getItem("docusaurus.announcement.dismiss")}catch(t){}return!1}())</script><div id=__docusaurus><div role=region aria-label="Skip to main content"><a class=skipToContent_syZr href=#__docusaurus_skipToContent_fallback>Skip to main content</a></div><div class=announcementBar_jwf5 style=background-color:var(--ifm-color-primary);color:var(--ifm-color-gray-900) role=banner><div class=announcementBarPlaceholder_uvx1></div><div class="content_oRA8 announcementBarContent_xoiQ"> If you like Woodpecker-CI, <a href=https://github.com/woodpecker-ci/woodpecker rel="noopener noreferrer" target=_blank>give us a star on GitHub</a> ! ⭐️</div><button type=button aria-label=Close class="clean-btn close closeButton_bpj1 announcementBarClose_tU6C"><svg viewBox="0 0 15 15" width=14 height=14><g stroke=currentColor stroke-width=3.1><path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"/></g></svg></button></div><nav aria-label=Main class="navbar navbar--fixed-top"><div class=navbar__inner><div class=navbar__items><button aria-label="Toggle navigation bar" aria-expanded=false class="navbar__toggle clean-btn" type=button><svg width=30 height=30 viewBox="0 0 30 30" aria-hidden=true><path stroke=currentColor stroke-linecap=round stroke-miterlimit=10 stroke-width=2 d="M4 7h22M4 15h22M4 23h22"/></svg></button><a class=navbar__brand href=/><div class=navbar__logo><img src=/img/logo.svg alt="Woodpecker Logo" class="themedComponent_CM2F themedComponent--light_XTTn"><img src=/img/logo.svg alt="Woodpecker Logo" class="themedComponent_CM2F themedComponent--dark_U5H9"></div><b class="navbar__title text--truncate">Woodpecker</b></a><a class="navbar__item navbar__link" href=/docs/intro>Docs</a><a class="navbar__item navbar__link" href=/plugins>Plugins</a><a class="navbar__item navbar__link" href=/blog>Blog</a><div class="navbar__item dropdown dropdown--hoverable"><a href=# aria-haspopup=true aria-expanded=false role=button class=navbar__link>More Resources</a><ul class=dropdown__menu><li><a aria-current=page class="dropdown__link dropdown__link--active" href=/migrations>Migrations</a><li><a class=dropdown__link href=/awesome>Awesome</a><li><a class=dropdown__link href=/api>API</a></ul></div></div><div class="navbar__items navbar__items--right"><div class="navbar__item dropdown dropdown--hoverable dropdown--right"><a class=navbar__link aria-haspopup=true aria-expanded=false role=button href=/docs/intro>2.8.x</a><ul class=dropdown__menu><li><a class=dropdown__link href=/docs/next/intro>Next 🚧</a><li><a class=dropdown__link href=/docs/intro>2.8.x</a><li><a class=dropdown__link href=/docs/2.7/intro>2.7.x 💀</a><li><a class=dropdown__link href=/docs/2.6/intro>2.6.x 💀</a><li><a class=dropdown__link href=/docs/1.0/intro>1.0.x 💀</a><li><a class=dropdown__link href=/versions>All versions</a></ul></div><a href=https://github.com/woodpecker-ci/woodpecker target=_blank rel="noopener noreferrer" class="navbar__item navbar__link header-github-link" aria-label="GitHub repository"></a><a href=https://opencollective.com/woodpecker-ci target=_blank rel="noopener noreferrer" class="navbar__item navbar__link">🧡 Sponsor Us<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><div class="toggle_o5FG colorModeToggle_USM_"><button class="clean-btn toggleButton_N56I toggleButtonDisabled_YqXx" type=button disabled title="Switch between dark and light mode (currently light mode)" aria-label="Switch between dark and light mode (currently light mode)" aria-live=polite aria-pressed=false><svg viewBox="0 0 24 24" width=24 height=24 class=lightToggleIcon_AwV3><path fill=currentColor d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"/></svg><svg viewBox="0 0 24 24" width=24 height=24 class=darkToggleIcon_Zj8N><path fill=currentColor d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg></button></div><div class=navbarSearchContainer_qwP4><div class="navbar__search searchBarContainer_iGJ9" dir=ltr><input placeholder=Search aria-label=Search class=navbar__search-input value=""><div class="loadingRing_mLmY searchBarLoadingRing_WOCe"><div></div><div></div><div></div><div></div></div></div></div></div></div><div role=presentation class=navbar-sidebar__backdrop></div></nav><div id=__docusaurus_skipToContent_fallback class="main-wrapper mainWrapper_FqCG"><main class="container container--fluid margin-vert--lg"><div class="row mdxPageWrapper_Ag2P"><div class="col col--8"><article><header><h1>Migrations</h1></header>
 <h2 class="anchor anchorWithStickyNavbar_cfcb" id=next><code>next</code><a href=#next class=hash-link aria-label="Direct link to next" title="Direct link to next">​</a></h2>
-<div class="theme-admonition theme-admonition-info admonition_CZ3c alert alert--info"><div class=admonitionHeading_DZ2v><span class=admonitionIcon_qWe1><svg viewBox="0 0 14 16"><path fill-rule=evenodd d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"/></svg></span>info</div><div class=admonitionContent_CGuC><p>This will be the next version of Woodpecker.</div></div>
-<h2 class="anchor anchorWithStickyNavbar_cfcb" id=user-migrations>User migrations<a href=#user-migrations class=hash-link aria-label="Direct link to User migrations" title="Direct link to User migrations">​</a></h2>
 <ul>
-<li><code>gated</code> has been replaced by <code>require-approval</code></li>
-<li>Removed built-in environment variables:
+<li>No changes</li>
+</ul>
+<h2 class="anchor anchorWithStickyNavbar_cfcb" id=300>3.0.0<a href=#300 class=hash-link aria-label="Direct link to 3.0.0" title="Direct link to 3.0.0">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_cfcb" id=user-facing-migrations>User-facing migrations<a href=#user-facing-migrations class=hash-link aria-label="Direct link to User-facing migrations" title="Direct link to User-facing migrations">​</a></h3>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=security>Security<a href=#security class=hash-link aria-label="Direct link to Security" title="Direct link to Security">​</a></h4>
 <ul>
-<li><code>CI_COMMIT_URL</code> use <code>CI_PIPELINE_FORGE_URL</code></li>
-<li><code>CI_STEP_FINISHED</code> as empty during execution</li>
-<li><code>CI_PIPELINE_FINISHED</code> as empty during execution</li>
-<li><code>CI_PIPELINE_STATUS</code> was always <code>success</code></li>
-<li><code>CI_STEP_STATUS</code> was always <code>success</code></li>
+<li>The "gated" option, which restricted which pipelines can start right away without requiring approval, has been replaced by "require-approval" option. Even though this feature (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3348 target=_blank rel="noopener noreferrer">#3348</a>) was backported to 2.8, no default is explicitly set.
+The new default in 3.0 is to require approval only for forked repositories.
+This allows easier management of dependency bots and other trusted entities having write access to the repository.</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=environment-variables>Environment variables<a href=#environment-variables class=hash-link aria-label="Direct link to Environment variables" title="Direct link to Environment variables">​</a></h4>
+<ul>
+<li>
+<p>Environment variables must now be defined as maps. List definitions are disallowed. (<a href=https://github.com/woodpecker-ci/woodpecker/pull/4016 target=_blank rel="noopener noreferrer">#4016</a>)</p>
+<p>2.x:</p>
+<div class="language-yaml codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-yaml codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token key atrule" style=color:#00a4db>environment</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"></span><br></span><span class=token-line style=color:#393A34><span class="token plain">  </span><span class="token punctuation" style=color:#393A34>-</span><span class="token plain"> ENV1=value1</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
+<p>3.x:</p>
+<div class="language-yaml codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-yaml codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token key atrule" style=color:#00a4db>environment</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"></span><br></span><span class=token-line style=color:#393A34><span class="token plain">  </span><span class="token key atrule" style=color:#00a4db>ENV1</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"> value1</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
+</li>
+</ul>
+<p>The following built-in environment variables have been removed/replaced:</p>
+<ul>
+<li><code>CI_COMMIT_URL</code> has been deprecated in favor of <code>CI_PIPELINE_FORGE_URL</code></li>
+<li><code>CI_STEP_FINISHED</code> as it was empty during execution</li>
+<li><code>CI_PIPELINE_FINISHED</code> as it was empty during execution</li>
+<li><code>CI_PIPELINE_STATUS</code> due to always being set to <code>success</code></li>
+<li><code>CI_STEP_STATUS</code> due to always being set to <code>success</code></li>
+<li><code>WOODPECKER_WEBHOOK_HOST</code> in favor of <code>WOODPECKER_EXPERT_WEBHOOK_HOST</code></li>
+</ul>
+<p>Environment variables which are empty after workflow parsing are not being injected into the build but filtered out beforehand (<a href=https://github.com/woodpecker-ci/woodpecker/pull/4193 target=_blank rel="noopener noreferrer">#4193</a>)</p>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=former-deprecations>Former deprecations<a href=#former-deprecations class=hash-link aria-label="Direct link to Former deprecations" title="Direct link to Former deprecations">​</a></h4>
+<p>The following syntax deprecations will now result in an error:</p>
+<ul>
+<li><code>pipeline:</code> (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3916 target=_blank rel="noopener noreferrer">#3916</a>)</li>
+<li><code>platform:</code> (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3916 target=_blank rel="noopener noreferrer">#3916</a>)</li>
+<li><code>branches:</code> (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3916 target=_blank rel="noopener noreferrer">#3916</a>)</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=workflow-syntax-changes>Workflow syntax changes<a href=#workflow-syntax-changes class=hash-link aria-label="Direct link to Workflow syntax changes" title="Direct link to Workflow syntax changes">​</a></h4>
+<ul>
+<li>
+<p>Grouping of steps via <code>steps.[name].group</code> should now be done using <code>steps.[name].depends_on</code></p>
+</li>
+<li>
+<p>The <code>includes</code> and <code>excludes</code> event filter options have been removed</p>
+</li>
+<li>
+<p>Previously, env vars have been automatically sanitized to uppercase.
+As this has been confusing, the type-case of the secret definition is now respected (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3375 target=_blank rel="noopener noreferrer">#3375</a>).</p>
+</li>
+<li>
+<p><code>secrets</code> have been entirely removed in favor of <code>environment</code> combined with the <code>from_secret</code> syntax.
+As <code>secrets</code> are just normal env vars which are masked, the goal was to allow them to be declared next to normal env vars and at the same time reduce the keyword syntax count.
+Additionally, the <code>from_secret</code> syntax gives more flexibility in naming.
+Whereas beforehand <code>secrets</code> where always named after their initial secret name, the <code>from_secret</code> reference can now be different.
+Last, one can inject multiple different env vars from the same secret reference.</p>
+<p>2.x:</p>
+<div class="language-yaml codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-yaml codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token key atrule" style=color:#00a4db>secrets</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"> </span><span class="token punctuation" style=color:#393A34>[</span><span class="token plain">my_token</span><span class="token punctuation" style=color:#393A34>]</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
+<p>3.x:</p>
+<div class="language-yaml codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-yaml codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token key atrule" style=color:#00a4db>environment</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"></span><br></span><span class=token-line style=color:#393A34><span class="token plain">  </span><span class="token key atrule" style=color:#00a4db>MY_TOKEN</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"></span><br></span><span class=token-line style=color:#393A34><span class="token plain">    </span><span class="token key atrule" style=color:#00a4db>from_secret</span><span class="token punctuation" style=color:#393A34>:</span><span class="token plain"> my_token</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
+</li>
+<li>
+<p>The <code>environment</code> filter option has been removed in favor of <code>when.evaluate</code></p>
+</li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=api-changes>API changes<a href=#api-changes class=hash-link aria-label="Direct link to API changes" title="Direct link to API changes">​</a></h4>
+<ul>
+<li>Removed deprecated <code>registry/</code> endpoint. Use <code>registries</code>, <code>/authorize/token</code></li>
+</ul>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=cli-changes>CLI changes<a href=#cli-changes class=hash-link aria-label="Direct link to CLI changes" title="Direct link to CLI changes">​</a></h4>
+<p>The following restructuring was done to achieve a more consistent grouping:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Old Command<th>New Command<tbody><tr><td><code>woodpecker-cli registry</code><td><code>woodpecker-cli repo registry</code><tr><td><code>woodpecker-cli secret --global</code><td><code>woodpecker-cli admin secret</code><tr><td><code>woodpecker-cli user</code><td><code>woodpecker-cli admin user</code><tr><td><code>woodpecker-cli log-level</code><td><code>woodpecker-cli admin log-level</code><tr><td><code>woodpecker-cli secret --organization</code><td><code>woodpecker-cli org secret</code><tr><td><code>woodpecker-cli deploy</code><td><code>woodpecker-cli pipeline deploy</code><tr><td><code>woodpecker-cli log</code><td><code>woodpecker-cli pipeline log</code><tr><td><code>woodpecker-cli cron</code><td><code>woodpecker-cli repo cron</code><tr><td><code>woodpecker-cli secret --repository</code><td><code>woodpecker-cli repo secret</code><tr><td><code>woodpecker-cli pipeline logs</code><td><code>woodpecker-cli pipeline log show</code><tr><td><code>woodpecker-cli (registry,secret,...) info</code><td><code>woodpecker-cli (registry,secret,...) show</code></table>
+<h4 class="anchor anchorWithStickyNavbar_cfcb" id=miscellaneous>Miscellaneous<a href=#miscellaneous class=hash-link aria-label="Direct link to Miscellaneous" title="Direct link to Miscellaneous">​</a></h4>
+<ul>
+<li>
+<p>For <code>woodpecker-cli</code> containers, <code>/woodpecker</code> has been set as the default <code>workdir</code></p>
+</li>
+<li>
+<p>Plugin filters for secrets (in the "secrets" repo settings) can now validate against tags.
+Additionally, the description has been updated to reflect that these filters only apply to plugins (<a href=https://github.com/woodpecker-ci/woodpecker/pull/4069 target=_blank rel="noopener noreferrer">#4069</a>).</p>
+</li>
+<li>
+<p>SDK changes:</p>
+<ul>
+<li>The SDK fields <code>start_time</code>, <code>end_time</code>, <code>created_at</code>, <code>started_at</code>, <code>finished_at</code> and <code>reviewed_at</code> have been renamed to <code>started</code>, <code>finished</code>, <code>created</code>, <code>started</code>, <code>finished</code>, <code>reviewed</code> (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3968 target=_blank rel="noopener noreferrer">#3968</a>)</li>
+<li>The <code>trusted</code> field of the repo model was changed from <code>boolean</code> to <code>object</code></li>
 </ul>
 </li>
-<li>Set <code>/woodpecker</code> as default workdir for the <strong>woodpecker-cli</strong> container</li>
-<li>Secret filters for plugins now check against tag if specified</li>
-<li>Compatibility mode of deprecated <code>pipeline:</code>, <code>platform:</code> and <code>branches:</code> pipeline config options are now removed and pipeline will now fail if still in use.</li>
-<li>Removed <code>steps.[name].group</code> in favor of <code>steps.[name].depends_on</code> (see <a href=/docs/usage/workflow-syntax#depends_on>workflow syntax</a> to learn how to set dependencies)</li>
-<li>Pipelines without a config file will now be skipped instead of failing</li>
-<li>Removed <code>includes</code> and <code>excludes</code> support from <strong>event</strong> filter</li>
-<li>Removed upper-casing all secret env vars, instead, the value of the <code>secrets</code> property is used. <a href=/docs/usage/secrets#usage>Read more</a></li>
-<li>Removed alternative names for secrets, use <code>environment</code> with <code>from_secret</code></li>
-<li>Removed <code>environment</code> filter, use <code>when.evaluate</code></li>
-<li>Removed <code>WOODPECKER_WEBHOOK_HOST</code> in favor of <code>WOODPECKER_EXPERT_WEBHOOK_HOST</code></li>
-<li>Renamed <code>start_time</code>, <code>end_time</code>, <code>created_at</code>, <code>started_at</code>, <code>finished_at</code> and <code>reviewed_at</code> JSON fields to <code>started</code>, <code>finished</code>, <code>created</code>, <code>started</code>, <code>finished</code>, <code>reviewed</code></li>
-<li>JSON field <code>trusted</code> on repo model was changed from boolean to object</li>
-<li>Update all webhooks by pressing the "Repair all" button in the admin settings as the webhook token claims have changed</li>
-<li>Crons now use standard Linux syntax without seconds</li>
-<li>Removed old API routes: <code>registry/</code> -> <code>registries</code>, <code>/authorize/token</code></li>
-<li>Replaced <code>registry</code> command with <code>repo registry</code> in cli</li>
-<li>Deprecated <code>secrets</code>, use <code>environment</code> with <code>from_secret</code></li>
-<li>Empty string environment variables are not set</li>
-<li>CLI commands got restructured to provide a simplified structure:
-<ul>
-<li><code>woodpecker-cli secret [add|rm|...] --global</code> is now <code>woodpecker-cli admin secret [add|rm|...]</code></li>
-<li><code>woodpecker-cli user</code> is now <code>woodpecker-cli admin user</code></li>
-<li><code>woodpecker-cli log-level</code> is now <code>woodpecker-cli admin log-level</code></li>
-<li><code>woodpecker-cli secret [add|rm|...] --organization</code> is now <code>woodpecker-cli org secret [add|rm|...]</code></li>
-<li><code>woodpecker-cli deploy</code> is now <code>woodpecker-cli pipeline deploy</code></li>
-<li><code>woodpecker-cli log</code> is now <code>woodpecker-cli pipeline log</code></li>
-<li><code>woodpecker-cli cron</code> is now <code>woodpecker-cli repo cron</code></li>
-<li><code>woodpecker-cli secret [add|rm|...] --repository</code> is now <code>woodpecker-cli repo secret [add|rm|...]</code></li>
-<li><code>woodpecker-cli pipeline logs</code> is now <code>woodpecker-cli pipeline log show</code></li>
-<li><code>woodpecker-cli [registry|secret|...] info</code> is now <code>woodpecker-cli [registry|secret|...] show</code></li>
-</ul>
+<li>
+<p>CRON definitions now use standard Linux syntax without seconds.
+All custom CRON definitions which do not use keywords such as <code>@daily</code> or <code>@weekly</code> must be updated.</p>
+<p>Example definition for a CRON job running at 8 am daily:</p>
+<p>2.x:</p>
+<div class="language-sh codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-sh codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token number" style=color:#36acaa>0</span><span class="token plain"> </span><span class="token number" style=color:#36acaa>0</span><span class="token plain"> </span><span class="token number" style=color:#36acaa>8</span><span class="token plain"> * * *</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
+<p>3.x:</p>
+<div class="language-sh codeBlockContainer_OX1s theme-code-block" style=--prism-color:#393A34;--prism-background-color:#f6f8fa><div class=codeBlockContent_wxNX><pre tabindex=0 class="prism-code language-sh codeBlock_YgQU thin-scrollbar" style=color:#393A34;background-color:#f6f8fa><code class=codeBlockLines_lyJx><span class=token-line style=color:#393A34><span class="token number" style=color:#36acaa>0</span><span class="token plain"> </span><span class="token number" style=color:#36acaa>8</span><span class="token plain"> * * *</span><br></span></code></pre><div class=buttonGroup_PWzn><button type=button aria-label="Copy code to clipboard" title=Copy class=clean-btn><span class=copyButtonIcons_vRHU aria-hidden=true><svg viewBox="0 0 24 24" class=copyButtonIcon_NLOo><path fill=currentColor d="M19,21H8V7H19M19,5H8A2,2 0 0,0 6,7V21A2,2 0 0,0 8,23H19A2,2 0 0,0 21,21V7A2,2 0 0,0 19,5M16,1H4A2,2 0 0,0 2,3V17H4V3H16V1Z"/></svg><svg viewBox="0 0 24 24" class=copyButtonSuccessIcon_nDz_><path fill=currentColor d=M21,7L9,19L3.5,13.5L4.91,12.09L9,16.17L19.59,5.59L21,7Z /></svg></span></button></div></div></div>
 </li>
-<li>Dropped native Let's Encrypt certificate support. You can either generate Let's Encrypt certificates externally and use <code>WOODPECKER_SERVER_CERT</code> and <code>WOODPECKER_SERVER_KEY</code> or use Woodpecker behind a reverse proxy like Caddy.</li>
+<li>
+<p>Native Let's Encrypt certificate support has been dropped as it was almost unused and causing frequent issues.
+Let's Encrypt needs to be set up standalone now. The SSL key pair can still be used in <code>WOODPECKER_SERVER_CERT</code> and <code>WOODPECKER_SERVER_KEY</code> as an alternative to using a reverse proxy for TLS termination.</p>
+</li>
 </ul>
-<h2 class="anchor anchorWithStickyNavbar_cfcb" id=admin-migrations>Admin migrations<a href=#admin-migrations class=hash-link aria-label="Direct link to Admin migrations" title="Direct link to Admin migrations">​</a></h2>
+<h3 class="anchor anchorWithStickyNavbar_cfcb" id=admin-facing-migrations>Admin-facing migrations<a href=#admin-facing-migrations class=hash-link aria-label="Direct link to Admin-facing migrations" title="Direct link to Admin-facing migrations">​</a></h3>
 <ul>
-<li>Deprecate <code>WOODPECKER_LOG_XORM</code> and <code>WOODPECKER_LOG_XORM_SQL</code> use <code>"WOODPECKER_DATABASE_LOG</code> and <code>"WOODPECKER_DATABASE_LOG_SQL</code></li>
-<li>Deprecate <code>WOODPECKER_FILTER_LABELS</code> use <code>WOODPECKER_AGENT_LABELS</code></li>
-<li>Move docker resource limit settings from server into agent configuration</li>
-<li>Rename server environment variable <code>WOODPECKER_ESCALATE</code> to <code>WOODPECKER_PLUGINS_PRIVILEGED</code></li>
-<li>All default privileged plugins (like <code>woodpeckerci/plugin-docker-buildx</code>) were removed. Please carefully <a href=/docs/next/administration/server-config#woodpecker_plugins_privileged>re-add those plugins</a> you trust and rely on.</li>
-<li><code>WOODPECKER_DEFAULT_CLONE_IMAGE</code> got deprecated use <code>WOODPECKER_DEFAULT_CLONE_PLUGIN</code></li>
-<li>Check trusted-clone- and privileged-plugins by image name and tag (if tag is set)</li>
-<li>Removed <code>WOODPECKER_DEV_OAUTH_HOST</code> and <code>WOODPECKER_DEV_GITEA_OAUTH_URL</code> use <code>WOODPECKER_EXPERT_FORGE_OAUTH_HOST</code></li>
-<li>Removed <code>WOODPECKER_ROOT_PATH</code> and <code>WOODPECKER_ROOT_URL</code> config variables. Use <code>WOODPECKER_HOST</code> with a path instead</li>
-<li>Removed implicitly defined <code>regcred</code> image pull secret name. Set it explicitly via <code>WOODPECKER_BACKEND_K8S_PULL_SECRET_NAMES</code></li>
-<li>Removed slice definition for env vars</li>
-<li>Migrated to rfc9421 for webhook signatures</li>
-<li>Replaced <code>configs</code> object by <code>netrc</code> in external configuration APIs</li>
-<li>Disallow upgrades from 1.x, upgrade to 2.x first</li>
+<li>
+<p>Previously, some (official) plugins were granted the <code>privileged</code> option by default to allow simplified usage.
+To streamline this process and enhance security transparency, no plugin is granted the <code>privileged</code> options by default anymore.
+To allow the use of these plugins in >= 3.0, they must be set explicitly through <code>WOODPECKER_PLUGINS_PRIVILEGED</code> on the admin side.
+This change mainly impacts the use of the <code>woodpeckerci/plugin-docker-buildx</code> plugin, which now will not work anymore unless explicitly listed through this env var (<a href=https://github.com/woodpecker-ci/woodpecker/pull/4053 target=_blank rel="noopener noreferrer">#4053</a>)</p>
+</li>
+<li>
+<p>Environment variable deprecations:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Deprecated Variable<th>New Variable<tbody><tr><td><code>WOODPECKER_LOG_XORM</code><td><code>WOODPECKER_DATABASE_LOG</code><tr><td><code>WOODPECKER_LOG_XORM_SQL</code><td><code>WOODPECKER_DATABASE_LOG_SQL</code><tr><td><code>WOODPECKER_FILTER_LABELS</code><td><code>WOODPECKER_AGENT_LABELS</code><tr><td><code>WOODPECKER_ESCALATE</code><td><code>WOODPECKER_PLUGINS_PRIVILEGED</code><tr><td><code>WOODPECKER_DEFAULT_CLONE_IMAGE</code><td><code>WOODPECKER_DEFAULT_CLONE_PLUGIN</code><tr><td><code>WOODPECKER_DEV_OAUTH_HOST</code><td><code>WOODPECKER_EXPERT_FORGE_OAUTH_HOST</code><tr><td><code>WOODPECKER_DEV_GITEA_OAUTH_URL</code><td><code>WOODPECKER_EXPERT_FORGE_OAUTH_HOST</code><tr><td><code>WOODPECKER_ROOT_PATH</code><td><code>WOODPECKER_HOST</code><tr><td><code>WOODPECKER_ROOT_URL</code><td><code>WOODPECKER_HOST</code></table>
+</li>
+<li>
+<p>The resource limit settings for the "docker" backend were moved from the server into agent configuration.
+This allows setting limits on an agent-level which allows greater resource definition granularity (<a href=https://github.com/woodpecker-ci/woodpecker/pull/3174 target=_blank rel="noopener noreferrer">#3174</a>)</p>
+</li>
+<li>
+<p>"Kubernetes" backend: previously the image pull secret name was hard-coded to <code>regcred</code>.
+To allow more flexibility and specifying multiple pull secrets, the default has been removed.
+Image pull secrets must now be set explicitly via env var <code>WOODPECKER_BACKEND_K8S_PULL_SECRET_NAMES</code> (<a href=https://github.com/woodpecker-ci/woodpecker/pull/4005 target=_blank rel="noopener noreferrer">#4005</a>)</p>
+</li>
+<li>
+<p>Webhook signatures now use the <code>rfc9421</code> protocol</p>
+</li>
+<li>
+<p>Replaced <code>configs</code> object by <code>netrc</code> in external configuration APIs</p>
+</li>
+<li>
+<p>Upgrading from 1.x versions to 3.x is disallowed, upgrading to 2.x first is required to ensure proper DB migrations</p>
+</li>
 </ul>
 <h2 class="anchor anchorWithStickyNavbar_cfcb" id=272>2.7.2<a href=#272 class=hash-link aria-label="Direct link to 2.7.2" title="Direct link to 2.7.2">​</a></h2>
 <p>To secure your instance, set <code>WOODPECKER_PLUGINS_PRIVILEGED</code> to only allow specific versions of the <code>woodpeckerci/plugin-docker-buildx</code> plugin, use version 5.0.0 or above. This prevents older, potentially unstable versions from being privileged.</p>
@@ -219,4 +385,4 @@ Additionally some alternative namings have been removed to simplify maintenance:
 <li>Make sure you are already running Drone v0.8</li>
 <li>Upgrade to Woodpecker v0.14.4, migration will be done during startup</li>
 <li>Upgrade to the latest Woodpecker version. Pay attention to the breaking changes listed above.</li>
-</ol></article></div><div class="col col--2"><div class="tableOfContents_lQ_7 thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#next class="table-of-contents__link toc-highlight"><code>next</code></a><li><a href=#user-migrations class="table-of-contents__link toc-highlight">User migrations</a><li><a href=#admin-migrations class="table-of-contents__link toc-highlight">Admin migrations</a><li><a href=#272 class="table-of-contents__link toc-highlight">2.7.2</a><li><a href=#200 class="table-of-contents__link toc-highlight">2.0.0</a><li><a href=#100 class="table-of-contents__link toc-highlight">1.0.0</a><li><a href=#0150 class="table-of-contents__link toc-highlight">0.15.0</a><li><a href=#0140 class="table-of-contents__link toc-highlight">0.14.0</a><li><a href=#from-drone class="table-of-contents__link toc-highlight">From Drone</a></ul></div></div></div></main></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/intro>Introduction</a><li class=footer__item><a class=footer__link-item href=/docs/usage/intro>Usage</a><li class=footer__item><a class=footer__link-item href=/docs/administration/getting-started>Server setup</a></ul></div><div class="col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://matrix.to/#/#woodpecker:matrix.org target=_blank rel="noopener noreferrer" class=footer__link-item>Matrix<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://floss.social/@WoodpeckerCI target=_blank rel="noopener noreferrer" class=footer__link-item>Mastodon<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://twitter.com/woodpeckerci target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a></ul></div><div class="col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://translate.woodpecker-ci.org/engage/woodpecker-ci/ target=_blank rel="noopener noreferrer" class=footer__link-item>Translate<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://github.com/woodpecker-ci/woodpecker target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://ci.woodpecker-ci.org/repos/3780 target=_blank rel="noopener noreferrer" class=footer__link-item>CI<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://opencollective.com/woodpecker-ci target=_blank rel="noopener noreferrer" class=footer__link-item>Open Collective<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2024 Woodpecker Authors. Built with Docusaurus.</div></div></div></footer></div>
+</ol></article></div><div class="col col--2"><div class="tableOfContents_lQ_7 thin-scrollbar"><ul class="table-of-contents table-of-contents__left-border"><li><a href=#next class="table-of-contents__link toc-highlight"><code>next</code></a><li><a href=#300 class="table-of-contents__link toc-highlight">3.0.0</a><ul><li><a href=#user-facing-migrations class="table-of-contents__link toc-highlight">User-facing migrations</a><ul><li><a href=#security class="table-of-contents__link toc-highlight">Security</a><li><a href=#environment-variables class="table-of-contents__link toc-highlight">Environment variables</a><li><a href=#former-deprecations class="table-of-contents__link toc-highlight">Former deprecations</a><li><a href=#workflow-syntax-changes class="table-of-contents__link toc-highlight">Workflow syntax changes</a><li><a href=#api-changes class="table-of-contents__link toc-highlight">API changes</a><li><a href=#cli-changes class="table-of-contents__link toc-highlight">CLI changes</a><li><a href=#miscellaneous class="table-of-contents__link toc-highlight">Miscellaneous</a></ul><li><a href=#admin-facing-migrations class="table-of-contents__link toc-highlight">Admin-facing migrations</a></ul><li><a href=#272 class="table-of-contents__link toc-highlight">2.7.2</a><li><a href=#200 class="table-of-contents__link toc-highlight">2.0.0</a><li><a href=#100 class="table-of-contents__link toc-highlight">1.0.0</a><li><a href=#0150 class="table-of-contents__link toc-highlight">0.15.0</a><li><a href=#0140 class="table-of-contents__link toc-highlight">0.14.0</a><li><a href=#from-drone class="table-of-contents__link toc-highlight">From Drone</a></ul></div></div></div></main></div><footer class="footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="col footer__col"><div class=footer__title>Docs</div><ul class="footer__items clean-list"><li class=footer__item><a class=footer__link-item href=/docs/intro>Introduction</a><li class=footer__item><a class=footer__link-item href=/docs/usage/intro>Usage</a><li class=footer__item><a class=footer__link-item href=/docs/administration/getting-started>Server setup</a></ul></div><div class="col footer__col"><div class=footer__title>Community</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://matrix.to/#/#woodpecker:matrix.org target=_blank rel="noopener noreferrer" class=footer__link-item>Matrix<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://floss.social/@WoodpeckerCI target=_blank rel="noopener noreferrer" class=footer__link-item>Mastodon<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://twitter.com/woodpeckerci target=_blank rel="noopener noreferrer" class=footer__link-item>X<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a></ul></div><div class="col footer__col"><div class=footer__title>More</div><ul class="footer__items clean-list"><li class=footer__item><a href=https://translate.woodpecker-ci.org/engage/woodpecker-ci/ target=_blank rel="noopener noreferrer" class=footer__link-item>Translate<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://github.com/woodpecker-ci/woodpecker target=_blank rel="noopener noreferrer" class=footer__link-item>GitHub<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://ci.woodpecker-ci.org/repos/3780 target=_blank rel="noopener noreferrer" class=footer__link-item>CI<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a><li class=footer__item><a href=https://opencollective.com/woodpecker-ci target=_blank rel="noopener noreferrer" class=footer__link-item>Open Collective<svg width=13.5 height=13.5 aria-hidden=true viewBox="0 0 24 24" class=iconExternalLink_mjEu><path fill=currentColor d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></svg></a></ul></div></div><div class="footer__bottom text--center"><div class=footer__copyright>Copyright © 2024 Woodpecker Authors. Built with Docusaurus.</div></div></div></footer></div>
