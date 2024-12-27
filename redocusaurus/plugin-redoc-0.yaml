@@ -348,8 +348,6 @@ components:
           type: boolean
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
-        scm:
-          $ref: '#/components/schemas/SCMKind'
         timeout:
           type: integer
         trusted:
@@ -392,13 +390,6 @@ components:
         - public
         - private
         - internal
-      type: string
-    SCMKind:
-      enum:
-        - git
-        - hg
-        - fossil
-        - perforce
       type: string
     Secret:
       properties:
@@ -645,8 +636,6 @@ components:
         private:
           type: boolean
         remote_id:
-          type: string
-        scm:
           type: string
         trusted:
           $ref: '#/components/schemas/metadata.TrustedConfiguration'
