@@ -367,11 +367,6 @@ components:
           type: array
         config_file:
           type: string
-        gated:
-          description: >-
-            TODO: deprecated in favor of RequireApproval => Remove in next major
-            release
-          type: boolean
         netrc_trusted:
           items:
             type: string
