@@ -1,4 +1,4 @@
-# Github Pages Repo
+# GitHub Pages Repo
 
 for https://woodpecker-ci.org
 
