@@ -3,6 +3,41 @@ entries:
   woodpecker:
   - apiVersion: v2
     appVersion: 3.7.0
+    created: "2025-06-13T19:59:07.156198008Z"
+    dependencies:
+    - condition: server.enabled
+      name: server
+      repository: ""
+      version: 3.0.1
+    - condition: agent.enabled
+      name: agent
+      repository: ""
+      version: 2.0.1
+    description: A Helm chart for Woodpecker CI
+    digest: 92cb29af6a2f52fcee2f9a8939f1cdda23923d150f5d66ec4d97bc207bfc4d07
+    home: https://woodpecker-ci.org/
+    icon: https://avatars.githubusercontent.com/u/84780935?s=200&v=4
+    keywords:
+    - continuous-delivery
+    - continuous-deployment
+    - continuous-integration
+    - docker
+    - go
+    - kubernetes
+    maintainers:
+    - email: owner@woodpecker-ci.org
+      name: Woodpecker Maintainers
+      url: https://github.com/woodpecker-ci
+    name: woodpecker
+    sources:
+    - https://github.com/woodpecker-ci/woodpecker.git
+    - https://github.com/woodpecker-ci/helm.git
+    type: application
+    urls:
+    - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-3.2.0/woodpecker-3.2.0.tgz
+    version: 3.2.0
+  - apiVersion: v2
+    appVersion: 3.7.0
     created: "2025-06-09T13:33:35.035828907Z"
     dependencies:
     - condition: server.enabled
@@ -1261,4 +1296,4 @@ entries:
     urls:
     - https://github.com/woodpecker-ci/woodpecker-ci.github.io/releases/download/helm-woodpecker-0.1.5/woodpecker-0.1.5.tgz
     version: 0.1.5
-generated: "2025-06-09T13:33:35.036071659Z"
+generated: "2025-06-13T19:59:07.15681768Z"
