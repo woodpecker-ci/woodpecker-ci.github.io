@@ -659,6 +659,10 @@ components:
       type: object
     metadata.Pipeline:
       properties:
+        author:
+          type: string
+        avatar:
+          type: string
         commit:
           $ref: '#/components/schemas/metadata.Commit'
         created:
