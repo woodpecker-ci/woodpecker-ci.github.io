@@ -1505,32 +1505,6 @@ paths:
       summary: Set log level
       tags:
         - System
-  /org/lookup/{org_full_name}:
-    get:
-      parameters:
-        - description: Insert your personal access token
-          in: header
-          name: Authorization
-          required: true
-          schema:
-            default: Bearer <personal access token>
-            type: string
-        - description: the organizations full name / slug
-          in: path
-          name: org_full_name
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Org'
-          description: OK
-      summary: Lookup an organization by full name
-      tags:
-        - Organizations
   /orgs:
     get:
       description: Returns all registered orgs in the system. Requires admin rights.
@@ -1564,6 +1538,32 @@ paths:
                 type: array
           description: OK
       summary: List organizations
+      tags:
+        - Orgs
+  /orgs/lookup/{org_full_name}:
+    get:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organizations full name / slug
+          in: path
+          name: org_full_name
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+          description: OK
+      summary: Lookup an organization by full name
       tags:
         - Orgs
   /orgs/{id}:
