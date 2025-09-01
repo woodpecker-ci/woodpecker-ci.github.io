@@ -240,6 +240,8 @@ components:
           items:
             type: string
           type: array
+        pr_milestone:
+          type: string
         ref:
           type: string
         refspec:
@@ -681,6 +683,8 @@ components:
             type: string
           type: array
         message:
+          type: string
+        milestone:
           type: string
         ref:
           type: string
