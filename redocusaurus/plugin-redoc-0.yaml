@@ -288,6 +288,34 @@ components:
         title:
           type: string
       type: object
+    QueueInfo:
+      properties:
+        paused:
+          type: boolean
+        pending:
+          items:
+            $ref: '#/components/schemas/model.QueueTask'
+          type: array
+        running:
+          items:
+            $ref: '#/components/schemas/model.QueueTask'
+          type: array
+        stats:
+          properties:
+            pending_count:
+              type: integer
+            running_count:
+              type: integer
+            waiting_on_deps_count:
+              type: integer
+            worker_count:
+              type: integer
+          type: object
+        waiting_on_deps:
+          items:
+            $ref: '#/components/schemas/model.QueueTask'
+          type: array
+      type: object
     Registry:
       properties:
         address:
@@ -596,6 +624,14 @@ components:
           additionalProperties:
             type: string
           type: object
+        name:
+          type: string
+        pid:
+          type: integer
+        pipeline_id:
+          type: integer
+        repo_id:
+          type: integer
         run_on:
           items:
             type: string
@@ -853,6 +889,41 @@ components:
         - ForgeTypeBitbucket
         - ForgeTypeBitbucketDatacenter
         - ForgeTypeAddon
+    model.QueueTask:
+      properties:
+        agent_id:
+          type: integer
+        agent_name:
+          type: string
+        dep_status:
+          additionalProperties:
+            $ref: '#/components/schemas/StatusValue'
+          type: object
+        dependencies:
+          items:
+            type: string
+          type: array
+        id:
+          type: string
+        labels:
+          additionalProperties:
+            type: string
+          type: object
+        name:
+          type: string
+        pid:
+          type: integer
+        pipeline_id:
+          type: integer
+        pipeline_number:
+          type: integer
+        repo_id:
+          type: integer
+        run_on:
+          items:
+            type: string
+          type: array
+      type: object
     model.TrustedConfiguration:
       properties:
         network:
@@ -2259,9 +2330,7 @@ paths:
         - Pipeline queues
   /queue/info:
     get:
-      description: >-
-        TODO: link the InfoT response object - this is blocked, until the
-        `swaggo/swag` tool dependency is v1.18.12 or newer
+      description: Returns pipeline queue information with agent details
       parameters:
         - description: Insert your personal access token
           in: header
@@ -2275,9 +2344,7 @@ paths:
           content:
             application/json:
               schema:
-                additionalProperties:
-                  type: string
-                type: object
+                $ref: '#/components/schemas/QueueInfo'
           description: OK
       summary: Get pipeline queue information
       tags:
