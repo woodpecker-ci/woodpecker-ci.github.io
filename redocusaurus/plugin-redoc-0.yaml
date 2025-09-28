@@ -220,6 +220,10 @@ components:
           type: array
         event:
           $ref: '#/components/schemas/WebhookEvent'
+        event_reason:
+          items:
+            type: string
+          type: array
         finished:
           type: integer
         forge_url:
@@ -678,6 +682,7 @@ components:
         - push
         - pull_request
         - pull_request_closed
+        - pull_request_metadata
         - tag
         - release
         - deployment
@@ -688,6 +693,7 @@ components:
         - EventPush
         - EventPull
         - EventPullClosed
+        - EventPullMetadata
         - EventTag
         - EventRelease
         - EventDeploy
@@ -769,6 +775,10 @@ components:
           type: string
         event:
           type: string
+        event_reason:
+          items:
+            type: string
+          type: array
         finished:
           type: integer
         forge_url:
