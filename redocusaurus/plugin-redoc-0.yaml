@@ -359,6 +359,8 @@ components:
           type: string
         clone_url_ssh:
           type: string
+        config_extension_endpoint:
+          type: string
         config_file:
           type: string
         default_branch:
@@ -421,6 +423,8 @@ components:
           type: string
         clone_url_ssh:
           type: string
+        config_extension_endpoint:
+          type: string
         config_file:
           type: string
         default_branch:
@@ -477,6 +481,8 @@ components:
           items:
             $ref: '#/components/schemas/WebhookEvent'
           type: array
+        config_extension_endpoint:
+          type: string
         config_file:
           type: string
         netrc_trusted:
