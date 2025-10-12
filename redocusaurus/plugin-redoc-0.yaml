@@ -4194,6 +4194,11 @@ paths:
           name: all
           schema:
             type: boolean
+        - description: filter repos by name
+          in: query
+          name: name
+          schema:
+            type: string
       responses:
         '200':
           content:
