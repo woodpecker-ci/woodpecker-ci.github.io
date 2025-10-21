@@ -667,6 +667,8 @@ components:
           type: string
         forge_id:
           type: integer
+        forge_remote_id:
+          type: string
         id:
           description: |-
             the id for this user.
@@ -4329,6 +4331,17 @@ paths:
           required: true
           schema:
             type: string
+        - description: specify forge (else default will be used)
+          in: query
+          name: forge_id
+          required: true
+          schema:
+            type: string
+        - description: specify user id at forge (else fallback to login)
+          in: query
+          name: forge_remote_id
+          schema:
+            type: string
       responses:
         '204':
           description: No Content
@@ -4349,6 +4362,17 @@ paths:
           in: path
           name: login
           required: true
+          schema:
+            type: string
+        - description: specify forge (else default will be used)
+          in: query
+          name: forge_id
+          required: true
+          schema:
+            type: string
+        - description: specify user id at forge (else fallback to login)
+          in: query
+          name: forge_remote_id
           schema:
             type: string
       responses:
