@@ -128,6 +128,27 @@ components:
         url:
           type: string
       type: object
+    ForgeWithOAuthClientSecret:
+      properties:
+        additional_options:
+          additionalProperties: {}
+          type: object
+        client:
+          type: string
+        id:
+          type: integer
+        oauth_client_secret:
+          type: string
+        oauth_host:
+          description: public url for oauth if different from url
+          type: string
+        skip_verify:
+          type: boolean
+        type:
+          $ref: '#/components/schemas/model.ForgeType'
+        url:
+          type: string
+      type: object
     LogEntry:
       properties:
         data:
@@ -1523,7 +1544,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Forge'
+              $ref: '#/components/schemas/ForgeWithOAuthClientSecret'
         description: the forge's data (only 'name' and 'no_schedule' are read)
         required: true
         x-originalParamName: forge
@@ -1602,7 +1623,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Forge'
+              $ref: '#/components/schemas/ForgeWithOAuthClientSecret'
         description: the forge's data
         required: true
         x-originalParamName: forgeData
