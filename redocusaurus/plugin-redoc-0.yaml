@@ -60,6 +60,8 @@ components:
           type: integer
         creator_id:
           type: integer
+        enabled:
+          type: boolean
         id:
           type: integer
         name:
@@ -70,6 +72,17 @@ components:
           type: integer
         schedule:
           description: "@weekly,\t3min, ..."
+          type: string
+      type: object
+    CronPatch:
+      properties:
+        branch:
+          type: string
+        enabled:
+          type: boolean
+        name:
+          type: string
+        schedule:
           type: string
       type: object
     Feed:
@@ -2992,7 +3005,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Cron'
+              $ref: '#/components/schemas/CronPatch'
         description: the cron job data
         required: true
         x-originalParamName: cronJob
