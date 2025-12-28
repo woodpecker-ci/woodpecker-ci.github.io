@@ -73,6 +73,10 @@ components:
         schedule:
           description: "@weekly,\t3min, ..."
           type: string
+        variables:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     CronPatch:
       properties:
@@ -84,6 +88,10 @@ components:
           type: string
         schedule:
           type: string
+        variables:
+          additionalProperties:
+            type: string
+          type: object
       type: object
     Feed:
       properties:
