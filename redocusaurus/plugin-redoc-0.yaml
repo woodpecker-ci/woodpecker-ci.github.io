@@ -564,10 +564,29 @@ components:
           type: array
         name:
           type: string
+        note:
+          type: string
         org_id:
           type: integer
         repo_id:
           type: integer
+        value:
+          type: string
+      type: object
+    SecretPatch:
+      properties:
+        events:
+          items:
+            $ref: '#/components/schemas/WebhookEvent'
+          type: array
+        images:
+          items:
+            type: string
+          type: array
+        name:
+          type: string
+        note:
+          type: string
         value:
           type: string
       type: object
@@ -2352,7 +2371,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Secret'
+              $ref: '#/components/schemas/SecretPatch'
         description: the update secret data
         required: true
         x-originalParamName: secretData
@@ -3970,7 +3989,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Secret'
+              $ref: '#/components/schemas/SecretPatch'
         description: the secret itself
         required: true
         x-originalParamName: secret
@@ -4111,7 +4130,7 @@ paths:
         content:
           '*/*':
             schema:
-              $ref: '#/components/schemas/Secret'
+              $ref: '#/components/schemas/SecretPatch'
         description: the secret's data
         required: true
         x-originalParamName: secretData
