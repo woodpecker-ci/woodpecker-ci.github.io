@@ -404,6 +404,8 @@ components:
           type: string
         config_extension_endpoint:
           type: string
+        config_extension_exclusive:
+          type: boolean
         config_file:
           type: string
         default_branch:
@@ -468,6 +470,8 @@ components:
           type: string
         config_extension_endpoint:
           type: string
+        config_extension_exclusive:
+          type: boolean
         config_file:
           type: string
         default_branch:
@@ -526,6 +530,8 @@ components:
           type: array
         config_extension_endpoint:
           type: string
+        config_extension_exclusive:
+          type: boolean
         config_file:
           type: string
         netrc_trusted:
