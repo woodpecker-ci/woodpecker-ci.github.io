@@ -41,6 +41,13 @@ components:
         version:
           type: string
       type: object
+    CancelInfo:
+      properties:
+        canceled_by_user:
+          type: string
+        superseded_by:
+          type: integer
+      type: object
     Config:
       properties:
         data:
@@ -245,6 +252,8 @@ components:
           type: string
         branch:
           type: string
+        cancel_info:
+          $ref: '#/components/schemas/CancelInfo'
         changed_files:
           items:
             type: string
