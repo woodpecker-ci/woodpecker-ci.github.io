@@ -268,7 +268,7 @@ components:
           type: string
         errors:
           items:
-            $ref: '#/components/schemas/types.PipelineError'
+            $ref: '#/components/schemas/errors.PipelineError'
           type: array
         event:
           $ref: '#/components/schemas/WebhookEvent'
@@ -784,6 +784,42 @@ components:
         - EventDeploy
         - EventCron
         - EventManual
+    errors.PipelineError:
+      properties:
+        data: {}
+        is_warning:
+          type: boolean
+        message:
+          type: string
+        type:
+          $ref: '#/components/schemas/errors.PipelineErrorType'
+      type: object
+    errors.PipelineErrorType:
+      enum:
+        - linter
+        - deprecation
+        - compiler
+        - generic
+        - bad_habit
+      type: string
+      x-enum-comments:
+        PipelineErrorTypeBadHabit: some bad-habit error
+        PipelineErrorTypeCompiler: some error with the config semantics
+        PipelineErrorTypeDeprecation: using some deprecated feature
+        PipelineErrorTypeGeneric: some generic error
+        PipelineErrorTypeLinter: some error with the config syntax
+      x-enum-descriptions:
+        - some error with the config syntax
+        - using some deprecated feature
+        - some error with the config semantics
+        - some generic error
+        - some bad-habit error
+      x-enum-varnames:
+        - PipelineErrorTypeLinter
+        - PipelineErrorTypeDeprecation
+        - PipelineErrorTypeCompiler
+        - PipelineErrorTypeGeneric
+        - PipelineErrorTypeBadHabit
     metadata.Author:
       properties:
         avatar:
@@ -1068,42 +1104,6 @@ components:
         state:
           $ref: '#/components/schemas/StatusValue'
       type: object
-    types.PipelineError:
-      properties:
-        data: {}
-        is_warning:
-          type: boolean
-        message:
-          type: string
-        type:
-          $ref: '#/components/schemas/types.PipelineErrorType'
-      type: object
-    types.PipelineErrorType:
-      enum:
-        - linter
-        - deprecation
-        - compiler
-        - generic
-        - bad_habit
-      type: string
-      x-enum-comments:
-        PipelineErrorTypeBadHabit: some bad-habit error
-        PipelineErrorTypeCompiler: some error with the config semantics
-        PipelineErrorTypeDeprecation: using some deprecated feature
-        PipelineErrorTypeGeneric: some generic error
-        PipelineErrorTypeLinter: some error with the config syntax
-      x-enum-descriptions:
-        - some error with the config syntax
-        - using some deprecated feature
-        - some error with the config semantics
-        - some generic error
-        - some bad-habit error
-      x-enum-varnames:
-        - PipelineErrorTypeLinter
-        - PipelineErrorTypeDeprecation
-        - PipelineErrorTypeCompiler
-        - PipelineErrorTypeGeneric
-        - PipelineErrorTypeBadHabit
 info:
   contact:
     name: Woodpecker CI
