@@ -446,6 +446,8 @@ components:
           type: boolean
         private:
           type: boolean
+        registry_extension_endpoint:
+          type: string
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
         timeout:
@@ -514,6 +516,8 @@ components:
           type: boolean
         private:
           type: boolean
+        registry_extension_endpoint:
+          type: string
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
         timeout:
@@ -547,6 +551,8 @@ components:
           items:
             type: string
           type: array
+        registry_extension_endpoint:
+          type: string
         require_approval:
           type: string
         timeout:
