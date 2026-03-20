@@ -43,6 +43,8 @@ components:
       type: object
     CancelInfo:
       properties:
+        canceled_by_step:
+          type: string
         canceled_by_user:
           type: string
         superseded_by:
