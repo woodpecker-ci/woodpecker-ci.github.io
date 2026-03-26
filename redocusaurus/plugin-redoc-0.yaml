@@ -452,6 +452,10 @@ components:
           type: string
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
+        secret_extension_endpoint:
+          type: string
+        secret_extension_netrc:
+          type: boolean
         timeout:
           type: integer
         trusted:
@@ -522,6 +526,10 @@ components:
           type: string
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
+        secret_extension_endpoint:
+          type: string
+        secret_extension_netrc:
+          type: boolean
         timeout:
           type: integer
         trusted:
@@ -557,6 +565,10 @@ components:
           type: string
         require_approval:
           type: string
+        secret_extension_endpoint:
+          type: string
+        secret_extension_netrc:
+          type: boolean
         timeout:
           type: integer
         trusted:
