@@ -325,6 +325,8 @@ components:
           additionalProperties:
             type: string
           type: object
+        version:
+          type: string
         workflows:
           items:
             $ref: '#/components/schemas/model.Workflow'
