@@ -422,6 +422,8 @@ components:
           type: string
         config_extension_exclusive:
           type: boolean
+        config_extension_netrc:
+          type: boolean
         config_file:
           type: string
         default_branch:
@@ -455,6 +457,8 @@ components:
           type: boolean
         registry_extension_endpoint:
           type: string
+        registry_extension_netrc:
+          type: boolean
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
         secret_extension_endpoint:
@@ -494,6 +498,8 @@ components:
           type: string
         config_extension_exclusive:
           type: boolean
+        config_extension_netrc:
+          type: boolean
         config_file:
           type: string
         default_branch:
@@ -529,6 +535,8 @@ components:
           type: boolean
         registry_extension_endpoint:
           type: string
+        registry_extension_netrc:
+          type: boolean
         require_approval:
           $ref: '#/components/schemas/model.ApprovalMode'
         secret_extension_endpoint:
@@ -560,6 +568,8 @@ components:
           type: string
         config_extension_exclusive:
           type: boolean
+        config_extension_netrc:
+          type: boolean
         config_file:
           type: string
         netrc_trusted:
@@ -568,6 +578,8 @@ components:
           type: array
         registry_extension_endpoint:
           type: string
+        registry_extension_netrc:
+          type: boolean
         require_approval:
           type: string
         secret_extension_endpoint:
