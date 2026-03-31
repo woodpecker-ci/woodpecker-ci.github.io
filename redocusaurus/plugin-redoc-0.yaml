@@ -851,8 +851,6 @@ components:
         - PipelineErrorTypeBadHabit
     metadata.Author:
       properties:
-        avatar:
-          type: string
         email:
           type: string
         name:
