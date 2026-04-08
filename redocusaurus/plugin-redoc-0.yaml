@@ -1653,7 +1653,7 @@ paths:
       summary: Create a new forge
       tags:
         - Forges
-  /forges/{forgeId}:
+  /forges/{forge_id}:
     delete:
       parameters:
         - description: Insert your personal access token
@@ -1665,7 +1665,7 @@ paths:
             type: string
         - description: the forge's id
           in: path
-          name: forgeId
+          name: forge_id
           required: true
           schema:
             type: integer
@@ -1685,7 +1685,7 @@ paths:
             type: string
         - description: the forge's id
           in: path
-          name: forgeId
+          name: forge_id
           required: true
           schema:
             type: integer
@@ -1710,7 +1710,7 @@ paths:
             type: string
         - description: the forge's id
           in: path
-          name: forgeId
+          name: forge_id
           required: true
           schema:
             type: integer
@@ -3132,7 +3132,7 @@ paths:
       summary: Start a cron job now
       tags:
         - Repository cron jobs
-  /repos/{repo_id}/logs/{number}:
+  /repos/{repo_id}/logs/{pipeline_number}:
     delete:
       parameters:
         - description: Insert your personal access token
@@ -3150,7 +3150,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3160,7 +3160,40 @@ paths:
       summary: Deletes all logs of a pipeline
       tags:
         - Pipeline logs
-  /repos/{repo_id}/logs/{number}/{stepID}:
+  /repos/{repo_id}/logs/{pipeline_number}/{step_id}:
+    delete:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          schema:
+            type: integer
+        - description: the number of the pipeline
+          in: path
+          name: pipeline_number
+          required: true
+          schema:
+            type: integer
+        - description: the step id
+          in: path
+          name: step_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: No Content
+      summary: Delete step logs of a pipeline
+      tags:
+        - Pipeline logs
     get:
       parameters:
         - description: Insert your personal access token
@@ -3178,13 +3211,13 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
         - description: the step id
           in: path
-          name: stepID
+          name: step_id
           required: true
           schema:
             type: integer
@@ -3198,40 +3231,6 @@ paths:
                 type: array
           description: OK
       summary: Get logs for a pipeline step
-      tags:
-        - Pipeline logs
-  /repos/{repo_id}/logs/{number}/{stepId}:
-    delete:
-      parameters:
-        - description: Insert your personal access token
-          in: header
-          name: Authorization
-          required: true
-          schema:
-            default: Bearer <personal access token>
-            type: string
-        - description: the repository id
-          in: path
-          name: repo_id
-          required: true
-          schema:
-            type: integer
-        - description: the number of the pipeline
-          in: path
-          name: number
-          required: true
-          schema:
-            type: integer
-        - description: the step id
-          in: path
-          name: stepId
-          required: true
-          schema:
-            type: integer
-      responses:
-        '204':
-          description: No Content
-      summary: Delete step logs of a pipeline
       tags:
         - Pipeline logs
   /repos/{repo_id}/move:
@@ -3393,7 +3392,7 @@ paths:
       summary: Trigger a manual pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}:
+  /repos/{repo_id}/pipelines/{pipeline_number}:
     delete:
       parameters:
         - description: Insert your personal access token
@@ -3411,7 +3410,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3438,7 +3437,7 @@ paths:
             type: integer
         - description: the number of the pipeline, OR 'latest'
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3470,7 +3469,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3494,7 +3493,7 @@ paths:
       summary: Restart a pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}/approve:
+  /repos/{repo_id}/pipelines/{pipeline_number}/approve:
     post:
       parameters:
         - description: Insert your personal access token
@@ -3512,7 +3511,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3526,7 +3525,7 @@ paths:
       summary: Approve and start a pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}/cancel:
+  /repos/{repo_id}/pipelines/{pipeline_number}/cancel:
     post:
       parameters:
         - description: Insert your personal access token
@@ -3544,7 +3543,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3554,7 +3553,7 @@ paths:
       summary: Cancel a pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}/config:
+  /repos/{repo_id}/pipelines/{pipeline_number}/config:
     get:
       parameters:
         - description: Insert your personal access token
@@ -3572,7 +3571,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3588,7 +3587,7 @@ paths:
       summary: Get configuration files for a pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}/decline:
+  /repos/{repo_id}/pipelines/{pipeline_number}/decline:
     post:
       parameters:
         - description: Insert your personal access token
@@ -3606,7 +3605,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -3620,7 +3619,7 @@ paths:
       summary: Decline a pipeline
       tags:
         - Pipelines
-  /repos/{repo_id}/pipelines/{number}/metadata:
+  /repos/{repo_id}/pipelines/{pipeline_number}/metadata:
     get:
       parameters:
         - description: Insert your personal access token
@@ -3638,7 +3637,7 @@ paths:
             type: integer
         - description: the number of the pipeline
           in: path
-          name: number
+          name: pipeline_number
           required: true
           schema:
             type: integer
@@ -4224,7 +4223,7 @@ paths:
       summary: Stream events like pipeline updates
       tags:
         - Events
-  /stream/logs/{repo_id}/{pipeline}/{stepID}:
+  /stream/logs/{repo_id}/{pipeline}/{step_id}:
     get:
       parameters:
         - description: the repository id
@@ -4241,7 +4240,7 @@ paths:
             type: integer
         - description: the step id
           in: path
-          name: stepID
+          name: step_id
           required: true
           schema:
             type: integer
