@@ -895,6 +895,28 @@ components:
         sha:
           type: string
       type: object
+    metadata.Event:
+      enum:
+        - push
+        - pull_request
+        - pull_request_closed
+        - pull_request_metadata
+        - tag
+        - release
+        - deployment
+        - cron
+        - manual
+      type: string
+      x-enum-varnames:
+        - EventPush
+        - EventPull
+        - EventPullClosed
+        - EventPullMetadata
+        - EventTag
+        - EventRelease
+        - EventDeploy
+        - EventCron
+        - EventManual
     metadata.Forge:
       properties:
         type:
@@ -934,7 +956,7 @@ components:
         cron:
           type: string
         event:
-          type: string
+          $ref: '#/components/schemas/metadata.Event'
         event_reason:
           items:
             type: string
