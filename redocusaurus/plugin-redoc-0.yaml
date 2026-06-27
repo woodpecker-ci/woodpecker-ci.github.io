@@ -122,12 +122,13 @@ components:
         created:
           type: integer
         event:
-          type: string
+          $ref: '#/components/schemas/WebhookEvent'
         finished:
           type: integer
         id:
           type: integer
         message:
+          description: // Deprecated
           type: string
         number:
           type: integer
@@ -135,11 +136,19 @@ components:
           type: string
         refspec:
           type: string
+        release:
+          allOf:
+            - $ref: '#/components/schemas/Release'
+          description: |-
+            Ongoing Work: https://github.com/woodpecker-ci/woodpecker/pull/4626
+            // New
         repo_id:
           type: integer
         started:
           type: integer
         status:
+          type: string
+        tag_title:
           type: string
         title:
           type: string
@@ -251,8 +260,14 @@ components:
     Pipeline:
       properties:
         author:
+          description: >-
+            TODO: only // The user sending the webhook data or triggering the
+            pipeline event
           type: string
         author_avatar:
+          description: >-
+            TODO: only & rename to AuthorAvatar // Avatar URL of the author of
+            the commit
           type: string
         author_email:
           type: string
@@ -294,6 +309,7 @@ components:
         id:
           type: integer
         is_prerelease:
+          description: deprecated, use release.is_prerelease instead
           type: boolean
         message:
           type: string
@@ -313,6 +329,12 @@ components:
           type: string
         refspec:
           type: string
+        release:
+          allOf:
+            - $ref: '#/components/schemas/Release'
+          description: |-
+            Ongoing Work: https://github.com/woodpecker-ci/woodpecker/pull/4626
+            // New
         rerun_count:
           type: integer
         reviewed:
@@ -326,9 +348,12 @@ components:
           type: integer
         status:
           $ref: '#/components/schemas/StatusValue'
+        tag_title:
+          type: string
         timestamp:
           type: integer
         title:
+          description: // Deprecated
           type: string
         updated:
           type: integer
@@ -402,6 +427,13 @@ components:
         repo_id:
           type: integer
         username:
+          type: string
+      type: object
+    Release:
+      properties:
+        is_prerelease:
+          type: boolean
+        title:
           type: string
       type: object
     Repo:
@@ -927,8 +959,6 @@ components:
           type: array
         draft:
           type: boolean
-        is_prerelease:
-          type: boolean
         labels:
           items:
             type: string
@@ -1020,6 +1050,8 @@ components:
           type: integer
         parent:
           type: integer
+        release:
+          $ref: '#/components/schemas/metadata.Release'
         rerun_count:
           type: integer
         started:
@@ -1029,6 +1061,13 @@ components:
         target:
           type: string
         task:
+          type: string
+      type: object
+    metadata.Release:
+      properties:
+        is_prerelease:
+          type: boolean
+        title:
           type: string
       type: object
     metadata.Repo:
