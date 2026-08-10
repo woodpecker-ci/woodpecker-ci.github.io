@@ -167,6 +167,13 @@ components:
         oauth_host:
           description: public url for oauth if different from url
           type: string
+        orgs:
+          description: >-
+            members of those orgs may log in using this forge, in addition to
+            the globally allowed ones
+          items:
+            type: string
+          type: array
         skip_verify:
           type: boolean
         type:
@@ -188,6 +195,13 @@ components:
         oauth_host:
           description: public url for oauth if different from url
           type: string
+        orgs:
+          description: >-
+            members of those orgs may log in using this forge, in addition to
+            the globally allowed ones
+          items:
+            type: string
+          type: array
         skip_verify:
           type: boolean
         type:
