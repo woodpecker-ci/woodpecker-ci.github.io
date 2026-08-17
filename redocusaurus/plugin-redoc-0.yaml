@@ -3381,6 +3381,44 @@ paths:
       summary: Get logs for a pipeline step
       tags:
         - Pipeline logs
+  /repos/{repo_id}/logs/{pipeline_number}/{step_id}/download:
+    get:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          schema:
+            type: integer
+        - description: the number of the pipeline
+          in: path
+          name: pipeline_number
+          required: true
+          schema:
+            type: integer
+        - description: the step id
+          in: path
+          name: step_id
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          content:
+            text/plain:
+              schema:
+                type: string
+          description: OK
+      summary: Download logs for a pipeline step
+      tags:
+        - Pipeline logs
   /repos/{repo_id}/move:
     post:
       parameters:
