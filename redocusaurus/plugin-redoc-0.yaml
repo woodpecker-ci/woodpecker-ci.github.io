@@ -388,6 +388,8 @@ components:
       properties:
         branch:
           type: string
+        message:
+          type: string
         variables:
           additionalProperties:
             type: string
