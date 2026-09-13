@@ -12,6 +12,11 @@ components:
           additionalProperties:
             type: string
           type: object
+        filters:
+          additionalProperties:
+            type: string
+          description: Server side enforced agent filters
+          type: object
         id:
           type: integer
         last_contact:
@@ -1359,7 +1364,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/Agent'
-        description: the agent's data (only 'name' and 'no_schedule' are read)
+        description: the agent's data (only 'name', 'no_schedule' and 'filters' are read)
         required: true
         x-originalParamName: agent
       responses:
@@ -2138,7 +2143,7 @@ paths:
           '*/*':
             schema:
               $ref: '#/components/schemas/Agent'
-        description: the agent's data (only 'name' and 'no_schedule' are read)
+        description: the agent's data (only 'name', 'no_schedule' and 'filters' are read)
         required: true
         x-originalParamName: agent
       responses:
