@@ -778,6 +778,10 @@ components:
         - StatusCreated
     Step:
       properties:
+        depends_on:
+          items:
+            type: string
+          type: array
         error:
           type: string
         exit_code:
@@ -1275,6 +1279,10 @@ components:
         children:
           items:
             $ref: '#/components/schemas/Step'
+          type: array
+        depends_on:
+          items:
+            type: string
           type: array
         environ:
           additionalProperties:
