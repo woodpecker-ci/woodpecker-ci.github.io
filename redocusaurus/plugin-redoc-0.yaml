@@ -4753,3 +4753,5 @@ paths:
       summary: Get version
       tags:
         - System
+servers:
+  - url: /api
