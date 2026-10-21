@@ -255,6 +255,16 @@ components:
           type: boolean
         name:
           type: string
+        require_org_agents:
+          description: >-
+            RequireOrgAgents restricts workflows of the organization's repos to
+            agents of this organization
+          type: boolean
+      type: object
+    OrgPatch:
+      properties:
+        require_org_agents:
+          type: boolean
       type: object
     OrgPerm:
       properties:
@@ -2086,6 +2096,39 @@ paths:
                 type: array
           description: OK
       summary: Get an organization
+      tags:
+        - Organization
+    patch:
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the organization's id
+          in: path
+          name: org_id
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/OrgPatch'
+        description: the org's updated data
+        required: true
+        x-originalParamName: org
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Org'
+          description: OK
+      summary: Update an organization
       tags:
         - Organization
   /orgs/{org_id}/agents:
