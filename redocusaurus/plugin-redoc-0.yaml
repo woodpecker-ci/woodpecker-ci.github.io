@@ -372,6 +372,9 @@ components:
           type: integer
         reviewed_by:
           type: string
+        selected_workflow:
+          description: only run this workflow and its hard dependencies
+          type: string
         sender:
           description: uses reported user for webhooks and name of cron for cron pipelines
           type: string
@@ -409,6 +412,9 @@ components:
           additionalProperties:
             type: string
           type: object
+        workflow:
+          description: only run this workflow and its hard dependencies
+          type: string
       type: object
     PullRequest:
       properties:
@@ -948,6 +954,15 @@ components:
         - EventDeploy
         - EventCron
         - EventManual
+    WorkflowInfo:
+      properties:
+        depends_on:
+          items:
+            type: string
+          type: array
+        name:
+          type: string
+      type: object
     errors.PipelineError:
       properties:
         data: {}
@@ -4308,6 +4323,42 @@ paths:
       summary: Update a repository secret by name
       tags:
         - Repository secrets
+  /repos/{repo_id}/workflows:
+    get:
+      description: >-
+        Fetches the pipeline config of the branch head and lists the workflows
+        that run on the manual event.
+      parameters:
+        - description: Insert your personal access token
+          in: header
+          name: Authorization
+          required: true
+          schema:
+            default: Bearer <personal access token>
+            type: string
+        - description: the repository id
+          in: path
+          name: repo_id
+          required: true
+          schema:
+            type: integer
+        - description: the branch to load the config from, defaults to the default branch
+          in: query
+          name: branch
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/WorkflowInfo'
+                type: array
+          description: OK
+      summary: List workflows a manual pipeline would run
+      tags:
+        - Pipelines
   /secrets:
     get:
       parameters:
