@@ -3651,7 +3651,7 @@ paths:
               $ref: '#/components/schemas/PipelineOptions'
         description: the options for the pipeline to run
         required: true
-        x-originalParamName: options
+        x-originalParamName: pipelineOptions
       responses:
         '200':
           content:
