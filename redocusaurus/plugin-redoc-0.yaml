@@ -1063,6 +1063,8 @@ components:
         - EventManual
     metadata.Forge:
       properties:
+        host:
+          type: string
         type:
           type: string
         url:
