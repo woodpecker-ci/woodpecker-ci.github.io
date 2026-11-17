@@ -440,20 +440,22 @@ components:
             $ref: '#/components/schemas/model.QueueTask'
           type: array
         stats:
-          properties:
-            pending_count:
-              type: integer
-            running_count:
-              type: integer
-            waiting_on_deps_count:
-              type: integer
-            worker_count:
-              type: integer
-          type: object
+          $ref: '#/components/schemas/QueueStats'
         waiting_on_deps:
           items:
             $ref: '#/components/schemas/model.QueueTask'
           type: array
+      type: object
+    QueueStats:
+      properties:
+        pending_count:
+          type: integer
+        running_count:
+          type: integer
+        waiting_on_deps_count:
+          type: integer
+        worker_count:
+          type: integer
       type: object
     Registry:
       properties:
