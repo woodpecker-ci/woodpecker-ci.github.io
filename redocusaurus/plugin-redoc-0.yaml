@@ -566,6 +566,8 @@ components:
           $ref: '#/components/schemas/model.TrustedConfiguration'
         visibility:
           $ref: '#/components/schemas/RepoVisibility'
+        visibility_sync:
+          type: boolean
       type: object
     RepoLastPipeline:
       properties:
@@ -654,6 +656,8 @@ components:
           $ref: '#/components/schemas/model.TrustedConfiguration'
         visibility:
           $ref: '#/components/schemas/RepoVisibility'
+        visibility_sync:
+          type: boolean
       type: object
     RepoPatch:
       properties:
@@ -697,6 +701,8 @@ components:
           $ref: '#/components/schemas/model.TrustedConfigurationPatch'
         visibility:
           type: string
+        visibility_sync:
+          type: boolean
       type: object
     RepoVisibility:
       enum:
